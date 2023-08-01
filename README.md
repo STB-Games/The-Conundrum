@@ -22,7 +22,8 @@
 
 ## Referências:
 
-IB (game)
-Undertale
-Granny
-Enigma do Medo
+* IB (game)
+* Undertale
+* Granny
+* Enigma do Medo
+* Helltaker
