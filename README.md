@@ -5,11 +5,11 @@
 ## Receita:
 
 * Propagandas ao entrar no jogo e ao voltar ao menu (sem propagandas durante o jogo).
-* Pagar por dicas, ou ver anuncios
+* Pagar por dicas, ou ver anuncios.
 
 ## Objetivos:
 
-* Resolver todos os puzzles assim expulsando toda atividade paranormal presente no museu.
+* Fazer o museu voltar a ativa novamente.
 * Coletar todos os colecionáveis ao longo do jogo.
 
 ## Jogo Ideal:
@@ -18,7 +18,11 @@
 
 ## Regras:
 
-
+* Fazer os puzzles obrigatórios para conclusão da sala.
+* Descobrir qual a lenda/mito habitava a sala.
+* Trabalhar em equipe para a conclusão dos desafios.
+* A câmera acompanhará cada jogador.
+* Seu Medo não pode passar de 3.
 
 ## Referências:
 
