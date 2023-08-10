@@ -29,6 +29,6 @@ Chegando ao museu, se depararam com barulhos e uma grande escuridão, porém sem
 
 * IB (game)
 * Undertale
-* Granny
 * Enigma do Medo
-* Helltaker
+* Folclore
+* Uma noite no museu (filme)
