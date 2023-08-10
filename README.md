@@ -9,12 +9,13 @@
 
 ## Objetivos:
 
-* Fazer o museu voltar a ativa novamente.
+* Fazer o museu voltar a ativa novamente. 
 * Coletar todos os colecionáveis ao longo do jogo.
 
 ## Jogo Ideal:
 
-
+  O jogo se passará em um universo onde lendas são reais. Em uma cidade um tanto quanto distante, havia um museu assombrado, moradores cansados de sentirem medo decidiram contratar um detetive e sua equipe para ver o que havia de mal assombrado naquele museu. Após passar uma semana os investigadores chegaram lá, a equipe era composta por um detetive e uma historiadora, logo as pessoas da cidade suspeitaram um pouco da equipe, porém eles seguiram rapidamente para o museu.
+  Chegando ao museu, se depararam com barulhos e uma grande escuridão, porém sem sentir medo seguiram em frente. Entrando no saguão, havia quadros com pinturas todas cobertas por uma tinta preta com uma placa sem nome em baixo, havia também uma porta fechada no meio e corredores em volta. Em cada corredor parecia emanar uma misteriosa força sombria. Agora, cabe aos dois desvendarem o que há em cada corredor, o que os quadros significam e talvez abrir a misteriosa porta no meio do saguão.
 
 ## Regras:
 
