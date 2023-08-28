@@ -4,26 +4,23 @@ export default class cena0 extends Phaser.Scene {
   }
 
   preload () {
-    this.load.image('eduardo', './assets/pombo.jpg')
-  }
-
-  create () {
-    this.add.image(400, 225, 'eduardo')
-    this.timer = 2
-    this.timedEvent = this.time.addEvent({
-      delay: 1000,
-      callback: this.countdown,
-      callbackScope: this,
-      loop: true
+    this.load.spritesheet('abertura', '../assets/CapaAbertura-90D.png', {
+      frameWidth: 800,
+      frameHeight: 450,
     })
   }
 
-  update () {
-    this.timer -= 1
-    if (this.timer <= 0) {
-      this.imagem.destroy()
-      this.timedEvent.destroy()
-      this.game.scene.start('sala')
-    }
+  create () {
+    this.abertura = this.add.sprite(0, 0, 'abertura')
+
+    this.anims.create({
+      key: 'abertura',
+      frames: this.anims.generateFrameNumbers('abertura', {
+        start: 0,
+        end: 26
+      }),
+      frameRate: 30,
+      repeat: -1
+    })
   }
 }
