@@ -4,7 +4,7 @@ export default class cena0 extends Phaser.Scene {
   }
 
   preload () {
-    this.load.spritesheet('abertura', '../assets/CapaDeAbertura.png', {
+    this.load.spritesheet('abertura', '../assets/CenaAbertura.png', {
       frameWidth: 800,
       frameHeight: 450,
     })
