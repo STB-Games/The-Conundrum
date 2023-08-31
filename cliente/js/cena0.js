@@ -10,12 +10,29 @@ export default class cena0 extends Phaser.Scene {
     })
 
     /* Personagem */
-    this.load.spritesheet('Calvo', '../assets/Calvo_Frente.png', {
+
+    this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoDireita', '../assets/Calvo_Direita.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoCosta', '../assets/Calvo_Costa.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoEsquerdo', '../assets/Calvo_Esquerdo.png', {
       frameWidth: 64,
       frameHeight: 64
     })
 
     /* Botões */
+
     this.load.spritesheet('direita', '../assets/botoes/direita.png', {
       frameWidth: 64,
       frameHeight: 64
@@ -26,9 +43,9 @@ export default class cena0 extends Phaser.Scene {
       frameHeight: 64
     })
 
-        this.load.spritesheet('esquerda', '../assets/botoes/esquerda.png', {
-      frameWidth: 64,
-      frameHeight: 64
+    this.load.spritesheet('esquerda', '../assets/botoes/esquerda.png', {
+    frameWidth: 64,
+    frameHeight: 64
     })
 
     this.load.spritesheet('baixo', '../assets/botoes/baixo.png', {
@@ -40,7 +57,7 @@ export default class cena0 extends Phaser.Scene {
   create () {
     this.abertura = this.add.sprite(400, 225, 'abertura')
 
-    /*Tentativa de Abertura*/
+    /*Abertura*/
 
     this.anims.create({
       key: 'abertura',
@@ -56,20 +73,63 @@ export default class cena0 extends Phaser.Scene {
 
     /* Personagem */
 
-    this.personagem = this.physics.add.sprite(400, 225, 'Calvo')
+    this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
 
-    /*Botões*/
+    /*Animação*/
+
+    /*Animação dos Personagens */
+    this.anims.create({
+      key: 'caiof',
+      frames: this.anims.generateFrameNumbers('CalvoFrente', {
+        start: 0,
+        end: 4
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'caioc',
+      frames: this.anims.generateFrameNumbers('CalvoCosta', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+        this.anims.create({
+      key: 'caioe',
+      frames: this.anims.generateFrameNumbers('CalvoEsquerdo', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'caiod',
+      frames: this.anims.generateFrameNumbers('CalvoDireita', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    /*Animação dos Botões*/
 
     this.direita = this.add.sprite(150, 400, 'direita', 0)
       .setInteractive()
       .on('pointerdown', () => {
         this.direita.setFrame(1)
-        this.personagem.anims.play('Calvo-direita', true)
-        this.personagem.setVelocityX(100)
+        this.personagem.anims.play('caiod', true)
+        this.personagem.setVelocityX(80)
       })
       .on('pointerup', () => {
         this.direita.setFrame(0)
-        this.personagem.anims.play('Calvo-parado')
+        this.personagem.anims.play('caiof')
         this.personagem.setVelocityX(0)
       })
     
@@ -77,12 +137,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.cima.setFrame(1)
-        this.personagem.anims.play('Calvo-cima', true)
-        this.personagem.setVelocityY(-100)
+        this.personagem.anims.play('caioc', true)
+        this.personagem.setVelocityY(-80)
       })
       .on('pointerup', () => {
         this.cima.setFrame(0)
-        this.personagem.anims.play('Calvo-parado')
+        this.personagem.anims.play('caiof')
         this.personagem.setVelocityY(0)
       })
     
@@ -90,12 +150,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.esquerda.setFrame(1)
-        this.personagem.anims.play('Calvo-esquerda', true)
-        this.personagem.setVelocityX(-100)
+        this.personagem.anims.play('caioe', true)
+        this.personagem.setVelocityX(-80)
       })
       .on('pointerup', () => {
         this.esquerda.setFrame(0)
-        this.personagem.anims.play('Calvo-parado')
+        this.personagem.anims.play('caiof')
         this.personagem.setVelocityX(0)
       })
 
@@ -103,12 +163,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.baixo.setFrame(1)
-        this.personagem.anims.play('Calvo-baixo', true)
-        this.personagem.setVelocityY(100)
+        this.personagem.anims.play('caiof', true)
+        this.personagem.setVelocityY(80)
       })
       .on('pointerup', () => {
         this.baixo.setFrame(0)
-        this.personagem.anims.play('Calvo-parado')
+        this.personagem.anims.play('caiof')
         this.personagem.setVelocityY(0)
       })
   }
