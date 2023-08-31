@@ -10,7 +10,7 @@ export default class cena0 extends Phaser.Scene {
     })
 
     /* Personagem */
-    this.load.spritesheet('derek', '../assets/derek.png', {
+    this.load.spritesheet('Calvo', '../assets/Calvo_Frente.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -56,7 +56,7 @@ export default class cena0 extends Phaser.Scene {
 
     /* Personagem */
 
-    this.personagem = this.physics.add.sprite(400, 225, 'derek')
+    this.personagem = this.physics.add.sprite(400, 225, 'Calvo')
 
     /*Botões*/
 
@@ -64,12 +64,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.direita.setFrame(1)
-        this.personagem.anims.play('derek-direita', true)
+        this.personagem.anims.play('Calvo-direita', true)
         this.personagem.setVelocityX(100)
       })
       .on('pointerup', () => {
         this.direita.setFrame(0)
-        this.personagem.anims.play('derek-parado')
+        this.personagem.anims.play('Calvo-parado')
         this.personagem.setVelocityX(0)
       })
     
@@ -77,12 +77,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.cima.setFrame(1)
-        this.personagem.anims.play('derek-cima', true)
+        this.personagem.anims.play('Calvo-cima', true)
         this.personagem.setVelocityY(-100)
       })
       .on('pointerup', () => {
         this.cima.setFrame(0)
-        this.personagem.anims.play('derek-parado')
+        this.personagem.anims.play('Calvo-parado')
         this.personagem.setVelocityY(0)
       })
     
@@ -90,12 +90,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.esquerda.setFrame(1)
-        this.personagem.anims.play('derek-esquerda', true)
+        this.personagem.anims.play('Calvo-esquerda', true)
         this.personagem.setVelocityX(-100)
       })
       .on('pointerup', () => {
         this.esquerda.setFrame(0)
-        this.personagem.anims.play('derek-parado')
+        this.personagem.anims.play('Calvo-parado')
         this.personagem.setVelocityX(0)
       })
 
@@ -103,12 +103,12 @@ export default class cena0 extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.baixo.setFrame(1)
-        this.personagem.anims.play('derek-baixo', true)
+        this.personagem.anims.play('Calvo-baixo', true)
         this.personagem.setVelocityY(100)
       })
       .on('pointerup', () => {
         this.baixo.setFrame(0)
-        this.personagem.anims.play('derek-parado')
+        this.personagem.anims.play('Calvo-parado')
         this.personagem.setVelocityY(0)
       })
   }
