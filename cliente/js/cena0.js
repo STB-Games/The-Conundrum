@@ -9,7 +9,7 @@ export default class cena0 extends Phaser.Scene {
       frameHeight: 450,
     })
 
-    /* Personagem */
+    /* Personagem Andando */
 
     this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
       frameWidth: 64,
@@ -27,6 +27,28 @@ export default class cena0 extends Phaser.Scene {
     })
 
     this.load.spritesheet('CalvoEsquerdo', '../assets/Calvo_Esquerdo.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    /* Personagem Idle */
+
+    this.load.spritesheet('CalvoIdleF', '../assets/CalvoIdleF.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoIdleD', '../assets/CalvoIdleD.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoIdleC', '../assets/CalvoIdleC.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('CalvoIdleE', '../assets/CalvoIdleE.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -141,6 +163,47 @@ export default class cena0 extends Phaser.Scene {
       repeat: -1
     })
 
+    /*Animação dos Personagens IDLE */
+    this.anims.create({
+      key: 'caioidlef',
+      frames: this.anims.generateFrameNumbers('CalvoIdleF', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'caioidlec',
+      frames: this.anims.generateFrameNumbers('CalvoIdleC', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'caioidlee',
+      frames: this.anims.generateFrameNumbers('CalvoIdleE', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'caioidled',
+      frames: this.anims.generateFrameNumbers('CalvoIdleD', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
     /*Animação dos Botões*/
 
     this.direita = this.add.sprite(150, 400, 'direita', 0)
@@ -152,7 +215,7 @@ export default class cena0 extends Phaser.Scene {
       })
       .on('pointerup', () => {
         this.direita.setFrame(0)
-        this.personagem.anims.play('caiof')
+        this.personagem.anims.play('caioidled')
         this.personagem.setVelocityX(0)
       })
       .setScrollFactor(0, 0)
@@ -166,7 +229,7 @@ export default class cena0 extends Phaser.Scene {
       })
       .on('pointerup', () => {
         this.cima.setFrame(0)
-        this.personagem.anims.play('caiof')
+        this.personagem.anims.play('caioidlef')
         this.personagem.setVelocityY(0)
       })
       .setScrollFactor(0, 0)
@@ -180,7 +243,7 @@ export default class cena0 extends Phaser.Scene {
       })
       .on('pointerup', () => {
         this.esquerda.setFrame(0)
-        this.personagem.anims.play('caiof')
+        this.personagem.anims.play('caioidlee')
         this.personagem.setVelocityX(0)
       })
       .setScrollFactor(0, 0)
@@ -194,7 +257,7 @@ export default class cena0 extends Phaser.Scene {
       })
       .on('pointerup', () => {
         this.baixo.setFrame(0)
-        this.personagem.anims.play('caiof')
+        this.personagem.anims.play('caioidlef')
         this.personagem.setVelocityY(0)
       })
             .setScrollFactor(0, 0)
