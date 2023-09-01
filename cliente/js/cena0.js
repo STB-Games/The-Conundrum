@@ -31,6 +31,13 @@ export default class cena0 extends Phaser.Scene {
       frameHeight: 64
     })
 
+    /*Full Screen*/
+
+    this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
+      frameWidth: 32,
+      frameHeight: 32
+    })
+
     /* Botões */
 
     this.load.spritesheet('direita', '../assets/botoes/direita.png', {
@@ -70,6 +77,22 @@ export default class cena0 extends Phaser.Scene {
     })
 
     this.abertura.anims.play('abertura')
+
+    /*Full Screen*/
+
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0),
 
     /* Personagem */
 
