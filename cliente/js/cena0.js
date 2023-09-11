@@ -229,7 +229,7 @@ export default class cena0 extends Phaser.Scene {
       })
       .on('pointerup', () => {
         this.cima.setFrame(0)
-        this.personagem.anims.play('caioidlef')
+        this.personagem.anims.play('caioidlec')
         this.personagem.setVelocityY(0)
       })
       .setScrollFactor(0, 0)
