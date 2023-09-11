@@ -11,6 +11,11 @@ export default class cena0 extends Phaser.Scene {
 
     /* Personagem Andando */
 
+    this.load.spritesheet('MeninaFrente', '../assets/Menina_Frente.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
     this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
       frameWidth: 64,
       frameHeight: 64
@@ -32,6 +37,11 @@ export default class cena0 extends Phaser.Scene {
     })
 
     /* Personagem Idle */
+
+    this.load.spritesheet('MeninaIdleF', '../assets/MeninaIdleF.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
 
     this.load.spritesheet('CalvoIdleF', '../assets/CalvoIdleF.png', {
       frameWidth: 64,
@@ -123,6 +133,17 @@ export default class cena0 extends Phaser.Scene {
     /*Animação*/
 
     /*Animação dos Personagens */
+
+    this.anims.create({
+      key: 'meninaf',
+      frames: this.anims.generateFrameNumbers('MeninaFrente', {
+        start: 0,
+        end: 4
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
     this.anims.create({
       key: 'caiof',
       frames: this.anims.generateFrameNumbers('CalvoFrente', {
@@ -164,6 +185,17 @@ export default class cena0 extends Phaser.Scene {
     })
 
     /*Animação dos Personagens IDLE */
+
+    this.anims.create({
+      key: 'meninaidlef',
+      frames: this.anims.generateFrameNumbers('MeninaIdleF', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
     this.anims.create({
       key: 'caioidlef',
       frames: this.anims.generateFrameNumbers('CalvoIdleF', {
@@ -262,5 +294,21 @@ export default class cena0 extends Phaser.Scene {
       })
             .setScrollFactor(0, 0)
     this.cameras.main.startFollow(this.personagem)
+
+    this.baixo = this.add.sprite(700, 400, 'baixo', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        this.baixo.setFrame(1)
+        this.personagem.anims.play('meninaf', true)
+        this.personagem.setVelocityY(80)
+      })
+      .on('pointerup', () => {
+        this.baixo.setFrame(0)
+        this.personagem.anims.play('meninaidlef')
+        this.personagem.setVelocityY(0)
+      })
+      .setScrollFactor(0, 0)
+    this.cameras.main.startFollow(this.personagem)
+
   }
 }
