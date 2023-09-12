@@ -8,7 +8,7 @@ export default class abertura extends Phaser.Scene {
       frameWidth: 800,
       frameHeight: 450,
     })
-    this.load.spritesheet('tela-abertura', '../assets/sala32.png', {
+    this.load.spritesheet('botaoinvisivel', '../assets/botaoinvisivel.png', {
       frameWidth: 135,
       frameHeight: 78
     })
@@ -54,7 +54,7 @@ export default class abertura extends Phaser.Scene {
       .setScrollFactor(0, 0),
 
       this.imagem = this.add
-        .image(400, 360, 'tela-abertura')
+        .image(400, 360, 'botaoinvisivel')
         .setInteractive()
         .on('pointerdown', () => {
           this.imagem.destroy()
