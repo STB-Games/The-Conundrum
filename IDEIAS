@@ -1,11 +1,11 @@
-fazer tela de encerramento
-fazer botoes
-fazer animação boneco calvo
-fazer boneco feminino
-fazer animação boneco feminino
-definir como será o hall do museu
-definir como será as salas
-definir quantos corredores e quantos coletáveis terá
+fazer tela de encerramento (done)
+fazer botoes (done)
+fazer animação boneco calvo (done)
+fazer boneco feminino (half-done)
+fazer animação boneco feminino (half-done)
+definir como será o hall do museu (done)
+definir como será as salas (done)
+definir quantos corredores e quantos coletáveis terá (done)
 
 
 
@@ -24,9 +24,9 @@ definir quantos corredores e quantos coletáveis terá
 
 
 
-arrumar cena abertura,
-arrumar nuvem
-arrumar botao tela cheia
-arrumar chapeu menina
-arrumar tela sala
-arrumar cena 0, botar tudo para cena 1 e deixar apenas a abertura.
+arrumar cena abertura, (half-done)
+arrumar nuvem (done)
+arrumar botao tela cheia (done)
+arrumar chapeu menina (not done)
+arrumar tela sala (done)
+arrumar cena 0, botar tudo para cena 1 e deixar apenas a abertura. (done)

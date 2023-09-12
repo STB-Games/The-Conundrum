@@ -8,6 +8,10 @@ export default class abertura extends Phaser.Scene {
       frameWidth: 800,
       frameHeight: 450,
     })
+    this.load.spritesheet('tela-abertura', '../assets/sala32.png', {
+      frameWidth: 135,
+      frameHeight: 78
+    })
 
     /*Full Screen*/
 

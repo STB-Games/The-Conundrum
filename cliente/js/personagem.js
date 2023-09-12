@@ -4,7 +4,7 @@ export default class personagem extends Phaser.Scene {
     }
 
     preload () {
-        this.load.spritesheet('abertura', '../assets/CenaAbertura.png', {
+        this.load.spritesheet('fundo', '../assets/fundocinza.png', {
             frameWidth: 800,
             frameHeight: 450,
         })
@@ -94,21 +94,7 @@ export default class personagem extends Phaser.Scene {
     }
 
     create () {
-        this.abertura = this.add.sprite(400, 225, 'abertura')
-
-        /*Abertura*/
-
-        this.anims.create({
-            key: 'abertura',
-            frames: this.anims.generateFrameNumbers('abertura', {
-                start: 0,
-                end: 35
-            }),
-            frameRate: 4,
-            repeat: -1
-        })
-
-        this.abertura.anims.play('abertura')
+        this.abertura = this.add.sprite(400, 225, 'fundo')
 
         /*Full Screen*/
 
@@ -134,7 +120,7 @@ export default class personagem extends Phaser.Scene {
 
         /*Animação dos Personagens */
 
-        this.anims.create({
+        /*this.anims.create({
             key: 'meninaf',
             frames: this.anims.generateFrameNumbers('MeninaFrente', {
                 start: 0,
@@ -142,7 +128,7 @@ export default class personagem extends Phaser.Scene {
             }),
             frameRate: 4,
             repeat: -1
-        })
+        })*/
 
         this.anims.create({
             key: 'caiof',
@@ -186,7 +172,7 @@ export default class personagem extends Phaser.Scene {
 
         /*Animação dos Personagens IDLE */
 
-        this.anims.create({
+        /*this.anims.create({
             key: 'meninaidlef',
             frames: this.anims.generateFrameNumbers('MeninaIdleF', {
                 start: 0,
@@ -194,7 +180,7 @@ export default class personagem extends Phaser.Scene {
             }),
             frameRate: 4,
             repeat: -1
-        })
+        })*/
 
         this.anims.create({
             key: 'caioidlef',
@@ -295,7 +281,7 @@ export default class personagem extends Phaser.Scene {
             .setScrollFactor(0, 0)
         this.cameras.main.startFollow(this.personagem)
 
-        this.baixo = this.add.sprite(700, 400, 'baixo', 0)
+        /*this.baixo = this.add.sprite(700, 400, 'baixo', 0)
             .setInteractive()
             .on('pointerdown', () => {
                 this.baixo.setFrame(1)
@@ -308,7 +294,6 @@ export default class personagem extends Phaser.Scene {
                 this.personagem.setVelocityY(0)
             })
             .setScrollFactor(0, 0)
-        this.cameras.main.startFollow(this.personagem)
-
+        this.cameras.main.startFollow(this.personagem)*/
     }
 }
