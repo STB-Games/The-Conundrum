@@ -9,6 +9,8 @@ export default class personagem extends Phaser.Scene {
             frameHeight: 450,
         })
 
+        this.load.image('monster', '../assets/personagem/botaoinvisivel.png')
+
         /* Personagem Andando */
 
         this.load.spritesheet('MeninaFrente', '../assets/Menina_Frente.png', {
@@ -112,11 +114,17 @@ export default class personagem extends Phaser.Scene {
             })
             .setScrollFactor(0, 0),
 
+            this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
+
+            /*Animação*/
             /* Personagem */
+            /*Colisão*/
 
             this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
 
-        /*Animação*/
+            this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
+
+            this.physics.add.collider(this.personagem, this.botaoinvisivel, this.gameover, null, this)
 
         /*Animação dos Personagens */
 
@@ -295,5 +303,10 @@ export default class personagem extends Phaser.Scene {
             })
             .setScrollFactor(0, 0)
         this.cameras.main.startFollow(this.personagem)*/
+    }
+
+    gameover () {
+        this.game.scene.stop('personagem')
+        this.game.scene.start('gameover')
     }
 }

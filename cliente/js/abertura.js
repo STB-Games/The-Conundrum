@@ -29,9 +29,9 @@ export default class abertura extends Phaser.Scene {
       key: 'abertura',
       frames: this.anims.generateFrameNumbers('abertura', {
         start: 0,
-        end: 35
+        end: 42
       }),
-      frameRate: 4,
+      frameRate: 20,
       repeat: -1
     })
 
