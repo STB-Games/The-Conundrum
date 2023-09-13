@@ -18,6 +18,11 @@ export default class personagem extends Phaser.Scene {
             frameHeight: 64
         })
 
+        this.load.spritesheet('MeninaCosta', '../assets/Menina_Costa.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
         this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
             frameWidth: 64,
             frameHeight: 64
@@ -133,6 +138,16 @@ export default class personagem extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('MeninaFrente', {
                 start: 0,
                 end: 4
+            }),
+            frameRate: 4,
+            repeat: -1
+        })*/
+
+        /*this.anims.create({
+            key: 'meninac',
+            frames: this.anims.generateFrameNumbers('MeninaCosta', {
+                start: 0,
+                end: 5
             }),
             frameRate: 4,
             repeat: -1
@@ -303,6 +318,22 @@ export default class personagem extends Phaser.Scene {
             })
             .setScrollFactor(0, 0)
         this.cameras.main.startFollow(this.personagem)*/
+
+        /*this.cima = this.add.sprite(700, 300, 'cima', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.cima.setFrame(1)
+                this.personagem.anims.play('meninac', true)
+                this.personagem.setVelocityY(-80)
+            })
+            .on('pointerup', () => {
+                this.cima.setFrame(0)
+                this.personagem.anims.play('meninaidlec')
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
+            this.cameras.main.startFollow(this.personagem)*/
+        
     }
 
     gameover () {
