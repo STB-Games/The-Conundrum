@@ -31,7 +31,7 @@ export default class abertura extends Phaser.Scene {
         start: 0,
         end: 42
       }),
-      frameRate: 20,
+      frameRate: 10,
       repeat: -1
     })
 
