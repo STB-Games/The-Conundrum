@@ -1,134 +1,358 @@
-export default class Personagem extends Phaser.Scene {
+export default class personagem extends Phaser.Scene {
     constructor () {
-        super('personagem');
+        super('personagem')
     }
 
     preload () {
-        this.load.spritesheet('fundo', '../assets/fundocinza.png', { frameWidth: 800, frameHeight: 450 });
-        this.load.image('monster', '../assets/personagem/botaoinvisivel.png');
+        this.load.spritesheet('fundo', '../assets/fundocinza.png', {
+            frameWidth: 800,
+            frameHeight: 450,
+        })
 
-        this.loadSpritesheet('MeninaFrente', 64, 64);
-        this.loadSpritesheet('MeninaCosta', 64, 64);
-        this.loadSpritesheet('CalvoFrente', 64, 64);
-        this.loadSpritesheet('CalvoDireita', 64, 64);
-        this.loadSpritesheet('CalvoCosta', 64, 64);
-        this.loadSpritesheet('CalvoEsquerdo', 64, 64);
-        this.loadSpritesheet('MeninaIdleF', 64, 64);
-        this.loadSpritesheet('CalvoIdleF', 64, 64);
-        this.loadSpritesheet('CalvoIdleD', 64, 64);
-        this.loadSpritesheet('CalvoIdleC', 64, 64);
-        this.loadSpritesheet('CalvoIdleE', 64, 64);
-        this.loadSpritesheet('tela-cheia', './assets/FullScreenICO.png', { frameWidth: 32, frameHeight: 32 });
-        this.loadSpritesheet('direita', '../assets/botoes/direita.png', 64, 64);
-        this.loadSpritesheet('cima', '../assets/botoes/cima.png', 64, 64);
-        this.loadSpritesheet('esquerda', '../assets/botoes/esquerda.png', 64, 64);
-        this.loadSpritesheet('baixo', '../assets/botoes/baixo.png', 64, 64);
+        this.load.image('monster', '../assets/personagem/botaoinvisivel.png')
+
+        /* Personagem Andando (FEMININO) */
+
+        this.load.spritesheet('MeninaFrente', '../assets/Menina_Frente.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('MeninaCosta', '../assets/Menina_Costa.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        /* Personagem Andando (Masculino) */
+
+        this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
+            frameWidth: 64,
+            frameHeight: 64
+
+        })
+
+        this.load.spritesheet('CalvoDireita', '../assets/Calvo_Direita.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('CalvoCosta', '../assets/Calvo_Costa.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('CalvoEsquerdo', '../assets/Calvo_Esquerdo.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        /* Personagem Idle (FEMININO) */
+
+        this.load.spritesheet('MeninaIdleF', '../assets/MeninaIdleF.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        /* Personagem Idle (MASCULINO) */
+
+        this.load.spritesheet('CalvoIdleF', '../assets/CalvoIdleF.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('CalvoIdleD', '../assets/CalvoIdleD.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('CalvoIdleC', '../assets/CalvoIdleC.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('CalvoIdleE', '../assets/CalvoIdleE.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        /*Full Screen*/
+
+        this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
+            frameWidth: 32,
+            frameHeight: 32
+        })
+
+        /* Botões */
+
+        this.load.spritesheet('direita', '../assets/botoes/direita.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('cima', '../assets/botoes/cima.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('esquerda', '../assets/botoes/esquerda.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
+        this.load.spritesheet('baixo', '../assets/botoes/baixo.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
     }
 
     create () {
-        this.abertura = this.add.sprite(400, 225, 'fundo');
+        this.abertura = this.add.sprite(400, 225, 'fundo')
 
-        this.tela_cheia = this.add.sprite(770, 30, 'tela-cheia', 0)
+        /*Full Screen*/
+
+        this.tela_cheia = this.add
+            .sprite(770, 30, 'tela-cheia', 0)
             .setInteractive()
             .on('pointerdown', () => {
                 if (this.scale.isFullscreen) {
-                    this.tela_cheia.setFrame(0);
-                    this.scale.stopFullscreen();
+                    this.tela_cheia.setFrame(0)
+                    this.scale.stopFullscreen()
                 } else {
-                    this.tela_cheia.setFrame(1);
-                    this.scale.startFullscreen();
+                    this.tela_cheia.setFrame(1)
+                    this.scale.startFullscreen()
                 }
             })
-            .setScrollFactor(0);
+            .setScrollFactor(0, 0),
 
-        this.createCharacter(400, 225, 'CalvoFrente');
-        this.createInvisibleButton(750, 225);
+            /* HitBOX de personagem CALVO */
 
-        this.physics.add.collider(this.personagem, this.botaoinvisivel, this.gameover, null, this);
+            /* HitBOX de personagem MENINA */
 
-        this.setupCharacterAnimations();
-        this.setupButtonInteractions();
-        this.cameras.main.startFollow(this.personagem);
-    }
+            /* 
+            
+            aaaaaaa 
+            
+            */
 
-    loadSpritesheet (key, width, height) {
-        this.load.spritesheet(key, `../assets/${key}.png`, { frameWidth: width, frameHeight: height });
-    }
+            /*Animação*/
 
-    createCharacter (x, y, spriteKey) {
-        this.personagem = this.physics.add.sprite(x, y, spriteKey);
-    }
+            /* Personagem */
 
-    createInvisibleButton (x, y) {
-        this.botaoinvisivel = this.physics.add.image(x, y, 'monster');
-    }
+            /*Colisão*/
 
-    setupCharacterAnimations () {
-        const animations = [
-            { key: 'caiof', frames: 'CalvoFrente', start: 0, end: 4 },
-            { key: 'caioc', frames: 'CalvoCosta', start: 0, end: 5 },
-            { key: 'caioe', frames: 'CalvoEsquerdo', start: 0, end: 5 },
-            { key: 'caiod', frames: 'CalvoDireita', start: 0, end: 5 },
-            { key: 'caioidlef', frames: 'CalvoIdleF', start: 0, end: 0 },
-            { key: 'caioidlec', frames: 'CalvoIdleC', start: 0, end: 0 },
-            { key: 'caioidlee', frames: 'CalvoIdleE', start: 0, end: 0 },
-            { key: 'caioidled', frames: 'CalvoIdleD', start: 0, end: 0 },
-        ];
+            this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
 
-        animations.forEach((anim) => {
-            this.anims.create({
-                key: anim.key,
-                frames: this.anims.generateFrameNumbers(anim.frames, { start: anim.start, end: anim.end }),
-                frameRate: 4,
-                repeat: -1,
-            });
-        });
-    }
+        this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
 
-    setupButtonInteractions () {
-        const buttons = [
-            { key: 'direita', x: 150, y: 400, anim: 'caiod' },
-            { key: 'cima', x: 700, y: 300, anim: 'caioc' },
-            { key: 'esquerda', x: 50, y: 400, anim: 'caioe' },
-            { key: 'baixo', x: 700, y: 400, anim: 'caiof' },
-        ];
+        this.physics.add.collider(this.personagem, this.botaoinvisivel, this.gameover, null, this)
 
-        buttons.forEach((button) => {
-            this.add.sprite(button.x, button.y, button.key, 0)
-                .setInteractive()
-                .on('pointerdown', () => {
-                    this.handleButtonDown(button);
-                })
-                .on('pointerup', () => {
-                    this.handleButtonUp(button);
-                })
-                .setScrollFactor(0);
-        });
-    }
+        /*Animação dos Personagens */
 
-    handleButtonDown (button) {
-        this[button.key].setFrame(1);
-        this.personagem.anims.play(button.anim, true);
+        /*this.anims.create({
+            key: 'meninaf',
+            frames: this.anims.generateFrameNumbers('MeninaFrente', {
+                start: 0,
+                end: 4
+            }),
+            frameRate: 4,
+            repeat: -1
+        })*/
 
-        if (button.key === 'direita') {
-            this.personagem.setVelocityX(80);
-        } else if (button.key === 'cima') {
-            this.personagem.setVelocityY(-80);
-        } else if (button.key === 'esquerda') {
-            this.personagem.setVelocityX(-80);
-        } else if (button.key === 'baixo') {
-            this.personagem.setVelocityY(80);
-        }
-    }
+        /*this.anims.create({
+            key: 'meninac',
+            frames: this.anims.generateFrameNumbers('MeninaCosta', {
+                start: 0,
+                end: 5
+            }),
+            frameRate: 4,
+            repeat: -1
+        })*/
 
-    handleButtonUp (button) {
-        this[button.key].setFrame(0);
-        this.personagem.anims.play(`caioidle${button.key.charAt(0)}`);
-        this.personagem.setVelocity(0);
+        this.anims.create({
+            key: 'caiof',
+            frames: this.anims.generateFrameNumbers('CalvoFrente', {
+                start: 0,
+                end: 4
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caioc',
+            frames: this.anims.generateFrameNumbers('CalvoCosta', {
+                start: 0,
+                end: 5
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caioe',
+            frames: this.anims.generateFrameNumbers('CalvoEsquerdo', {
+                start: 0,
+                end: 5
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caiod',
+            frames: this.anims.generateFrameNumbers('CalvoDireita', {
+                start: 0,
+                end: 5
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        /*Animação dos Personagens IDLE */
+
+        /*this.anims.create({
+            key: 'meninaidlef',
+            frames: this.anims.generateFrameNumbers('MeninaIdleF', {
+                start: 0,
+                end: 0
+            }),
+            frameRate: 4,
+            repeat: -1
+        })*/
+
+        this.anims.create({
+            key: 'caioidlef',
+            frames: this.anims.generateFrameNumbers('CalvoIdleF', {
+                start: 0,
+                end: 0
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caioidlec',
+            frames: this.anims.generateFrameNumbers('CalvoIdleC', {
+                start: 0,
+                end: 0
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caioidlee',
+            frames: this.anims.generateFrameNumbers('CalvoIdleE', {
+                start: 0,
+                end: 0
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'caioidled',
+            frames: this.anims.generateFrameNumbers('CalvoIdleD', {
+                start: 0,
+                end: 0
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        /*Animação dos Botões*/
+
+        this.direita = this.add.sprite(150, 400, 'direita', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.direita.setFrame(1)
+                this.personagem.anims.play('caiod', true)
+                this.personagem.setVelocityX(80)
+            })
+            .on('pointerup', () => {
+                this.direita.setFrame(0)
+                this.personagem.anims.play('caioidled')
+                this.personagem.setVelocityX(0)
+            })
+            .setScrollFactor(0, 0)
+
+        this.cima = this.add.sprite(700, 300, 'cima', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.cima.setFrame(1)
+                this.personagem.anims.play('caioc', true)
+                this.personagem.setVelocityY(-80)
+            })
+            .on('pointerup', () => {
+                this.cima.setFrame(0)
+                this.personagem.anims.play('caioidlec')
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
+
+        this.esquerda = this.add.sprite(50, 400, 'esquerda', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.esquerda.setFrame(1)
+                this.personagem.anims.play('caioe', true)
+                this.personagem.setVelocityX(-80)
+            })
+            .on('pointerup', () => {
+                this.esquerda.setFrame(0)
+                this.personagem.anims.play('caioidlee')
+                this.personagem.setVelocityX(0)
+            })
+            .setScrollFactor(0, 0)
+
+        this.baixo = this.add.sprite(700, 400, 'baixo', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.baixo.setFrame(1)
+                this.personagem.anims.play('caiof', true)
+                this.personagem.setVelocityY(80)
+            })
+            .on('pointerup', () => {
+                this.baixo.setFrame(0)
+                this.personagem.anims.play('caioidlef')
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
+        this.cameras.main.startFollow(this.personagem)
+
+        /*this.baixo = this.add.sprite(700, 400, 'baixo', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.baixo.setFrame(1)
+                this.personagem.anims.play('meninaf', true)
+                this.personagem.setVelocityY(80)
+            })
+            .on('pointerup', () => {
+                this.baixo.setFrame(0)
+                this.personagem.anims.play('meninaidlef')
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
+        this.cameras.main.startFollow(this.personagem)*/
+
+        /*this.cima = this.add.sprite(700, 300, 'cima', 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.cima.setFrame(1)
+                this.personagem.anims.play('meninac', true)
+                this.personagem.setVelocityY(-80)
+            })
+            .on('pointerup', () => {
+                this.cima.setFrame(0)
+                this.personagem.anims.play('meninaidlec')
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
+            this.cameras.main.startFollow(this.personagem)*/
+
     }
 
     gameover () {
-        this.scene.stop('personagem');
-        this.scene.start('gameover');
+        this.game.scene.stop('personagem')
+        this.game.scene.start('gameover')
     }
 }
