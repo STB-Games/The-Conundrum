@@ -141,6 +141,17 @@ export default class personagem extends Phaser.Scene {
             /*Colisão*/
 
             this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
+            
+            // Defina as dimensões da hitbox
+            const hitboxWidth = 24;
+            const hitboxHeight = 60;
+            const offsetX = (this.personagem.width - hitboxWidth) / 2;
+            const offsetY = this.personagem.height - hitboxHeight;
+
+            // Configure a hitbox
+            this.personagem.setSize(hitboxWidth, hitboxHeight, true);
+            this.personagem.setOffset(offsetX, offsetY);
+            this.personagem.setCollideWorldBounds(true);
 
         this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
 
