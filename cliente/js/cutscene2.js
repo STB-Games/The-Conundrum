@@ -15,14 +15,14 @@ export default class Cutscene2 extends Phaser.Scene {
         const telamorteImage = this.add.image(400, 225, 'telamorte').setAlpha(0);
 
         // Crie botões para avançar e retroceder
-        const nextButton = this.add.text(650, 400, 'Próxima Cena', {
+        const nextButton = this.add.text(750, 225, '->', {
             fontSize: '18px',
             fill: '#fff',
         });
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
-        const prevButton = this.add.text(150, 400, 'Cena Anterior', {
+        const prevButton = this.add.text(50, 225, '<-', {
             fontSize: '18px',
             fill: '#fff',
         });
