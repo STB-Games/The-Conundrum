@@ -5,14 +5,11 @@ export default class Cutscene2 extends Phaser.Scene {
 
     preload () {
         this.load.image('fundocinza', 'assets/fundocinza.png');
-        this.load.image('telamorte', 'assets/telamorte.png');
-        this.load.image('submundo', 'assets/fundopreto.png');
-        this.load.image('CapaJogo', 'assets/CapaJogo.png');
     }
 
     create () {
         // Adicione as imagens e defina a visibilidade inicial
-        const telamorteImage = this.add.image(400, 225, 'telamorte').setAlpha(0);
+        const fundocinzaImage = this.add.image(400, 225, 'fundocinza').setAlpha(0);
 
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
@@ -42,7 +39,7 @@ export default class Cutscene2 extends Phaser.Scene {
         // Configurar eventos de clique para os botões
         nextButton.on('pointerdown', () => {
             // Animação de Fade Out para a cena atual
-            fadeOut(telamorteImage, 1000, () => {
+            fadeOut(fundocinzaImage, 1000, () => {
                 // Chame a função para avançar para a próxima cena
                 goToNextScene();
             });
@@ -50,7 +47,7 @@ export default class Cutscene2 extends Phaser.Scene {
 
         prevButton.on('pointerdown', () => {
             // Animação de Fade Out para a cena atual
-            fadeOut(telamorteImage, 1000, () => {
+            fadeOut(fundocinzaImage, 1000, () => {
                 // Chame a função para retroceder para a cena anterior
                 goToPreviousScene();
             });
@@ -74,7 +71,7 @@ export default class Cutscene2 extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'telamorte'
-        fadeIn(telamorteImage, 1000);
+        // Inicie a cena com o Fade In para 'fundocinza'
+        fadeIn(fundocinzaImage, 1000);
     }
 }

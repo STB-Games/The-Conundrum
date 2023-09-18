@@ -5,9 +5,6 @@ export default class Cutscene1 extends Phaser.Scene {
 
     preload () {
         this.load.image('fundocinza', 'assets/fundocinza.png');
-        this.load.image('telamorte', 'assets/telamorte.png');
-        this.load.image('submundo', 'assets/fundopreto.png');
-        this.load.image('CapaJogo', 'assets/CapaJogo.png');
     }
 
     create () {
