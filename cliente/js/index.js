@@ -4,6 +4,9 @@ import sala from './sala.js'
 import personagem from './personagem.js'
 import gameover from './gameover.js'
 import menina from './menina.js'
+import cutscene from './cutscene.js'
+import cutscene1 from './cutscene1.js'
+import cutscene2 from './cutscene2.js'
 
 class Game extends Phaser.Game {
   constructor () {
@@ -14,6 +17,9 @@ class Game extends Phaser.Game {
     this.scene.add('personagem', personagem)
     this.scene.add('gameover', gameover)
     this.scene.add('menina', menina)
+    this.scene.add('cutscene', cutscene)
+    this.scene.add('cutscene1', cutscene1)
+    this.scene.add('cutscene2', cutscene2)
 
     this.scene.start('abertura')
   }

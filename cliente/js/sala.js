@@ -139,7 +139,7 @@ export default class sala extends Phaser.Scene {
                     });
                     item.botao.destroy()
                     this.game.scene.stop('sala')
-                    this.game.scene.start('menina')
+                    this.game.scene.start('cutscene')
                 });
         });
     }
