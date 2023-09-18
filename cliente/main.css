@@ -12,3 +12,12 @@ html {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
+
+h1 {
+  font-family: 'Silkscreen', cursive;
+}
+
+@font-face {
+  font-family: 'Chelsea';
+  src: url('./assets/ChelseaMarket-Regular.ttf')
+}
