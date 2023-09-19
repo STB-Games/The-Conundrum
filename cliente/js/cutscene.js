@@ -5,6 +5,13 @@ export default class Cutscene extends Phaser.Scene {
 
     preload () {
         this.load.image('CapaJogo', 'assets/CapaJogo.png');
+
+        /*Full Screen*/
+
+        this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
+            frameWidth: 32,
+            frameHeight: 32
+        })
     }
 
     create () {
