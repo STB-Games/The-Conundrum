@@ -7,6 +7,7 @@ import menina from './menina.js'
 import cutscene from './cutscene.js'
 import cutscene1 from './cutscene1.js'
 import cutscene2 from './cutscene2.js'
+import loading from './loading.js'
 
 class Game extends Phaser.Game {
   constructor () {
@@ -20,6 +21,7 @@ class Game extends Phaser.Game {
     this.scene.add('cutscene', cutscene)
     this.scene.add('cutscene1', cutscene1)
     this.scene.add('cutscene2', cutscene2)
+    this.scene.add('loading', loading)
 
     this.scene.start('abertura')
   }

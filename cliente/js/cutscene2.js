@@ -28,7 +28,7 @@ export default class Cutscene2 extends Phaser.Scene {
 
         // Função para animar a transição para a próxima cena
         const goToNextScene = () => {
-            this.scene.start('personagem');
+            this.scene.start('loading');
         };
 
         // Função para animar a transição para a cena anterior
