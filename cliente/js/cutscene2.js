@@ -28,6 +28,8 @@ export default class Cutscene2 extends Phaser.Scene {
         this.mensagem = this.add.text(100, 20, texto, {
             fontFamily: "Felipa",
             fontSize: 32 + "px",
+            stroke: "#000000",
+            strokeThickness: 4,
             wordWrap: {
                 width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
                 useAdvancedWrap: true,
