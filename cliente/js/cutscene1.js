@@ -18,6 +18,23 @@ export default class Cutscene1 extends Phaser.Scene {
         // Adicione as imagens e defina a visibilidade inicial
         const fundocinzaImage = this.add.image(400, 225, 'fundocinza').setAlpha(0);
 
+
+        const telaLargura = 800;
+        const telaAltura = 450;
+
+        const texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel aliquam enim, eget euismod tortor. Aliquam erat volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed a elit congue, euismod nisi et, suscipit dui. Vivamus eget vestibulum nunc, nec pellentesque metus. Suspendisse libero massa"; // Substitua pelo seu texto real
+
+        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
+
+        this.mensagem = this.add.text(100, 75, texto, {
+            fontFamily: "Felipa",
+            fontSize: 32 + "px",
+            wordWrap: {
+                width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
+                useAdvancedWrap: true,
+            }
+        })
+
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
             fontSize: '18px',

@@ -18,6 +18,22 @@ export default class Cutscene2 extends Phaser.Scene {
         // Adicione as imagens e defina a visibilidade inicial
         const fundocinzaImage = this.add.image(400, 225, 'fundocinza').setAlpha(0);
 
+        const telaLargura = 800;
+        const telaAltura = 450;
+
+        const texto = "Uma vez flamengo, sempre flamengo, flamengo sempre eu ei de ser, é meu maior prazer, ve-lo brilhar, seja na terra, seja no mar, vencer vnecer vencer, uma vez flamengo, flamengo até morrer. Na regata ele me mata, me maltrata, me arrebata de EMOÇÃO, NU CORAÇÃO, CONSAGRADO NOS GRAMADOS, SEMPRE AMADO, O MAIS COTADO, NO FLA-FLU É O AI JESUS, eu teria um desgosto profundo se faltasse o flamengo no mundo, ele vibra ele é fibra muita libra ja pesou, flamengo ate morrer eu sou. *instrumental* "
+
+        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
+
+        this.mensagem = this.add.text(100, 20, texto, {
+            fontFamily: "Felipa",
+            fontSize: 32 + "px",
+            wordWrap: {
+                width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
+                useAdvancedWrap: true,
+            }
+        })
+
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
             fontSize: '18px',
