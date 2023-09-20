@@ -67,7 +67,7 @@
 ## Referências:
 
 * IB (Game)
-* Zelda - Breath of the Wild
+* The Legend of Zelda: Breath of the Wild
 * A Casa Monstro (Filme)
 * Enigma do Medo
 * Folclore
