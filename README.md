@@ -6,7 +6,7 @@
 
 # The Conundrum
 
-##Premissa do Jogo:
+## Premissa do Jogo:
 
 &nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de um museu abandonado, imerso em lendas urbanas sinistras e histórias perturbadoras. Este museu, outrora um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechado ao público por décadas.
 
