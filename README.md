@@ -6,6 +6,8 @@
 
 # The Conundrum
 
+##Premissa do Jogo:
+
 &nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de um museu abandonado, imerso em lendas urbanas sinistras e histórias perturbadoras. Este museu, outrora um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechado ao público por décadas.
 
 &nbsp; &nbsp; Neste jogo, você se coloca no papel de um destemido detetive paranormal, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem o museu. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quadro e obra de arte no interior das paredes do museu, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
@@ -14,7 +16,7 @@
 
 ## Jogo Ideal:
 
-### Personagens -
+### Personagens:
 
   ***Rodrigo Silva -***
   
@@ -30,7 +32,7 @@
   
 &nbsp; &nbsp; Após o sucesso da resolução desse caso, Patricia e Rodrigo perceberam que tinham uma sinergia única, e decidiram continuar trabalhando juntos. Agora, estão a caminho de uma missão no interior da Amazônia, em um museu abandonado, onde sabem que enfrentarão desafios que testarão ao máximo suas habilidades e confiança mútua. Com sua experiência e determinação, estão prontos para desvendar mais um mistério e proteger o patrimônio cultural do Brasil.
 
-###  História -
+###  História:
 
 &nbsp; &nbsp; No coração da cidade distante, onde lendas se tornam realidade e o desconhecido espreita nas sombras, um enigmático museu assombrado se erguia como uma torre de mistério. As histórias que circulavam sobre o museu eram tão arrepiantes quanto as noites sem lua que o envolviam, e os moradores estavam cansados de viverem com medo constante. Em um ato de coragem, eles decidiram convocar a ajuda de um detetive destemido e sua companheira historiadora, em uma tentativa de desvendar os segredos sombrios que assolavam o lugar.
 
