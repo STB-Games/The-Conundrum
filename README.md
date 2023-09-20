@@ -10,7 +10,7 @@
 
 &nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de um museu abandonado, imerso em lendas urbanas sinistras e histórias perturbadoras. Este museu, outrora um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechado ao público por décadas.
 
-&nbsp; &nbsp; Neste jogo, você se coloca no papel de um destemido detetive paranormal, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem o museu. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quadro e obra de arte no interior das paredes do museu, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
+&nbsp; &nbsp; Neste jogo, você e sua dupla se colocam no papel de um destemido detetive paranormal e uma grande investigadora, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem o museu. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quadro e obra de arte no interior das paredes do museu, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
 
 &nbsp; &nbsp; Prepare-se para uma grande experiência que o botará para pensar enquanto você explora os corredores silenciosos e confronta o desconhecido. "The Conundrum" vai prender sua atenção e mantê-lo à beira do seu assento, desafiando sua coragem e perspicácia em uma busca implacável pela verdade obscura que permeia cada canto desse museu enigmático.
 
@@ -20,7 +20,7 @@
 
   ***Rodrigo Silva -***
   
-&nbsp; &nbsp; Rodrigo nasceu e cresceu nas movimentadas ruas do Rio de Janeiro. Rodrigo sempre teve uma queda por desvendar mistérios e compreender o contexto histórico por trás de cada caso. Desde jovem, mostrou grande astúcia e habilidade analítica, o que o levou a estudar Criminologia e se formar como detetive.
+&nbsp; &nbsp; Rodrigo nasceu e cresceu nas vastas terras do Rio Grande do Sul. Ele sempre teve uma queda por desvendar mistérios e compreender o contexto histórico por trás de cada caso. Desde jovem, mostrou grande astúcia e habilidade analítica, o que o levou a estudar Criminologia e se formar como detetive.
 
 &nbsp; &nbsp; Sua vida mudou quando ele decidiu explorar uma misteriosa série de mistérios em locais abandonados em todo o país. Durante uma de suas investigações, ele cruzou o caminho de Patricia, uma historiadora e investigadora talentosa que também estava determinada a resolver o caso. No começo, houve uma competição saudável entre os dois, mas logo perceberam que suas habilidades complementavam perfeitamente uma à outra.
   
@@ -28,15 +28,15 @@
   
   ***Patricia Torres -***
   
-&nbsp; &nbsp; Patricia Torres cresceu nas vastas terras do Rio Grande do Sul, imersa em uma família de conversadores e amantes da cultura. Sempre foi uma garota do interior e desde jovem, ela desenvolveu uma paixão profunda por arte e história, dedicando-se a estudar e compreender a riqueza cultural do Brasil e do mundo, porém, sempre com a ideía de descobrir o Brasil. Ela se formou em História da Arte e rapidamente se tornou uma historiadora e investigadora de renome, especializada em casos relacionados ao patrimônio cultural.
+&nbsp; &nbsp; Patricia Torres cresceu nas movimentadas ruas do Rio de Janeiro, imersa em uma família de conversadores e amantes da cultura. Sempre foi uma garota do interior e desde jovem, ela desenvolveu uma paixão profunda por arte e história, dedicando-se a estudar e compreender a riqueza cultural do Brasil e do mundo, porém, sempre com a ideía de descobrir o Brasil. Ela se formou em História da Arte e rapidamente se tornou uma historiadora e investigadora de renome, especializada em casos relacionados ao patrimônio cultural.
   
-&nbsp; &nbsp; Após o sucesso da resolução desse caso, Patricia e Rodrigo perceberam que tinham uma sinergia única, e decidiram continuar trabalhando juntos. Agora, estão a caminho de uma missão no interior da Amazônia, em um museu abandonado, onde sabem que enfrentarão desafios que testarão ao máximo suas habilidades e confiança mútua. Com sua experiência e determinação, estão prontos para desvendar mais um mistério e proteger o patrimônio cultural do Brasil.
+&nbsp; &nbsp; Após o sucesso da resolução desse caso, Patricia e Rodrigo perceberam que tinham uma sinergia única, e decidiram continuar trabalhando juntos. Agora, estão a caminho de uma missão no interior da Amazonas, em um museu abandonado, onde sabem que enfrentarão desafios que testarão ao máximo suas habilidades e confiança mútua. Com sua experiência e determinação, estão prontos para desvendar mais um mistério e proteger o patrimônio cultural do Brasil.
 
 ###  História:
 
 &nbsp; &nbsp; No coração da cidade distante, onde lendas se tornam realidade e o desconhecido espreita nas sombras, um enigmático museu assombrado se erguia como uma torre de mistério. As histórias que circulavam sobre o museu eram tão arrepiantes quanto as noites sem lua que o envolviam, e os moradores estavam cansados de viverem com medo constante. Em um ato de coragem, eles decidiram convocar a ajuda de um detetive destemido e sua companheira historiadora, em uma tentativa de desvendar os segredos sombrios que assolavam o lugar.
 
-&nbsp; &nbsp; A chegada da equipe de investigadores trouxe consigo um ar de mistério adicional. Com o detetive habilidoso e a historiadora perspicaz ao seu lado, a cidade ficou intrigada e, ao mesmo tempo, um pouco desconfiada. Quem eram esses estranhos, e o que os levava a enfrentar o terror que assolava o museu?
+&nbsp; &nbsp; A chegada da equipe de investigadores trouxe consigo um ar de mistério adicional. Com o Detetive Rodrigo e a Historiadora Patrícia perspicaz ao seu lado, a cidade ficou intrigada e, ao mesmo tempo, um pouco desconfiada. Quem eram esses estranhos, e o que os levava a enfrentar o terror que assolava o museu?
 
 &nbsp; &nbsp; Determinados a desvendar o enigma, os dois seguiram rapidamente em direção ao museu, não se deixando abater pelo medo que pairava no ar. Ao adentrar o saguão sombrio, foram recebidos por uma cena que fez suas espinhas se arrepiarem. Quadros cobertos por uma tinta preta misteriosa preenchiam as paredes, cada um deles sem qualquer nome ou descrição. A aura sinistra que emanava dessas pinturas era palpável, mas os investigadores não vacilaram.
 
