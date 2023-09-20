@@ -42,7 +42,7 @@
 
 &nbsp; &nbsp; No centro do saguão, uma porta maciça permanecia firmemente fechada, como um portal para o desconhecido. Sua presença sutilmente convidativa intrigou ainda mais a dupla. Corajosos e determinados, eles compreenderam que a chave para desvendar os segredos do museu e acalmar os medos dos moradores estava na exploração minuciosa de cada corredor, na decifração do significado oculto das pinturas e, talvez, na abertura da misteriosa porta.
 
-&nbsp; &nbsp; Assim, mergulharam nas profundezas do museu, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o jogador ansioso por mais. Será que eles seriam capazes de desvendar os mistérios do museu assombrado e trazer a paz e o museu de volta à cidade? A resposta estará prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
+&nbsp; &nbsp; Assim, mergulharam nas profundezas do museu, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o jogador ansioso por mais. Será que eles seriam capazes de desvendar os mistérios e trazer a paz e o museu de volta à cidade? A resposta estará prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
 
 ## Objetivos:
 
