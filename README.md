@@ -12,18 +12,6 @@
 
 &nbsp; &nbsp; Prepare-se para uma grande experiência que o botará para pensar enquanto você explora os corredores silenciosos e confronta o desconhecido. "The Conundrum" vai prender sua atenção e mantê-lo à beira do seu assento, desafiando sua coragem e perspicácia em uma busca implacável pela verdade obscura que permeia cada canto desse museu enigmático.
 
-## Receita:
-
-* Propagandas ao entrar no jogo e ao voltar ao menu (sem propagandas durante o jogo).
-* Pagar por dicas, ou ver anuncios.
-
-## Objetivos:
-
-* Descobrir quais são as lendas em cada sala.
-* Resolver todos os puzzles.
-* Fazer o museu voltar a ativa novamente. 
-* Coletar todos os colecionáveis ao longo do jogo.
-
 ## Jogo Ideal:
 
 ### Personagens -
@@ -54,6 +42,13 @@
 
 &nbsp; &nbsp; Assim, mergulharam nas profundezas do museu, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o leitor ansioso por mais. Será que eles seriam capazes de desvendar os mistérios do museu assombrado e trazer a paz de volta à cidade? A resposta estava prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
 
+## Objetivos:
+
+* Descobrir quais são as lendas em cada sala.
+* Resolver todos os puzzles.
+* Fazer o museu voltar a ativa novamente. 
+* Coletar todos os colecionáveis ao longo do jogo.
+
 ## Regras:
 
 * Fazer os puzzles obrigatórios para abertura do próximo corredor.
@@ -61,6 +56,11 @@
 * Trabalhar em equipe para a conclusão dos desafios.
 * A câmera acompanhará cada jogador.
 * Seu Medo não pode passar de 3.
+
+## Receita:
+
+* Propagandas ao entrar no jogo e ao voltar ao menu (sem propagandas durante o jogo).
+* Pagar por dicas, ou ver anuncios.
 
 ## Referências:
 
