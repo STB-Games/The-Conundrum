@@ -237,16 +237,6 @@ export default class personagem extends Phaser.Scene {
             repeat: 0, // Para a animação após um ciclo
         });
 
-        this.anims.create({
-            key: 'cima',
-            frames: [
-                { key: 'cima', frame: 0 }, // Frame do botão 'cima' inativo
-                { key: 'cima', frame: 1 }, // Frame do botão 'cima' ativo
-            ],
-            frameRate: 10,
-            repeat: 0,
-        });
-
         // Configure eventos para cada botão
 
         this.direitaButton = this.add.sprite(150, 401, 'direita')

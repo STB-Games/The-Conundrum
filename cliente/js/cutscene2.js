@@ -4,7 +4,7 @@ export default class Cutscene2 extends Phaser.Scene {
     }
 
     preload () {
-        this.load.image('fundocinza', 'assets/fundocinza.png');
+        this.load.image('cutscene2_fundo', 'assets/cutscene2_fundo.png');
 
         /*Full Screen*/
 
@@ -16,12 +16,12 @@ export default class Cutscene2 extends Phaser.Scene {
 
     create () {
         // Adicione as imagens e defina a visibilidade inicial
-        const fundocinzaImage = this.add.image(400, 225, 'fundocinza').setAlpha(0);
+        const FlorestaFundoImage = this.add.image(400, 225, 'cutscene2_fundo').setAlpha(0);
 
         const telaLargura = 800;
         const telaAltura = 450;
 
-        const texto = "Uma vez flamengo, sempre flamengo, flamengo sempre eu ei de ser, é meu maior prazer, ve-lo brilhar, seja na terra, seja no mar, vencer vnecer vencer, uma vez flamengo, flamengo até morrer. Na regata ele me mata, me maltrata, me arrebata de EMOÇÃO, NU CORAÇÃO, CONSAGRADO NOS GRAMADOS, SEMPRE AMADO, O MAIS COTADO, NO FLA-FLU É O AI JESUS, eu teria um desgosto profundo se faltasse o flamengo no mundo, ele vibra ele é fibra muita libra ja pesou, flamengo ate morrer eu sou. *instrumental* "
+        const texto = "Cercado por uma grande floresta densa, vários boatos cercavam este museu, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores."
 
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
@@ -64,7 +64,7 @@ export default class Cutscene2 extends Phaser.Scene {
         // Configurar eventos de clique para os botões
         nextButton.on('pointerdown', () => {
             // Animação de Fade Out para a cena atual
-            fadeOut(fundocinzaImage, 1000, () => {
+            fadeOut(FlorestaFundoImage, 1000, () => {
                 // Chame a função para avançar para a próxima cena
                 goToNextScene();
             });
@@ -72,7 +72,7 @@ export default class Cutscene2 extends Phaser.Scene {
 
         prevButton.on('pointerdown', () => {
             // Animação de Fade Out para a cena atual
-            fadeOut(fundocinzaImage, 1000, () => {
+            fadeOut(FlorestaFundoImage, 1000, () => {
                 // Chame a função para retroceder para a cena anterior
                 goToPreviousScene();
             });
@@ -96,7 +96,7 @@ export default class Cutscene2 extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'fundocinza'
-        fadeIn(fundocinzaImage, 1000);
+        // Inicie a cena com o Fade In para 'cutscene2_fundo'
+        fadeIn(FlorestaFundoImage, 1000);
     }
 }

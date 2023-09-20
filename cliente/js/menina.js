@@ -13,8 +13,6 @@ export default class menina extends Phaser.Scene {
 
         /* Personagem Andando (FEMININO) */
 
-        /* Personagem Andando (Masculino) */
-
         this.load.spritesheet('MeninaFrente', '../assets/Menina_Frente.png', {
             frameWidth: 64,
             frameHeight: 64
@@ -42,8 +40,6 @@ export default class menina extends Phaser.Scene {
             frameWidth: 64,
             frameHeight: 64
         })
-
-        /* Personagem Idle (MASCULINO) */
 
         this.load.spritesheet('MeninaIdleF', '../assets/MeninaIdleF.png', {
             frameWidth: 64,
@@ -114,16 +110,6 @@ export default class menina extends Phaser.Scene {
             })
             .setScrollFactor(0, 0),
 
-            /* HitBOX de personagem Menina */
-
-            /* HitBOX de personagem MENINA */
-
-            /* 
-            
-            aaaaaaa 
-            
-            */
-
             /*Animação*/
 
             /* Personagem */
@@ -149,26 +135,6 @@ export default class menina extends Phaser.Scene {
 
 
         /*Animação dos Personagens */
-
-        /*this.anims.create({
-            key: 'meninaf',
-            frames: this.anims.generateFrameNumbers('MeninaFrente', {
-                start: 0,
-                end: 4
-            }),
-            frameRate: 4,
-            repeat: -1
-        })*/
-
-        /*this.anims.create({
-            key: 'meninac',
-            frames: this.anims.generateFrameNumbers('MeninaCosta', {
-                start: 0,
-                end: 5
-            }),
-            frameRate: 4,
-            repeat: -1
-        })*/
 
         this.anims.create({
             key: 'meninaf',
@@ -211,16 +177,6 @@ export default class menina extends Phaser.Scene {
         })
 
         /*Animação dos Personagens IDLE */
-
-        /*this.anims.create({
-            key: 'meninaidlef',
-            frames: this.anims.generateFrameNumbers('MeninaIdleF', {
-                start: 0,
-                end: 0
-            }),
-            frameRate: 4,
-            repeat: -1
-        })*/
 
         this.anims.create({
             key: 'meninaidlef',
