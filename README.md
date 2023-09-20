@@ -36,7 +36,7 @@
   
 &nbsp; &nbsp; Enquanto Patricia tinha um conhecimento profundo de arte e história, Rodrigo era especializado em traçar conexões e padrões complexos. Juntos, eles resolveram o  misterioso caso no Sul do país onde uma fazenda fora amaldiçoada por um espírito, nesta tarefa formaram uma parceria improvável, decidindo que havia muito mais desafios intrigantes e misteriosos para enfrentar juntos.
   
-  **** Patricia Torres -***
+  ***Patricia Torres -***
   
 &nbsp; &nbsp; Patricia Torres cresceu nas vastas terras do Rio Grande do Sul, imersa em uma família de conversadores e amantes da cultura. Sempre foi uma garota do interior e desde jovem, ela desenvolveu uma paixão profunda por arte e história, dedicando-se a estudar e compreender a riqueza cultural do Brasil e do mundo, porém, sempre com a ideía de descobrir o Brasil. Ela se formou em História da Arte e rapidamente se tornou uma historiadora e investigadora de renome, especializada em casos relacionados ao patrimônio cultural.
   
