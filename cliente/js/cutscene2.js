@@ -25,8 +25,9 @@ export default class Cutscene2 extends Phaser.Scene {
 
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
-        this.mensagem = this.add.text(100, 20, texto, {
+        this.mensagem = this.add.text(120, 100, texto, {
             fontFamily: "Felipa",
+            color: "#FFFFFF",
             fontSize: 32 + "px",
             stroke: "#000000",
             strokeThickness: 4,
@@ -38,15 +39,19 @@ export default class Cutscene2 extends Phaser.Scene {
 
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
-            fontSize: '18px',
+            fontSize: '28px',
             fill: '#fff',
+            stroke: "#000000",
+            strokeThickness: 4,
         });
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
         const prevButton = this.add.text(50, 225, '<-', {
-            fontSize: '18px',
+            fontSize: '28px',
             fill: '#fff',
+            stroke: "#000000",
+            strokeThickness: 4,
         });
         prevButton.setOrigin(0.5);
         prevButton.setInteractive();
