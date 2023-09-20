@@ -34,7 +34,7 @@
 
 ###  História:
 
-&nbsp; &nbsp; No coração da cidade distante, onde lendas se tornam realidade e o desconhecido espreita nas sombras, um enigmático museu assombrado se erguia como uma torre de mistério. As histórias que circulavam sobre o museu eram tão arrepiantes quanto as noites sem lua que o envolviam, e os moradores estavam cansados de viverem com medo constante. Em um ato de coragem, eles decidiram convocar a ajuda de um detetive destemido e sua companheira historiadora, em uma tentativa de desvendar os segredos sombrios que assolavam o lugar.
+&nbsp; &nbsp; No coração da cidade distante, onde lendas se tornam realidade e o desconhecido espreita nas sombras, um enigmático museu assombrado se erguia como uma torre de mistério. As histórias que circulavam sobre o museu eram tão arrepiantes quanto as noites sem lua que o envolviam, e os moradores estavam cansados de viverem com medo constante. Em um ato de coragem, eles decidiram convocar a ajuda de um detetive destemido e sua companheira historiadora, em uma tentativa de desvendar os segredos sombrios que assombravam o lugar.
 
 &nbsp; &nbsp; A chegada da equipe de investigadores trouxe consigo um ar de mistério adicional. Com o Detetive Rodrigo e a Historiadora Patrícia perspicaz ao seu lado, a cidade ficou intrigada e, ao mesmo tempo, um pouco desconfiada. Quem eram esses estranhos, e o que os levava a enfrentar o terror que assolava o museu?
 
