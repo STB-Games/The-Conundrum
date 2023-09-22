@@ -10,7 +10,7 @@ export default class gameover extends Phaser.Scene {
         })
         this.load.spritesheet('fundocinza', '../assets/fundocinza.png', {
             frameWidth: 200,
-            frameHeight: 47
+            frameHeight: 42
         })
     }
     create () {
@@ -22,7 +22,7 @@ export default class gameover extends Phaser.Scene {
         this.add.image(400, 225, 'fim')
 
         this.imagem = this.add
-            .image(420, 400, 'fundocinza')
+            .image(420, 399, 'fundocinza')
             .setInteractive()
             .on('pointerdown', () => {
                 this.imagem.destroy()
