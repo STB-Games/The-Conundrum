@@ -22,8 +22,8 @@ export default class cutsceneDELA extends Phaser.Scene {
         const telaLargura = 800;
         const telaAltura = 450;
 
-        const texto = "Patricia Torres, 26 anos, nasceu no Rio de Janeiro, sempre amou arte e história, concentrando-se em entender a cultura brasileira e mundial. Sempre sonhou em ser investigadora.";
-        const texto2 = "Após resolverem um caso juntos, Patricia e Rodrigo viram que tinham uma conexão especial e decidiram continuar colaborando em equipe, em aspectos que Rodrigo falhava, Sabrina complementava. Com formação em História da Arte, tornou-se uma historiadora especializada em Lendas e Mitos.";
+        const texto = "Sabrina Torres, 26 anos, nasceu no Rio de Janeiro, sempre amou arte e história, concentrando-se em entender a cultura brasileira e mundial. Sempre sonhou em ser investigadora.";
+        const texto2 = "Após resolverem um caso juntos, Sabrina e Rodrigo viram que tinham uma conexão especial e decidiram continuar colaborando em equipe, em aspectos que Rodrigo falhava, Sabrina complementava. Com formação em História da Arte, tornou-se uma historiadora especializada em Lendas e Mitos.";
         const texto3 = "Sabrina e Rodrigo, agora partem para o interior do Amazonas para resolver o caso de uma antiga mansão que assombra uma pequena vila que constantemente sofre com lendas folclóricas."; // Substitua pelo seu texto real
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 

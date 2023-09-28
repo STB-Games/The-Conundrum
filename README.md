@@ -8,7 +8,7 @@
 
 ## Premissa do Jogo:
 
-&nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de um museu abandonado, imerso em lendas urbanas sinistras e histórias perturbadoras. Este museu, outrora um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechado ao público por décadas.
+&nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de um mansão abandonado, imerso em lendas urbanas sinistras e histórias perturbadoras. Este museu, outrora um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechado ao público por décadas.
 
 &nbsp; &nbsp; Neste jogo, você e sua dupla se colocam no papel de um destemido detetive paranormal e uma grande investigadora, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem o museu. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quadro e obra de arte no interior das paredes do museu, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
 
@@ -22,15 +22,15 @@
   
 &nbsp; &nbsp; Rodrigo nasceu e cresceu nas vastas terras do Rio Grande do Sul. Ele sempre teve uma queda por desvendar mistérios e compreender o contexto histórico por trás de cada caso. Desde jovem, mostrou grande astúcia e habilidade analítica, o que o levou a estudar Criminologia e se formar como detetive.
 
-&nbsp; &nbsp; Sua vida mudou quando ele decidiu explorar uma misteriosa série de mistérios em locais abandonados em todo o país. Durante uma de suas investigações, ele cruzou o caminho de Patricia, uma historiadora e investigadora talentosa que também estava determinada a resolver o caso. No começo, houve uma competição saudável entre os dois, mas logo perceberam que suas habilidades complementavam perfeitamente uma à outra.
+&nbsp; &nbsp; Sua vida mudou quando ele decidiu explorar uma misteriosa série de mistérios em locais abandonados em todo o país. Durante uma de suas investigações, ele cruzou o caminho de Sabrina, uma historiadora e investigadora talentosa que também estava determinada a resolver o caso. No começo, houve uma competição saudável entre os dois, mas logo perceberam que suas habilidades complementavam perfeitamente uma à outra.
   
-&nbsp; &nbsp; Enquanto Patricia tinha um conhecimento profundo de arte e história, Rodrigo era especializado em traçar conexões e padrões complexos. Juntos, eles resolveram o  misterioso caso no Sul do país onde uma fazenda fora amaldiçoada por um espírito, nesta tarefa formaram uma parceria improvável, decidindo que havia muito mais desafios intrigantes e misteriosos para enfrentar juntos.
+&nbsp; &nbsp; Enquanto Sabrina tinha um conhecimento profundo de arte e história, Rodrigo era especializado em traçar conexões e padrões complexos. Juntos, eles resolveram o  misterioso caso no Sul do país onde uma fazenda fora amaldiçoada por um espírito, nesta tarefa formaram uma parceria improvável, decidindo que havia muito mais desafios intrigantes e misteriosos para enfrentar juntos.
   
-  ***Patricia Torres -***
+  ***Sabrina Torres -***
   
-&nbsp; &nbsp; Patricia Torres cresceu nas movimentadas ruas do Rio de Janeiro, imersa em uma família de conversadores e amantes da cultura. Sempre foi uma garota do interior e desde jovem, ela desenvolveu uma paixão profunda por arte e história, dedicando-se a estudar e compreender a riqueza cultural do Brasil e do mundo, porém, sempre com a ideía de descobrir o Brasil. Ela se formou em História da Arte e rapidamente se tornou uma historiadora e investigadora de renome, especializada em casos relacionados ao patrimônio cultural.
+&nbsp; &nbsp; Sabrina Torres cresceu nas movimentadas ruas do Rio de Janeiro, imersa em uma família de conversadores e amantes da cultura. Sempre foi uma garota do interior e desde jovem, ela desenvolveu uma paixão profunda por arte e história, dedicando-se a estudar e compreender a riqueza cultural do Brasil e do mundo, porém, sempre com a ideía de descobrir o Brasil. Ela se formou em História da Arte e rapidamente se tornou uma historiadora e investigadora de renome, especializada em casos relacionados ao patrimônio cultural.
   
-&nbsp; &nbsp; Após o sucesso da resolução desse caso, Patricia e Rodrigo perceberam que tinham uma sinergia única, e decidiram continuar trabalhando juntos. Agora, estão a caminho de uma missão no interior da Amazonas, em um museu abandonado, onde sabem que enfrentarão desafios que testarão ao máximo suas habilidades e confiança mútua. Com sua experiência e determinação, estão prontos para desvendar mais um mistério e proteger o patrimônio cultural do Brasil.
+&nbsp; &nbsp; Após o sucesso da resolução desse caso, Sabrina e Rodrigo perceberam que tinham uma sinergia única, e decidiram continuar trabalhando juntos. Agora, estão a caminho de uma missão no interior da Amazonas, em um museu abandonado, onde sabem que enfrentarão desafios que testarão ao máximo suas habilidades e confiança mútua. Com sua experiência e determinação, estão prontos para desvendar mais um mistério e proteger o patrimônio cultural do Brasil.
 
 ###  História:
 
@@ -42,13 +42,13 @@
 
 &nbsp; &nbsp; No centro do saguão, uma porta maciça permanecia firmemente fechada, como um portal para o desconhecido. Sua presença sutilmente convidativa intrigou ainda mais a dupla. Corajosos e determinados, eles compreenderam que a chave para desvendar os segredos do museu e acalmar os medos dos moradores estava na exploração minuciosa de cada corredor, na decifração do significado oculto das pinturas e, talvez, na abertura da misteriosa porta.
 
-&nbsp; &nbsp; Assim, mergulharam nas profundezas do museu, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o jogador ansioso por mais. Será que eles seriam capazes de desvendar os mistérios e trazer a paz e o museu de volta à cidade? A resposta estará prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
+&nbsp; &nbsp; Assim, mergulharam nas profundezas do mansão, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o jogador ansioso por mais. Será que eles seriam capazes de desvendar os mistérios e trazer a paz e o mansão de volta à cidade? A resposta estará prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
 
 ## Objetivos:
 
 * Descobrir quais são as lendas em cada sala.
 * Resolver todos os puzzles.
-* Fazer o museu voltar a ativa novamente. 
+* Fazer o mansão voltar a ativa novamente. 
 * Coletar todos os colecionáveis ao longo do jogo.
 
 ## Regras:

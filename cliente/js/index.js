@@ -27,7 +27,7 @@ class Game extends Phaser.Game {
     this.scene.add('cutsceneDELA', cutsceneDELA)
     this.scene.add('loading', loading)
 
-    this.scene.start('cutsceneDELA')
+    this.scene.start('cutsceneDELE')
   }
 }
 

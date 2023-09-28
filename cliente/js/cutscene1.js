@@ -22,7 +22,7 @@ export default class Cutscene1 extends Phaser.Scene {
         const telaLargura = 800;
         const telaAltura = 450;
 
-        const texto = "Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em um museu abandonado, Rodrigo e Patrícia, uma dupla de investigadores especializado em operações paranormais."; // Substitua pelo seu texto real
+        const texto = "Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em uma mansão abandonada, Rodrigo e Patrícia, uma dupla de investigadores especializado em operações paranormais."; // Substitua pelo seu texto real
 
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 

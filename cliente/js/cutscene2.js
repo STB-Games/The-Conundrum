@@ -21,7 +21,7 @@ export default class Cutscene2 extends Phaser.Scene {
         const telaLargura = 800;
         const telaAltura = 450;
 
-        const texto = "Cercado por uma grande floresta densa, vários boatos cercavam este museu, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores."
+        const texto = "Cercado por uma grande floresta densa, vários boatos cercavam este mansão, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores."
 
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
