@@ -22,9 +22,9 @@ export default class cutsceneDELE extends Phaser.Scene {
         const telaLargura = 800;
         const telaAltura = 450;
 
-        const texto = "Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em um museu abandonado, Rodrigo e Patrícia, uma dupla de investigadores.";
-        const texto2 = "Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em um museu abandonado, Rodrigo e Patrícia, uma dupla de investigadores. Amazonas para ver o que está acontecendo em um museu abandonado, Rodrigo e Patrícia, uma dupla de investigadores.";
-        const texto3 = "Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em um museu abandonado, Rodrigo e Patrícia, uma dupla de investigadores."; // Substitua pelo seu texto real
+        const texto = "Rodrigo Silva, 24 anos, nasceu no Rio Grande do Sul, sempre teve uma paixão por desvendar mistérios e estudar o contexto histórico. sempre teve o sonho de virar um detetive.";
+        const texto2 = "Em suas investigações de mistérios em locais abandonados pelo país, Rodrigo conheceu Sabrina, uma historiadora determinada. Inicialmente, houve competição, mas logo perceberam que suas habilidades se complementavam, decidindo assim, formar uma grande dupla.";
+        const texto3 = "Sabrina e Rodrigo, agora partem para o interior do Amazonas para resolver o caso de uma antiga mansão que assombra uma pequena vila que constantemente sofre com lendas folclóricas."; 
         const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
         this.mensagem = this.add.text(200, 15, texto, {
