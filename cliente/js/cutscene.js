@@ -20,8 +20,11 @@ export default class Cutscene extends Phaser.Scene {
 
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
-            fontSize: '18px',
+            fontSize: '32px',
             fill: '#800000',
+            stroke: "#000000",
+            strokeThickness: 4,
+            resolution: 2,
         });
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();

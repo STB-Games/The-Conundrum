@@ -4,7 +4,7 @@ export default class characters extends Phaser.Scene {
     }
 
     preload () {
-        this.load.spritesheet('storychar', '../assets/characters.png', {
+        this.load.spritesheet('telachar', '../assets/characters.png', {
             frameWidth: 800,
             frameHeight: 450,
         })
@@ -14,8 +14,7 @@ export default class characters extends Phaser.Scene {
         })
     }
     create () {
-        this.imagem = this.add
-        this.add.image(400, 225, 'storychar')
+        const telacharImage = this.add.image(400, 225, 'telachar').setAlpha(0);
 
         this.imagem = this.add
             .image(260, 226, 'botaoinvisivel')
@@ -52,16 +51,11 @@ export default class characters extends Phaser.Scene {
         // Crie uma animação de fade in
         this.tweens.add({
             targets: nextButton,
-            alpha: 1, // Opacidade final (visível)
-            duration: 1000, // Duração da animação em milissegundos
-            ease: 'Linear', // Tipo de easing (você pode ajustar para diferentes efeitos)
-            delay: 3000, // Atraso de 3 segundos antes da animação começar
+            alpha: 1, 
+            duration: 1000,
+            ease: 'Linear', 
+            delay: 3000, 
         });
-
-        // Defina o texto como interativo depois que a animação terminar
-        this.time.delayedCall(4000, () => {
-            nextButton.setInteractive();
-        }, [], this);
 
         // Função para animar a transição para a próxima cena
         const goToNextScene = () => {
@@ -71,10 +65,31 @@ export default class characters extends Phaser.Scene {
         // Configurar eventos de clique para os botões
         nextButton.on('pointerdown', () => {
             // Animação de Fade Out para a cena atual
-            fadeOut(storycharImage, 1000, () => {
+            fadeOut(this, 200, () => {
                 // Chame a função para avançar para a próxima cena
                 goToNextScene();
             });
         });
+
+        const fadeIn = (target, duration, onComplete) => {
+            this.tweens.add({
+                targets: target,
+                alpha: 1,
+                duration: duration,
+                onComplete: onComplete,
+            });
+        };
+
+        const fadeOut = (target, duration, onComplete) => {
+            this.tweens.add({
+                targets: target,
+                alpha: 0,
+                duration: duration,
+                onComplete: onComplete,
+            });
+        };
+
+        // Inicie a cena com o Fade In para 'telachar'
+        fadeIn(telacharImage, 1000);
     }
 }
