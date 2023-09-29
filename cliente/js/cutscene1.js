@@ -31,6 +31,7 @@ export default class Cutscene1 extends Phaser.Scene {
             fontSize: 32 + "px",
             stroke: "#000000",
             strokeThickness: 4,
+            resolution: 2,
             wordWrap: {
                 width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
                 useAdvancedWrap: true,
@@ -40,18 +41,20 @@ export default class Cutscene1 extends Phaser.Scene {
         // Crie botões para avançar e retroceder
         const nextButton = this.add.text(750, 225, '->', {
             fontSize: '32px',
-            fill: '#fff',
+            fill: '#800000',
             stroke: "#000000",
             strokeThickness: 4,
+            resolution: 2,
         });
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
         const prevButton = this.add.text(50, 225, '<-', {
             fontSize: '32px',
-            fill: '#fff',
+            fill: '#800000',
             stroke: "#000000",
             strokeThickness: 4,
+            resolution: 2,
         });
         prevButton.setOrigin(0.5);
         prevButton.setInteractive();
