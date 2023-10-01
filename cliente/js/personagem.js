@@ -11,11 +11,6 @@ export default class personagem extends Phaser.Scene {
 
         this.load.image('monster', '../assets/personagem/botaoinvisivel.png')
 
-        this.isLeftPressed = false;
-        this.isRightPressed = false;
-        this.isUpPressed = false;
-        this.isDownPressed = false;
-
         /* Personagem Andando (Masculino) */
 
         this.load.spritesheet('CalvoFrente', '../assets/Calvo_Frente.png', {
@@ -176,7 +171,7 @@ export default class personagem extends Phaser.Scene {
         })
 
         this.anims.create({
-            key: 'caioidlef',
+            key: 'calvoidlef',
             frames: this.anims.generateFrameNumbers('CalvoIdleF', {
                 start: 0,
                 end: 0
@@ -186,8 +181,8 @@ export default class personagem extends Phaser.Scene {
         })
 
         this.anims.create({
-            key: 'caioidlec',
-            frames: this.anims.generateFrameNumbers('CalvoIdleC', {
+            key: 'calvoidled',
+            frames: this.anims.generateFrameNumbers('CalvoIdleD', {
                 start: 0,
                 end: 0
             }),
@@ -196,7 +191,7 @@ export default class personagem extends Phaser.Scene {
         })
 
         this.anims.create({
-            key: 'caioidlee',
+            key: 'calvoidlee',
             frames: this.anims.generateFrameNumbers('CalvoIdleE', {
                 start: 0,
                 end: 0
@@ -206,8 +201,8 @@ export default class personagem extends Phaser.Scene {
         })
 
         this.anims.create({
-            key: 'caioidled',
-            frames: this.anims.generateFrameNumbers('CalvoIdleD', {
+            key: 'calvoidlec',
+            frames: this.anims.generateFrameNumbers('CalvoIdleC', {
                 start: 0,
                 end: 0
             }),
@@ -215,138 +210,71 @@ export default class personagem extends Phaser.Scene {
             repeat: -1
         })
 
-        /*Animação dos Botões*/
-
-        this.anims.create({
-            key: 'esquerda',
-            frames: this.anims.generateFrameNumbers('esquerda', {
-                start: 0,
-                end: 1,
-            }),
-            frameRate: 10,
-            repeat: 0, // Para a animação após um ciclo
-        });
-
-        this.anims.create({
-            key: 'baixo',
-            frames: this.anims.generateFrameNumbers('baixo', {
-                start: 0,
-                end: 1,
-            }),
-            frameRate: 10,
-            repeat: 0, // Para a animação após um ciclo
-        });
-
         // Configure eventos para cada botão
 
-        this.direitaButton = this.add.sprite(150, 401, 'direita')
+        this.cima = this.add.sprite(700, 350, 'cima')
             .setInteractive()
-            .on('pointerdown', () => {
-                this.isRightPressed = true;
-                this.updatePlayerVelocity();
-                this.direitaButton.setFrame(1)
-                this.personagem.anims.play('caiod', true); 
+            .on('pointerover', () => {
+                this.cima.setFrame(1)
+                this.personagem.setVelocityY(-100)
+                this.personagem.anims.play('caioc', true)
             })
-            .on('pointerup', () => {
-                this.isRightPressed = false;
-                this.updatePlayerVelocity();
-                this.direitaButton.setFrame(0)
-                this.personagem.anims.stop(); // Pare a animação do personagem quando o botão é solto
+            .on('pointerout', () => {
+                this.cima.setFrame(0);
+                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
+                    this.personagem.anims.play('calvoidlec', true);
+                }
+                this.personagem.setVelocityY(0);
             })
+            .setScrollFactor(0, 0)
 
-        this.cimaButton = this.add.image(700, 350, 'cima')
+        this.baixo = this.add.sprite(698, 425, 'baixo')
             .setInteractive()
-            .on('pointerdown', () => {
-                this.isUpPressed = true;
-                this.updatePlayerVelocity();
-                this.cimaButton.setFrame(1)
-                this.personagem.anims.play('caioc', true); 
+            .on('pointerover', () => {
+                this.baixo.setFrame(1)
+                this.personagem.setVelocityY(100)
+                this.personagem.anims.play('caiof', true)
             })
-            .on('pointerup', () => {
-                this.isUpPressed = false;
-                this.updatePlayerVelocity();
-                this.cimaButton.setFrame(0)
-                this.personagem.anims.stop(); // Pare a animação do personagem quando o botão é solto
-            });
+            .on('pointerout', () => {
+                this.baixo.setFrame(0)
+                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
+                    this.personagem.anims.play('calvoidlef', true)
+                }
+                this.personagem.setVelocityY(0)
+            })
+            .setScrollFactor(0, 0)
 
-        
-        this.esquerdaButton = this.add.image(50, 400, 'esquerda')
+        this.direita = this.add.sprite(150, 401, 'direita')
             .setInteractive()
-            .on('pointerdown', () => {
-                this.isLeftPressed = true;
-                this.updatePlayerVelocity();
-                this.esquerdaButton.setFrame(1)
-                this.personagem.anims.play('caioe', true); 
+            .on('pointerover', () => {
+                this.direita.setFrame(1)
+                this.personagem.setVelocityX(100)
+                this.personagem.anims.play('caiod', true)
             })
-            .on('pointerup', () => {
-                this.isLeftPressed = false;
-                this.updatePlayerVelocity();
-                this.esquerdaButton.setFrame(0)
-                this.personagem.anims.stop(); // Pare a animação do personagem quando o botão é solto
-            });
-        
-        this.baixoButton = this.add.image(698, 425, 'baixo')
+            .on('pointerout', () => {
+                this.direita.setFrame(0);
+                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
+                    this.personagem.anims.play('calvoidled', true);
+                }
+                    this.personagem.setVelocityX(0); 
+                })
+            .setScrollFactor(0, 0)
+
+        this.esquerda = this.add.sprite(50, 400, 'esquerda')
             .setInteractive()
-            .on('pointerdown', () => {
-                this.isDownPressed = true;
-                this.updatePlayerVelocity();
-                this.baixoButton.setFrame(1)
-                this.personagem.anims.play('caiof', true);
+            .on('pointerover', () => {
+                this.esquerda.setFrame(1)
+                this.personagem.setVelocityX(-100)
+                this.personagem.anims.play('caioe', true)
             })
-
-            .on('pointerup', () => {
-                this.isDownPressed = false;
-                this.updatePlayerVelocity();
-                this.baixoButton.setFrame(0)
-                this.personagem.anims.stop(); // Pare a animação do personagem quando o botão é solto
-            });
-    }
-
-    // Função para atualizar a velocidade do personagem com base nos botões pressionados
-    updatePlayerVelocity () {
-        let velocityX = 0;
-        let velocityY = 0;
-
-        if (this.isLeftPressed) {
-            velocityX -= 80;
-            this.lastDirection = 'left';
-        }
-
-        if (this.isRightPressed) {
-            velocityX += 80;
-            this.lastDirection = 'right';
-        }
-
-        if (this.isUpPressed) {
-            velocityY -= 80;
-            this.lastDirection = 'up';
-        }
-
-        if (this.isDownPressed) {
-            velocityY += 80;
-            this.lastDirection = 'down';
-        }
-
-        this.personagem.setVelocity(velocityX, velocityY);
-
-        // Verifique a última direção separadamente para determinar a animação idle
-        if (this.lastDirection === 'left' && velocityX === 0) {
-            this.personagem.anims.play('caioidlee', true);
-        } else if (this.lastDirection === 'right' && velocityX === 0) {
-            this.personagem.anims.play('caioidled', true);
-        } else if (this.lastDirection === 'up' && velocityX === 0) {
-            this.personagem.anims.play('caioidlec', true);
-        } else if (this.lastDirection === 'down' && velocityX === 0) {
-            this.personagem.anims.play('caioidlef', true);
-        } else if (velocityX < 0) {
-            this.personagem.anims.play('caioe', true);
-        } else if (velocityX > 0) {
-            this.personagem.anims.play('caiod', true);
-        } else if (velocityY < 0) {
-            this.personagem.anims.play('caioc', true);
-        } else if (velocityY > 0) {
-            this.personagem.anims.play('caiof', true);
-        }
+            .on('pointerout', () => {
+                this.esquerda.setFrame(0)
+                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
+                    this.personagem.anims.play('calvoidlee', true)
+                }
+                this.personagem.setVelocityX(0)
+            })
+            .setScrollFactor(0, 0)
     }
 
     gameover () {
