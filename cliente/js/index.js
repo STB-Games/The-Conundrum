@@ -16,6 +16,8 @@ class Game extends Phaser.Game {
   constructor () {
     super(config)
 
+    this.socket = io()
+
     this.scene.add('abertura', abertura)
     this.scene.add('sala', sala)
     this.scene.add('personagem', personagem)
@@ -29,7 +31,7 @@ class Game extends Phaser.Game {
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
 
-    this.scene.start('personagem')
+    this.scene.start('abertura')
   }
 }
 

@@ -32,7 +32,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             fontSize: 28 + "px",
             stroke: "#000000",
             strokeThickness: 4,
-            resolution: 2,
+            resolution: 4,
             wordWrap: {
                 width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
                 useAdvancedWrap: true,
@@ -44,7 +44,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             fontSize: 28 + "px",
             stroke: "#000000",
             strokeThickness: 4,
-            resolution: 2,
+            resolution: 4,
             wordWrap: {
                 width: telaLargura - 10, // Defina a largura máxima para evitar que o texto saia da tela, 
                 useAdvancedWrap: true,
@@ -56,7 +56,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             fontSize: 28 + "px",
             stroke: "#000000",
             strokeThickness: 4,
-            resolution: 2,
+            resolution: 4,
             wordWrap: {
                 width: telaLargura - 160, // Defina a largura máxima para evitar que o texto saia da tela, 
                 useAdvancedWrap: true,

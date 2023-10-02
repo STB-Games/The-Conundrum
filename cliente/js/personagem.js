@@ -1,9 +1,13 @@
 export default class personagem extends Phaser.Scene {
     constructor () {
         super('personagem')
+
+        this.animationKey = undefined
     }
 
     preload () {
+
+        this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
         this.load.spritesheet('fundo', '../assets/fundocinza.png', {
             frameWidth: 800,
             frameHeight: 450,
@@ -210,71 +214,72 @@ export default class personagem extends Phaser.Scene {
             repeat: -1
         })
 
-        // Configure eventos para cada botão
+        // Configuração do joystick para 8 direções
+        this.joystick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+            x: 125,
+            y: 325,
+            radius: 70,
+            base: this.add.circle(0, 0, 100, 0x888888),
+            thumb: this.add.circle(0, 0, 50, 0xcccccc),
+            dir: '8dir', // Configuração para 8 direções
+            forceMin: 16
+        }).on('pointerup', () => {
+            this.personagem.setVelocity(0, 0); // Pare o personagem quando o joystick é solto
+        });
+    }
 
-        this.cima = this.add.sprite(700, 350, 'cima')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.cima.setFrame(1)
-                this.personagem.setVelocityY(-100)
-                this.personagem.anims.play('caioc', true)
-            })
-            .on('pointerout', () => {
-                this.cima.setFrame(0);
-                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
-                    this.personagem.anims.play('calvoidlec', true);
-                }
-                this.personagem.setVelocityY(0);
-            })
-            .setScrollFactor(0, 0)
+    update () {
+        const cursorKeys = this.joystick.createCursorKeys();
 
-        this.baixo = this.add.sprite(698, 425, 'baixo')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.baixo.setFrame(1)
-                this.personagem.setVelocityY(100)
-                this.personagem.anims.play('caiof', true)
-            })
-            .on('pointerout', () => {
-                this.baixo.setFrame(0)
-                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
-                    this.personagem.anims.play('calvoidlef', true)
-                }
-                this.personagem.setVelocityY(0)
-            })
-            .setScrollFactor(0, 0)
+        // Defina a velocidade do personagem com base nas teclas pressionadas
+        const speed = 150; // Velocidade do personagem
+        let velocityX = 0;
+        let velocityY = 0;
 
-        this.direita = this.add.sprite(150, 401, 'direita')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.direita.setFrame(1)
-                this.personagem.setVelocityX(100)
-                this.personagem.anims.play('caiod', true)
-            })
-            .on('pointerout', () => {
-                this.direita.setFrame(0);
-                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
-                    this.personagem.anims.play('calvoidled', true);
-                }
-                    this.personagem.setVelocityX(0); 
-                })
-            .setScrollFactor(0, 0)
+        if (cursorKeys.up.isDown) {
+            velocityY = -speed;
+            this.animationKey = 'caioc'; // Ativa a animação de costas
+        } else if (cursorKeys.down.isDown) {
+            velocityY = speed;
+            this.animationKey = 'caiof'; // Ativa a animação de frente
+        }
 
-        this.esquerda = this.add.sprite(50, 400, 'esquerda')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.esquerda.setFrame(1)
-                this.personagem.setVelocityX(-100)
-                this.personagem.anims.play('caioe', true)
-            })
-            .on('pointerout', () => {
-                this.esquerda.setFrame(0)
-                if (this.cima.frame.name === 0 && this.baixo.frame.name === 0) {
-                    this.personagem.anims.play('calvoidlee', true)
-                }
-                this.personagem.setVelocityX(0)
-            })
-            .setScrollFactor(0, 0)
+        if (cursorKeys.left.isDown) {
+            velocityX = -speed;
+            this.animationKey = 'caioe'; // Ativa a animação da esquerda
+        } else if (cursorKeys.right.isDown) {
+            velocityX = speed;
+            this.animationKey = 'caiod'; // Ativa a animação da direita
+        }
+
+        // Verifique se o personagem está parado
+        if (velocityX === 0 && velocityY === 0) {
+            // Personagem parado, determine a animação de "idle" com base na direção anterior
+            if (this.animationKey === 'caiod') {
+                this.animationKey = 'calvoidled'; // Ativa a animação de "idle" para a direita
+            } else if (this.animationKey === 'caioe') {
+                this.animationKey = 'calvoidlee'; // Ativa a animação de "idle" para a esquerda
+            } else if (this.animationKey === 'caiof') {
+                this.animationKey = 'calvoidlef'; // Ativa a animação de "idle" para a frente
+            } else if (this.animationKey === 'caioc') {
+                this.animationKey = 'calvoidlec'; // Ativa a animação de "idle" para trás
+            }
+        }
+
+        // Se nenhuma tecla estiver pressionada, pare a animação (idle) de frente por padrão
+        if (!this.animationKey) {
+            this.animationKey = 'calvoidlef';
+        }
+
+        this.personagem.anims.play(this.animationKey, true);
+
+        // Normalize a velocidade nas diagonais para evitar movimento mais rápido
+        if (velocityX !== 0 && velocityY !== 0) {
+            velocityX *= Math.sqrt(0.5);
+            velocityY *= Math.sqrt(0.5);
+        }
+
+        this.personagem.setVelocity(velocityX, velocityY);
     }
 
     gameover () {
