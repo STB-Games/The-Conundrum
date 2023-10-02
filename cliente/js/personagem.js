@@ -238,29 +238,29 @@ export default class personagem extends Phaser.Scene {
 
         if (cursorKeys.up.isDown) {
             velocityY = -speed;
-            this.animationKey = 'caioc'; // Ativa a animação de costas
+            this.animationKey = 'caioc'; 
         } else if (cursorKeys.down.isDown) {
             velocityY = speed;
-            this.animationKey = 'caiof'; // Ativa a animação de frente
+            this.animationKey = 'caiof'; 
         }
 
         if (cursorKeys.left.isDown) {
             velocityX = -speed;
-            this.animationKey = 'caioe'; // Ativa a animação da esquerda
+            this.animationKey = 'caioe'; 
         } else if (cursorKeys.right.isDown) {
             velocityX = speed;
-            this.animationKey = 'caiod'; // Ativa a animação da direita
+            this.animationKey = 'caiod'; 
         }
 
         // Verifique se o personagem está parado
         if (velocityX === 0 && velocityY === 0) {
             // Personagem parado, determine a animação de "idle" com base na direção anterior
             if (this.animationKey === 'caiod') {
-                this.animationKey = 'calvoidled'; // Ativa a animação de "idle" para a direita
+                this.animationKey = 'calvoidled'; 
             } else if (this.animationKey === 'caioe') {
-                this.animationKey = 'calvoidlee'; // Ativa a animação de "idle" para a esquerda
+                this.animationKey = 'calvoidlee'; 
             } else if (this.animationKey === 'caiof') {
-                this.animationKey = 'calvoidlef'; // Ativa a animação de "idle" para a frente
+                this.animationKey = 'calvoidlef'; 
             } else if (this.animationKey === 'caioc') {
                 this.animationKey = 'calvoidlec'; // Ativa a animação de "idle" para trás
             }
