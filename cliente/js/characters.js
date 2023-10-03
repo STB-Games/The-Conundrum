@@ -8,7 +8,7 @@ export default class characters extends Phaser.Scene {
             frameWidth: 800,
             frameHeight: 450,
         })
-        this.load.spritesheet('botaoinvisivel', '../assets/botaoinvisivel.png', {
+        this.load.spritesheet('botaoinvisivelV', '../assets/botaoinvisivelV.png', {
             frameWidth: 225,
             frameHeight: 351
         })
@@ -17,7 +17,7 @@ export default class characters extends Phaser.Scene {
         const telacharImage = this.add.image(400, 225, 'telachar').setAlpha(0);
 
         this.imagem = this.add
-            .image(260, 226, 'botaoinvisivel')
+            .image(260, 226, 'botaoinvisivelV')
             .setInteractive()
             .on('pointerdown', () => {
                 this.imagem.destroy()
@@ -26,7 +26,7 @@ export default class characters extends Phaser.Scene {
             })
 
         this.imagem = this.add
-            .image(540, 226, 'botaoinvisivel')
+            .image(540, 226, 'botaoinvisivelV')
             .setInteractive()
             .on('pointerdown', () => {
                 this.imagem.destroy()
@@ -51,10 +51,10 @@ export default class characters extends Phaser.Scene {
         //animação de fade in
         this.tweens.add({
             targets: nextButton,
-            alpha: 1, 
+            alpha: 1,
             duration: 1000,
-            ease: 'Linear', 
-            delay: 3000, 
+            ease: 'Linear',
+            delay: 3000,
         });
 
         //animar a transição para a próxima cena

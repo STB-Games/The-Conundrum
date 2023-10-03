@@ -8,7 +8,7 @@ export default class gameover extends Phaser.Scene {
             frameWidth: 800,
             frameHeight: 450,
         })
-        this.load.spritesheet('botaoinvisivel', '../assets/botaoinvisivel.png', {
+        this.load.spritesheet('botaoinvisivelH', '../assets/botaoinvisivelH.png', {
             frameWidth: 200,
             frameHeight: 42
         })
@@ -19,7 +19,7 @@ export default class gameover extends Phaser.Scene {
         this.add.image(400, 225, 'fim')
 
         this.imagem = this.add
-            .image(420, 399, 'botaoinvisivel')
+            .image(420, 399, 'botaoinvisivelH')
             .setInteractive()
             .on('pointerdown', () => {
                 this.imagem.destroy()

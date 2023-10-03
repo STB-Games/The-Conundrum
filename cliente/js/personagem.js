@@ -13,7 +13,7 @@ export default class personagem extends Phaser.Scene {
             frameHeight: 450,
         })
 
-        this.load.image('monster', '../assets/personagem/botaoinvisivel.png')
+        this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
 
         /* Personagem Andando (Masculino) */
 
@@ -128,9 +128,9 @@ export default class personagem extends Phaser.Scene {
         this.personagem.setOffset(offsetX, offsetY);
         this.personagem.setCollideWorldBounds(true);
 
-        this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
+        this.botaoinvisivelH = this.physics.add.image(750, 225, 'monster')
 
-        this.physics.add.collider(this.personagem, this.botaoinvisivel, this.gameover, null, this)
+        this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.gameover, null, this)
 
         /*Animação dos Personagens */
 
@@ -238,31 +238,31 @@ export default class personagem extends Phaser.Scene {
 
         if (cursorKeys.up.isDown) {
             velocityY = -speed;
-            this.animationKey = 'caioc'; 
+            this.animationKey = 'caioc';
         } else if (cursorKeys.down.isDown) {
             velocityY = speed;
-            this.animationKey = 'caiof'; 
+            this.animationKey = 'caiof';
         }
 
         if (cursorKeys.left.isDown) {
             velocityX = -speed;
-            this.animationKey = 'caioe'; 
+            this.animationKey = 'caioe';
         } else if (cursorKeys.right.isDown) {
             velocityX = speed;
-            this.animationKey = 'caiod'; 
+            this.animationKey = 'caiod';
         }
 
         // Verifique se o personagem está parado
         if (velocityX === 0 && velocityY === 0) {
             // personagem parado, determine a animação de "idle" com base na direção em que ele andava
             if (this.animationKey === 'caiod') {
-                this.animationKey = 'calvoidled'; 
+                this.animationKey = 'calvoidled';
             } else if (this.animationKey === 'caioe') {
-                this.animationKey = 'calvoidlee'; 
+                this.animationKey = 'calvoidlee';
             } else if (this.animationKey === 'caiof') {
-                this.animationKey = 'calvoidlef'; 
+                this.animationKey = 'calvoidlef';
             } else if (this.animationKey === 'caioc') {
-                this.animationKey = 'calvoidlec'; 
+                this.animationKey = 'calvoidlec';
             }
         }
 

@@ -9,7 +9,7 @@ export default class menina extends Phaser.Scene {
             frameHeight: 450,
         })
 
-        this.load.image('monster', '../assets/personagem/botaoinvisivel.png')
+        this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
 
         /* Personagem Andando (FEMININO) */
 
@@ -129,9 +129,9 @@ export default class menina extends Phaser.Scene {
         this.personagem.setOffset(offsetX, offsetY);
         this.personagem.setCollideWorldBounds(true);
 
-        this.botaoinvisivel = this.physics.add.image(750, 225, 'monster')
+        this.botaoinvisivelH = this.physics.add.image(750, 225, 'monster')
 
-        this.physics.add.collider(this.personagem, this.botaoinvisivel, this.gameover, null, this)
+        this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.gameover, null, this)
 
 
         /*Animação dos Personagens */

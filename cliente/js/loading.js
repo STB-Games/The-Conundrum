@@ -8,7 +8,7 @@ export default class LoadingScene extends Phaser.Scene {
             frameWidth: 800,
             frameHeight: 450,
         });
-        this.load.spritesheet('botaoinvisivel', '../assets/botaoinvisivel.png', {
+        this.load.spritesheet('botaoinvisivelH', '../assets/botaoinvisivelH.png', {
             frameWidth: 135,
             frameHeight: 78,
         });
