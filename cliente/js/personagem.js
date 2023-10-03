@@ -216,23 +216,23 @@ export default class personagem extends Phaser.Scene {
 
         // Configuração do joystick para 8 direções
         this.joystick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-            x: 125,
-            y: 325,
+            x: 75,
+            y: 375,
             radius: 70,
-            base: this.add.circle(0, 0, 100, 0x888888),
-            thumb: this.add.circle(0, 0, 50, 0xcccccc),
-            dir: '8dir', // Configuração para 8 direções
+            base: this.add.circle(0, 0, 50, 0x888888),
+            thumb: this.add.circle(0, 0, 25, 0xcccccc),
+            dir: '8dir', // configuração para 8 direções
             forceMin: 16
         }).on('pointerup', () => {
-            this.personagem.setVelocity(0, 0); // Pare o personagem quando o joystick é solto
+            this.personagem.setVelocity(0, 0); //parar o personagem quando o joystick é solto
         });
     }
 
     update () {
         const cursorKeys = this.joystick.createCursorKeys();
 
-        // Defina a velocidade do personagem com base nas teclas pressionadas
-        const speed = 150; // Velocidade do personagem
+        //defina a velocidade do personagem com base nas teclas pressionadas
+        const speed = 150; //velocidade do personagem
         let velocityX = 0;
         let velocityY = 0;
 
@@ -254,7 +254,7 @@ export default class personagem extends Phaser.Scene {
 
         // Verifique se o personagem está parado
         if (velocityX === 0 && velocityY === 0) {
-            // Personagem parado, determine a animação de "idle" com base na direção anterior
+            // personagem parado, determine a animação de "idle" com base na direção em que ele andava
             if (this.animationKey === 'caiod') {
                 this.animationKey = 'calvoidled'; 
             } else if (this.animationKey === 'caioe') {
@@ -262,18 +262,18 @@ export default class personagem extends Phaser.Scene {
             } else if (this.animationKey === 'caiof') {
                 this.animationKey = 'calvoidlef'; 
             } else if (this.animationKey === 'caioc') {
-                this.animationKey = 'calvoidlec'; // Ativa a animação de "idle" para trás
+                this.animationKey = 'calvoidlec'; 
             }
         }
 
-        // Se nenhuma tecla estiver pressionada, pare a animação (idle) de frente por padrão
+        //(idle) de frente por padrão
         if (!this.animationKey) {
             this.animationKey = 'calvoidlef';
         }
 
         this.personagem.anims.play(this.animationKey, true);
 
-        // Normalize a velocidade nas diagonais para evitar movimento mais rápido
+        //normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
         if (velocityX !== 0 && velocityY !== 0) {
             velocityX *= Math.sqrt(0.5);
             velocityY *= Math.sqrt(0.5);

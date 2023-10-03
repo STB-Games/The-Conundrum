@@ -34,7 +34,7 @@ export default class characters extends Phaser.Scene {
                 this.game.scene.start('cutsceneDELA')
             })
 
-        // Crie botões para avançar e retroceder
+        // botões
         const nextButton = this.add.text(750, 225, '->', {
             fontSize: '32px',
             fill: '#800000',
@@ -45,10 +45,10 @@ export default class characters extends Phaser.Scene {
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
-        // Defina a opacidade inicial como 0 (invisível)
+        //opacidade inicial como 0
         nextButton.setAlpha(0);
 
-        // Crie uma animação de fade in
+        //animação de fade in
         this.tweens.add({
             targets: nextButton,
             alpha: 1, 
@@ -57,16 +57,16 @@ export default class characters extends Phaser.Scene {
             delay: 3000, 
         });
 
-        // Função para animar a transição para a próxima cena
+        //animar a transição para a próxima cena
         const goToNextScene = () => {
             this.scene.start('cutscene');
         };
 
-        // Configurar eventos de clique para os botões
+        // botões
         nextButton.on('pointerdown', () => {
-            // Animação de Fade Out para a cena atual
+            //Fade Out para a cena atual
             fadeOut(this, 200, () => {
-                // Chame a função para avançar para a próxima cena
+                //avançar para a próxima cena
                 goToNextScene();
             });
         });
@@ -89,7 +89,7 @@ export default class characters extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'telachar'
+        //iniciar a cena com o Fade In para 'telachar'
         fadeIn(telacharImage, 1000);
     }
 }

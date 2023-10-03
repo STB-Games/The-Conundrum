@@ -15,7 +15,7 @@ export default class cutsceneDELA extends Phaser.Scene {
     }
 
     create () {
-        // Adicione as imagens e defina a visibilidade inicial
+        // Adicione as imagens
         const cutsceneDELAImage = this.add.image(400, 225, 'cutsceneDELA').setAlpha(0);
 
 
@@ -25,7 +25,7 @@ export default class cutsceneDELA extends Phaser.Scene {
         const texto = "Sabrina E. Torres, 26 anos, nasceu no Rio de Janeiro, sempre amou história, voltada em entender a cultura e mitos brasileiros. Sempre sonhou em ser investigadora.";
         const texto2 = "Após resolverem um caso juntos, Sabrina e Rodrigo viram que tinham uma conexão especial e decidiram continuar colaborando em equipe, em aspectos que Rodrigo falhava, Sabrina complementava. Com formação em História da Arte, tornou-se uma historiadora especializada em Lendas e Mitos.";
         const texto3 = "Sabrina e Rodrigo, agora partem para o interior do Amazonas para resolver o caso de uma antiga mansão que assombra uma pequena vila que constantemente sofre com lendas folclóricas."; // Substitua pelo seu texto real
-        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
+        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
         this.mensagem = this.add.text(200, 15, texto, {
             fontFamily: "Felipa",
@@ -34,7 +34,7 @@ export default class cutsceneDELA extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 2,
             wordWrap: {
-                width: telaLargura - 220, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 220, //largura máxima
                 useAdvancedWrap: true,
             }
         })
@@ -46,7 +46,7 @@ export default class cutsceneDELA extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 2,
             wordWrap: {
-                width: telaLargura - 10, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 10, //largura máxima
                 useAdvancedWrap: true,
             }
         })
@@ -58,7 +58,7 @@ export default class cutsceneDELA extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 2,
             wordWrap: {
-                width: telaLargura - 160, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 160, //largura máxima
                 useAdvancedWrap: true,
             }
         })
@@ -74,16 +74,16 @@ export default class cutsceneDELA extends Phaser.Scene {
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
-        // Função para animar a transição para a próxima cena
+        //animar a transição para a próxima cena
         const goToNextScene = () => {
             this.scene.start('characters');
         };
 
-        // Configurar eventos de clique para os botões
+        //eventos de clique para os botões
         nextButton.on('pointerdown', () => {
-            // Animação de Fade Out para a cena atual
+            //Fade Out para a cena atual
             fadeOut(cutsceneDELAImage, 1000, () => {
-                // Chame a função para avançar para a próxima cena
+                //avançar para a próxima cena
                 goToNextScene();
             });
         });
@@ -106,7 +106,7 @@ export default class cutsceneDELA extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'cutsceneDELA'
+        //iniciar a cena com o Fade In para 'cutsceneDELA'
         fadeIn(cutsceneDELAImage, 1000);
     }
 }

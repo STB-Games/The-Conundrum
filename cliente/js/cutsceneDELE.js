@@ -15,7 +15,7 @@ export default class cutsceneDELE extends Phaser.Scene {
     }
 
     create () {
-        // Adicione as imagens e defina a visibilidade inicial
+        // 
         const cutsceneDELEImage = this.add.image(400, 225, 'cutsceneDELE').setAlpha(0);
 
 
@@ -25,7 +25,7 @@ export default class cutsceneDELE extends Phaser.Scene {
         const texto = "Rodrigo Silva, 24 anos, nasceu no Rio Grande do Sul, sempre teve uma paixão por desvendar mistérios e estudar o contexto histórico. sempre teve o sonho de virar um detetive.";
         const texto2 = "Em suas investigações de mistérios em locais abandonados pelo país, Rodrigo conheceu Sabrina, uma historiadora determinada. Inicialmente, houve competição, mas logo perceberam que suas habilidades se complementavam, decidindo assim, formar uma grande dupla.";
         const texto3 = "Sabrina e Rodrigo, agora partem para o interior do Amazonas para resolver o caso de uma antiga mansão que assombra uma pequena vila que constantemente sofre com lendas folclóricas.";
-        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores 0.05 e 0.1 conforme necessário // NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
+        const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1); // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
         this.mensagem = this.add.text(200, 15, texto, {
             fontFamily: "Felipa",
@@ -34,7 +34,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 4,
             wordWrap: {
-                width: telaLargura - 200, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 200, //largura máxima
                 useAdvancedWrap: true,
             }
         })
@@ -46,7 +46,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 4,
             wordWrap: {
-                width: telaLargura - 10, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 10, //largura máxima
                 useAdvancedWrap: true,
             }
         })
@@ -58,12 +58,12 @@ export default class cutsceneDELE extends Phaser.Scene {
             strokeThickness: 4,
             resolution: 4,
             wordWrap: {
-                width: telaLargura - 160, // Defina a largura máxima para evitar que o texto saia da tela, 
+                width: telaLargura - 160, //largura máxima
                 useAdvancedWrap: true,
             }
         })
 
-        // Crie botões para avançar e retroceder
+        // botões
         const nextButton = this.add.text(765, 35, '->', {
             fontSize: '32px',
             fill: '#800000',
@@ -74,16 +74,16 @@ export default class cutsceneDELE extends Phaser.Scene {
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
-        // Função para animar a transição para a próxima cena
+        //animar a transição para a próxima cena
         const goToNextScene = () => {
             this.scene.start('characters');
         };
 
-        // Configurar eventos de clique para os botões
+        //eventos de clique para os botões
         nextButton.on('pointerdown', () => {
-            // Animação de Fade Out para a cena atual
+            //Fade Out para a cena atual
             fadeOut(cutsceneDELEImage, 1000, () => {
-                // Chame a função para avançar para a próxima cena
+                //avançar para a próxima cena
                 goToNextScene();
             });
         });
@@ -106,7 +106,7 @@ export default class cutsceneDELE extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'cutsceneDELE'
+        //iniciar a cena com o Fade In para 'cutsceneDELE'
         fadeIn(cutsceneDELEImage, 1000);
     }
 }

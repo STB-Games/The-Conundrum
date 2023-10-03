@@ -29,16 +29,16 @@ export default class Cutscene extends Phaser.Scene {
         nextButton.setOrigin(0.5);
         nextButton.setInteractive();
 
-        // Função para animar a transição para a próxima cena
+        //animar a transição para a próxima cena
         const goToNextScene = () => {
             this.scene.start('cutscene1');
         };
 
-        // Configurar eventos de clique para os botões
+        // botões
         nextButton.on('pointerdown', () => {
-            // Animação de Fade Out para a cena atual
+            //Fade Out para a cena atual
             fadeOut(CapaJogoImage, 1000, () => {
-                // Chame a função para avançar para a próxima cena
+                //função para avançar para a próxima cena
                 goToNextScene();
             });
         });
@@ -61,7 +61,7 @@ export default class Cutscene extends Phaser.Scene {
             });
         };
 
-        // Inicie a cena com o Fade In para 'CapaJogo'
+        //iniciar a cena com o Fade In para 'CapaJogo'
         fadeIn(CapaJogoImage, 1000);
     }
 }
