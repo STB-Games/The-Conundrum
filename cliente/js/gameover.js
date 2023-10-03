@@ -15,9 +15,6 @@ export default class gameover extends Phaser.Scene {
     }
     create () {
 
-        const centrox = this.cameras.main.worldView.x + this.cameras.main.width / 2
-        const centroy = this.cameras.main.worldView.y + this.cameras.main.height / 2
-
         this.imagem = this.add
         this.add.image(400, 225, 'fim')
 
