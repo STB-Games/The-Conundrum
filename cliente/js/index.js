@@ -31,6 +31,11 @@ class Game extends Phaser.Game {
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
 
+    this.socket.on('connect', () => {
+      console.log('Conectado')
+      this.scene.start('sala')
+    })
+
     this.scene.start('characters')
   }
 }
