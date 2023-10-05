@@ -6,24 +6,25 @@ export default class abertura extends Phaser.Scene {
   preload () {
     this.load.spritesheet('abertura', '../assets/CenaAbertura.png', {
       frameWidth: 800,
-      frameHeight: 450,
+      frameHeight: 450
     })
     this.load.spritesheet('botaoinvisivelH', '../assets/botaoinvisivelH.png', {
       frameWidth: 135,
       frameHeight: 78
     })
 
-    /*Full Screen*/
+    /* Full Screen */
 
     this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
       frameWidth: 32,
       frameHeight: 32
     })
   }
+
   create () {
     this.abertura = this.add.sprite(400, 225, 'abertura')
 
-    /*Abertura*/
+    /* Abertura */
 
     this.anims.create({
       key: 'abertura',
@@ -37,7 +38,7 @@ export default class abertura extends Phaser.Scene {
 
     this.abertura.anims.play('abertura')
 
-    /*Full Screen*/
+    /* Full Screen */
 
     this.tela_cheia = this.add
       .sprite(770, 30, 'tela-cheia', 0)
@@ -51,15 +52,15 @@ export default class abertura extends Phaser.Scene {
           this.scale.startFullscreen()
         }
       })
-      .setScrollFactor(0, 0),
+      .setScrollFactor(0, 0)
 
-      this.imagem = this.add
-        .image(400, 360, 'botaoinvisivelH')
-        .setInteractive()
-        .on('pointerdown', () => {
-          this.imagem.destroy()
-          this.game.scene.stop('abertura')
-          this.game.scene.start('sala')
-        })
+    this.imagem = this.add
+      .image(400, 360, 'botaoinvisivelH')
+      .setInteractive()
+      .on('pointerdown', () => {
+        this.imagem.destroy()
+        this.game.scene.stop('abertura')
+        this.game.scene.start('sala')
+      })
   }
 }
