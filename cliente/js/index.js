@@ -16,7 +16,15 @@ class Game extends Phaser.Game {
   constructor () {
     super(config)
 
-    this.socket = io()
+    this.socket = io() /* global io */
+    this.socket.on('connect', () => {
+      console.log('Connected to server!')
+      this.socket.emit('enter-room', 1)
+
+      this.socket.on('players', (players) => {
+        console.log(players)
+      })
+    })
 
     this.scene.add('abertura', abertura)
     this.scene.add('sala', sala)
@@ -31,12 +39,7 @@ class Game extends Phaser.Game {
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
 
-    this.socket.on('connect', () => {
-      console.log('Conectado')
-      this.scene.start('sala')
-    })
-
-    this.scene.start('characters')
+    this.scene.start('abertura')
   }
 }
 
