@@ -5,57 +5,55 @@ const io = require('socket.io')(server)
 const PORT = process.env.PORT || 3000
 
 io.on('connection', (socket) => {
-  console.log('User %s connected.', socket.id)
+  console.log('Usuário %s conectado no servidor.', socket.id)
 
-  socket.on('enter-room', (room) => {
-    socket.join(room)
-    console.log('User %s entered the room %s.', socket.id, room)
+  socket.on('entrar-na-sala', (sala) => {
+    socket.join(sala)
+    console.log('Usuário %s entrou na sala %s.', socket.id, sala)
 
-    let players = {}
-    if (io.sockets.adapter.rooms.get(room).size === 1) {
-      players = {
-        p1: socket.id,
-        p2: undefined
+    let jogadores = {}
+    if (io.sockets.adapter.rooms.get(sala).size === 1) {
+      jogadores = {
+        primeiro: socket.id,
+        segundo: undefined
       }
-    } else if (io.sockets.adapter.rooms.get(room).size === 2) {
-      const [p1] = io.sockets.adapter.rooms.get(room)
-      players = {
-        p1,
-        p2: socket.id
+    } else if (io.sockets.adapter.rooms.get(sala).size === 2) {
+      const [primeiro] = io.sockets.adapter.rooms.get(sala)
+      jogadores = {
+        primeiro,
+        segundo: socket.id
       }
       console.log(
-        'Room filled. Match starting!',
-        room
+        'Sala %s com 2 jogadores. Partida pronta para iniciar.',
+        sala
       )
     }
 
-    io.to(room).emit('players', players)
+    io.to(sala).emit('jogadores', jogadores)
   })
 
-  socket.on('publish-state', (room, state) => {
-    socket.broadcast.to(room).emit('notification-state', state)
+  socket.on('estado-publicar', (sala, estado) => {
+    socket.broadcast.to(sala).emit('estado-notificar', estado)
   })
 
-  /*
-  socket.on('artefatos-publicar', (room, artefatos) => {
-    socket.broadcast.to(room).emit('artefatos-notificar', artefatos)
-  })
-  */
-
-  socket.on('offer', (room, description) => {
-    socket.broadcast.to(room).emit('offer', description)
+  socket.on('artefatos-publicar', (sala, artefatos) => {
+    socket.broadcast.to(sala).emit('artefatos-notificar', artefatos)
   })
 
-  socket.on('candidate', (room, candidate) => {
-    socket.broadcast.to(room).emit('candidate', candidate)
+  socket.on('offer', (sala, description) => {
+    socket.broadcast.to(sala).emit('offer', description)
   })
 
-  socket.on('answer', (room, description) => {
-    socket.broadcast.to(room).emit('answer', description)
+  socket.on('candidate', (sala, candidate) => {
+    socket.broadcast.to(sala).emit('candidate', candidate)
+  })
+
+  socket.on('answer', (sala, description) => {
+    socket.broadcast.to(sala).emit('answer', description)
   })
 
   socket.on('disconnect', () => {
-    console.log('User %s disconnected.', socket.id)
+    console.log('Usuário desconectado', socket.id)
   })
 })
 

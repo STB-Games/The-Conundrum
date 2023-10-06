@@ -10,9 +10,9 @@
 
 &nbsp; &nbsp; "The Conundrum" é uma emocionante aventura de investigação e suspense 2D que transporta os jogadores para o enigmático cenário de uma mansão abandonada, imerso em lendas urbanas sinistras e histórias perturbadoras. Esta mansão, outrora também um tesouro de artefatos e antiguidades, tornou-se uma espécie de "Casa Monstro" após eventos inexplicáveis e arrepiantes que o mantiveram fechada à venda por décadas.
 
-&nbsp; &nbsp; Neste jogo, você e sua dupla se colocam no papel de um destemido detetive paranormal e uma grande investigadora, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem a mansão. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quartos e obras de arte no interior das paredes do museu, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
+&nbsp; &nbsp; Neste jogo, você e sua dupla se colocam no papel de um destemido detetive paranormal e uma grande investigadora, cuja curiosidade é acesa pelas narrativas arrepiantes que envolvem a mansão. Impulsionado por uma intensa convicção de que segredos sombrios permeiam cada sala, quartos e obras de arte no interior das paredes da mansão, os jogadores embarcam em uma jornada repleta de suspense para desvendar o mistério por trás desse local assombrado.
 
-&nbsp; &nbsp; Prepare-se para uma grande experiência que o botará para pensar enquanto você explora os corredores silenciosos e confronta o desconhecido. "The Conundrum" vai prender sua atenção e mantê-lo à beira do seu assento, desafiando sua coragem e perspicácia em uma busca implacável pela verdade obscura que permeia cada canto desse museu enigmático.
+&nbsp; &nbsp; Prepare-se para uma grande experiência que o botará para pensar enquanto você explora os corredores silenciosos e confronta o desconhecido. "The Conundrum" vai prender sua atenção e mantê-lo à beira do seu assento, desafiando sua coragem e perspicácia em uma busca implacável pela verdade obscura que permeia cada canto dessa mansão enigmática.
 
 ## Jogo Ideal:
 
@@ -40,7 +40,7 @@
 
 &nbsp; &nbsp; Determinados a desvendar o enigma, os dois seguiram rapidamente em direção a mansão, não se deixando abater pelo medo que pairava no ar. Ao adentrar o saguão sombrio, foram recebidos por uma cena que fez suas espinhas se arrepiarem. Quadros cobertos por uma tinta preta misteriosa preenchiam as paredes, cada um deles sem qualquer nome ou descrição. A aura sinistra que emanava dessas pinturas era palpável, mas os investigadores não vacilaram.
 
-&nbsp; &nbsp; No centro do saguão, uma porta maciça permanecia firmemente fechada, como um portal para o desconhecido. Sua presença sutilmente convidativa intrigou ainda mais a dupla. Corajosos e determinados, eles compreenderam que a chave para desvendar os segredos do museu e acalmar os medos dos moradores estava na exploração minuciosa de cada corredor, na decifração do significado oculto das pinturas e, talvez, na abertura da misteriosa porta.
+&nbsp; &nbsp; No centro do saguão, uma porta maciça permanecia firmemente fechada, como um portal para o desconhecido. Sua presença sutilmente convidativa intrigou ainda mais a dupla. Corajosos e determinados, eles compreenderam que a chave para desvendar os segredos da mansão e acalmar os medos dos moradores estava na exploração minuciosa de cada corredor, na decifração do significado oculto das pinturas e, talvez, na abertura da misteriosa porta.
 
 &nbsp; &nbsp; Assim, mergulharam nas profundezas da mansão, onde a escuridão e o desconhecido os aguardavam. Cada passo, cada quadro e cada mistério desvendado os aproximava mais da verdade oculta por trás daquele lugar assombrado. Enquanto os investigadores avançavam corredor após corredor, a trama se desenrolava, revelando segredos sombrios e surpresas que mantinham o jogador ansioso por mais. Será que eles seriam capazes de desvendar os mistérios e trazer a paz e a mansão de volta à cidade? A resposta estará prestes a ser descoberta, em uma jornada repleta de suspense e emoção.
 

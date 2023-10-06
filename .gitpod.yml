@@ -1,9 +1,9 @@
 tasks:
-  - init: npm install --prefix servidor
-    command: npm start --prefix servidor
   - name: servidor
-    init: npm install
-    command: npm start
+    init: npm install --prefix servidor
+    command: npm start --prefix servidor
+  - name: eslint
+    init: npm install eslint --save-dev
 
 ports:
   - port: 3000
