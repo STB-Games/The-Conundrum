@@ -40,9 +40,25 @@ export default class sala extends Phaser.Scene {
       frameWidth: 128,
       frameHeight: 128
     })
+
+    this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
+      frameWidth: 32,
+      frameHeight: 32
+    })
+
+    this.load.spritesheet('fundobordaV', '../assets/fundobordaV.png', {
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.spritesheet('fundobordav2V', '../assets/fundobordav2V.png', {
+      frameWidth: 800,
+      frameHeight: 450
+    })
   }
 
   create () {
+    const telaLargura = 800
     this.tela_cheia = this.add
       .sprite(770, 30, 'tela-cheia', 0)
       .setInteractive()
@@ -57,77 +73,78 @@ export default class sala extends Phaser.Scene {
       })
       .setScrollFactor(0, 0)
 
-    this.imagem = this.add.image(225, 400, 'fundopreto')
+    this.imagem = this.add.image(400, 225, 'fundobordaV')
 
-    this.mensagem = this.add.text(100, 75, '       Escolha uma sala:', {
-      fontFamily: 'monospace',
-      font: '32px Courier',
-      fill: '#cccccc'
+    this.mensagem = this.add.text(235, 45, '       Escolha uma sala:', {
+      fontFamily: 'Felipa',
+      fontSize: 32 + 'px',
+      stroke: '#000000',
+      strokeThickness: 4,
+      resolution: 2
     })
     this.salas = [
       {
         numero: '1',
-        x: 320,
+        x: 300,
         y: 140,
         image: 'sala1',
         botao: undefined
       },
       {
         numero: '2',
-        x: 320,
-        y: 190,
+        x: 300,
+        y: 200,
         image: 'sala2',
         botao: undefined
       },
       {
         numero: '3',
-        x: 320,
-        y: 240,
+        x: 300,
+        y: 260,
         image: 'sala3',
         botao: undefined
       },
       {
         numero: '4',
-        x: 320,
-        y: 290,
+        x: 300,
+        y: 320,
         image: 'sala4',
         botao: undefined
       },
       {
         numero: '5',
-        x: 480,
+        x: 505,
         y: 140,
         image: 'sala5',
         botao: undefined
       },
       {
         numero: '6',
-        x: 480,
-        y: 190,
+        x: 505,
+        y: 200,
         image: 'sala6',
         botao: undefined
       },
       {
         numero: '7',
-        x: 480,
-        y: 240,
+        x: 505,
+        y: 260,
         image: 'sala7',
         botao: undefined
       },
       {
         numero: '8',
-        x: 480,
-        y: 290,
+        x: 505,
+        y: 320,
         image: 'sala8',
         botao: undefined
       }
     ]
-
     this.salas.forEach((item) => {
       item.botao = this.add
         .image(item.x, item.y, item.image, {
           fontFamily: 'monospace',
-          font: '16px Courier',
+          font: '32px Courier',
           fill: '#cccccc'
         })
         .setInteractive()
@@ -135,10 +152,123 @@ export default class sala extends Phaser.Scene {
           this.salas.forEach((item) => {
             item.botao.destroy()
           })
-          item.botao.destroy()
-          this.game.scene.stop('sala')
-          this.game.scene.start('characters')
+          this.game.sala = item.numero
+          this.game.socket.emit('entrar-na-sala', this.game.sala)
         })
+    })
+
+    this.game.socket.on('jogadores', (jogadores) => {
+      console.log(jogadores)
+      if (jogadores.segundo) {
+        this.mensagem.destroy()
+        this.game.jogadores = jogadores
+        this.game.scene.stop('sala')
+        this.game.scene.start('characters')
+      } else if (jogadores.primeiro) {
+        this.imagem.destroy()
+        this.mensagem.setText('')
+        this.imagem = this.add.image(400, 225, 'fundobordav2V')
+        this.mensagem = this.add.text(165, 50, 'Esperando proximo jogador para iniciar o jogo...', {
+          fontFamily: 'Felipa',
+          fontSize: 28 + 'px',
+          stroke: '#000000',
+          strokeThickness: 4,
+          resolution: 2
+        })
+        this.mensagemA = this.add.text(60, 250, 'Converse com sua dupla para a realização e conclusão dos puzzles contidos em cada sala pela mansão.', {
+          fontFamily: 'Felipa',
+          fontSize: 28 + 'px',
+          stroke: '#000000',
+          strokeThickness: 4,
+          resolution: 2,
+          wordWrap: {
+            width: telaLargura - 100, // largura máxima
+            useAdvancedWrap: true
+          }
+        })
+
+        let mensagemVisivel = true
+
+        // desvanecer a mensagem anterior
+        this.time.delayedCall(9000, () => { // depois de 9 segundos que a mensagem apareceu
+          if (mensagemVisivel) {
+            this.tweens.add({
+              targets: this.mensagemA,
+              alpha: 0,
+              duration: 1000, // tempo da animação de desvanecimento
+              onComplete: () => {
+                mensagemVisivel = false
+                this.mensagemA.destroy() // foi de base
+
+                this.time.delayedCall(1500, () => { // depois de 1,5 segundo que a MENSAGEM ANTERIOR foi de base entrará a próxima mensagem
+                  this.mensagemB = this.add.text(60, 250, 'Sempre se atente à quanto de medo você tem, quanto maior o seu medo, mais assustador ficará o local, (ao chegar em zero você morre!)', {
+                    fontFamily: 'Felipa',
+                    fontSize: 28 + 'px',
+                    stroke: '#000000',
+                    strokeThickness: 4,
+                    resolution: 2,
+                    wordWrap: {
+                      width: telaLargura - 100, // largura máxima
+                      useAdvancedWrap: true
+                    },
+                    alpha: 0 // opacidade inicial (SE NAO TIVER 0 NAO FUNCIONA)
+                  })
+
+                  // fade in para mensagem anterior
+                  this.tweens.add({
+                    targets: this.mensagemB,
+                    alpha: 1, // opacidade final
+                    duration: 1000, // duração animation
+                    ease: 'Linear',
+                    onStart: () => {
+                      this.mensagemB.alpha = 0 // TEM QUE SER ZERO
+                    },
+                    onComplete: () => {
+                      this.time.delayedCall(7000, () => {
+                        this.tweens.add({
+                          targets: this.mensagemB,
+                          alpha: 0,
+                          duration: 1000,
+                          onComplete: () => {
+                            mensagemVisivel = false
+                            this.mensagemB.destroy() // foi de base
+                          }
+                        })
+                        // tempo para mostrar a mensagem seguinte
+                        this.time.delayedCall(1500, () => {
+                          this.mensagemC = this.add.text(60, 250, 'Quem for o jogador 1 será o Rodrigo Silva. \n Quem for o jogador 2 será a Sabrina Torres.', {
+                            fontFamily: 'Felipa',
+                            fontSize: 28 + 'px',
+                            stroke: '#000000',
+                            strokeThickness: 4,
+                            resolution: 2,
+                            wordWrap: {
+                              width: telaLargura - 100, // largura máxima
+                              useAdvancedWrap: true
+                            },
+                            alpha: 0 // initial opacity (MUST BE 0)
+                          })
+
+                          // fade in para a mensagem anterior
+                          this.tweens.add({
+                            targets: this.mensagemC,
+                            alpha: 1, // opacidade final
+                            duration: 1000, // duracao animation
+                            ease: 'Linear',
+                            onStart: () => {
+                              this.mensagemC.alpha = 0 // TEM QUE SER ZERO
+                            }
+                          })
+                        })
+                      })
+                    }
+                  })
+                })
+              }
+            })
+          }
+        })
+      }
     })
   }
 }
