@@ -15,10 +15,24 @@ export default class Cutscene2 extends Phaser.Scene {
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     const FlorestaFundoImage = this.add.image(400, 225, 'cutscene2_fundo').setAlpha(0)
 
     const telaLargura = 800
-    const telaAltura = 450
+    // const telaAltura = 450
 
     const texto = 'Cercado por uma grande floresta densa, vários boatos cercavam este mansão, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores.'
 

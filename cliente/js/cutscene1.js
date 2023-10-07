@@ -4,6 +4,19 @@ export default class Cutscene1 extends Phaser.Scene {
   }
 
   preload () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
     this.load.image('fundocinza', 'assets/fundocinza.png')
 
     /* Full Screen */
@@ -18,7 +31,7 @@ export default class Cutscene1 extends Phaser.Scene {
     const fundocinzaImage = this.add.image(400, 225, 'fundocinza').setAlpha(0)
 
     const telaLargura = 800
-    const telaAltura = 450
+    // const telaAltura = 450
 
     const texto = 'Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em uma mansão abandonada, Rodrigo e Patrícia, uma dupla de investigadores especializado em operações paranormais.' // Substitua pelo seu texto real
 

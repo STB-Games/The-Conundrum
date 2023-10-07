@@ -15,11 +15,25 @@ export default class cutsceneDELE extends Phaser.Scene {
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     //
     const cutsceneDELEImage = this.add.image(400, 225, 'cutsceneDELE').setAlpha(0)
 
     const telaLargura = 800
-    const telaAltura = 450
+    // const telaAltura = 450
 
     const texto = 'Rodrigo Silva, 24 anos, nasceu no Rio Grande do Sul, sempre teve uma paixão por desvendar mistérios e estudar o contexto histórico. sempre teve o sonho de virar um detetive.'
     const texto2 = 'Em suas investigações de mistérios em locais abandonados pelo país, Rodrigo conheceu Sabrina, uma historiadora determinada. Inicialmente, houve competição, mas logo perceberam que suas habilidades se complementavam, decidindo assim, formar uma grande dupla.'

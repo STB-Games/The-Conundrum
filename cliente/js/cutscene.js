@@ -15,6 +15,20 @@ export default class Cutscene extends Phaser.Scene {
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     // Adicione as imagens e defina a visibilidade inicial
     const CapaJogoImage = this.add.image(400, 225, 'CapaJogo').setAlpha(0)
 

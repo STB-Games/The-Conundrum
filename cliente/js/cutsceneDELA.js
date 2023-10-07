@@ -15,11 +15,25 @@ export default class cutsceneDELA extends Phaser.Scene {
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     // Adicione as imagens
     const cutsceneDELAImage = this.add.image(400, 225, 'cutsceneDELA').setAlpha(0)
 
     const telaLargura = 800
-    const telaAltura = 450
+    // const telaAltura = 450
 
     const texto = 'Sabrina E. Torres, 26 anos, nasceu no Rio de Janeiro, sempre amou história, voltada em entender a cultura e mitos brasileiros. Sempre sonhou em ser investigadora.'
     const texto2 = 'Após resolverem um caso juntos, Sabrina e Rodrigo viram que tinham uma conexão especial e decidiram continuar colaborando em equipe, em aspectos que Rodrigo falhava, Sabrina complementava. Com formação em História da Arte, tornou-se uma historiadora especializada em Lendas e Mitos.'
