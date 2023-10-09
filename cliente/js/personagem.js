@@ -114,7 +114,18 @@ export default class personagem extends Phaser.Scene {
 
     /* Colisão */
 
-    this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
+    // this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
+
+    if (this.game.jogadores.primeiro === this.game.socket.id) {
+      this.local = 'Calvo'
+      this.remoto = 'Menina'
+      this.personagem = this.physics.add.sprite(650, -80, this.local, 18)
+      this.personagemRemoto = this.physics.add.sprite(350, -80, this.remoto, 18)
+    } else if (this.game.jogadores.segundo === this.game.socket.id) {
+      this.local = 'Menina'
+      this.remoto = 'Calvo'
+      this.personagemRemoto = this.add.sprite(350, -80, this.remoto, 18)
+      this.personagem = this.physics.add.sprite(650, -80, this.local, 18)
 
     // Defina as dimensões da hitbox
     const hitboxWidth = 24
