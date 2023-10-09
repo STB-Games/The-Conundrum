@@ -163,7 +163,7 @@ export default class sala extends Phaser.Scene {
         this.mensagem.destroy()
         this.game.jogadores = jogadores
         this.game.scene.stop('sala')
-        this.game.scene.start('characters')
+        this.game.scene.start('personagem')
       } else if (jogadores.primeiro) {
         this.imagem.destroy()
         this.mensagem.setText('')

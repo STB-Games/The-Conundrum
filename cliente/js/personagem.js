@@ -87,6 +87,49 @@ export default class personagem extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64
     })
+
+    this.load.spritesheet('MeninaFrente', '../assets/Menina/Menina_Frente.png', {
+      frameWidth: 64,
+      frameHeight: 64
+
+    })
+
+    this.load.spritesheet('MeninaDireita', '../assets/Menina/Menina_Direita.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('MeninaCosta', '../assets/Menina/Menina_Costa.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('MeninaEsquerda', '../assets/Menina/Menina_Esquerda.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    /* Personagem Idle (FEMININO) */
+
+    this.load.spritesheet('MeninaIdleF', '../assets/Menina/MeninaIdleF.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('MeninaIdleD', '../assets/Menina/MeninaIdleD.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('MeninaIdleC', '../assets/Menina/MeninaIdleC.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('MeninaIdleE', '../assets/Menina/MeninaIdleE.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
   }
 
   create () {
@@ -114,19 +157,17 @@ export default class personagem extends Phaser.Scene {
 
     /* Colisão */
 
-    // this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
-
     if (this.game.jogadores.primeiro === this.game.socket.id) {
-      this.local = 'Calvo'
-      this.remoto = 'Menina'
-      this.personagem = this.physics.add.sprite(650, -80, this.local, 18)
-      this.personagemRemoto = this.physics.add.sprite(350, -80, this.remoto, 18)
+      this.local = 'CalvoFrente'
+      this.remoto = 'MeninaFrente'
+      this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
+      this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
     } else if (this.game.jogadores.segundo === this.game.socket.id) {
-      this.local = 'Menina'
-      this.remoto = 'Calvo'
-      this.personagemRemoto = this.add.sprite(350, -80, this.remoto, 18)
-      this.personagem = this.physics.add.sprite(650, -80, this.local, 18)
-
+      this.local = 'MeninaFrente'
+      this.remoto = 'CalvoFrente'
+      this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
+      this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
+    }
     // Defina as dimensões da hitbox
     const hitboxWidth = 24
     const hitboxHeight = 60
@@ -145,6 +186,88 @@ export default class personagem extends Phaser.Scene {
     })
 
     /* Animação dos Personagens */
+
+    this.anims.create({
+      key: 'meninaf',
+      frames: this.anims.generateFrameNumbers('MeninaFrente', {
+        start: 0,
+        end: 4
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninac',
+      frames: this.anims.generateFrameNumbers('MeninaCosta', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninae',
+      frames: this.anims.generateFrameNumbers('MeninaEsquerda', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninad',
+      frames: this.anims.generateFrameNumbers('MeninaDireita', {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    /* Animação dos Personagens IDLE */
+
+    this.anims.create({
+      key: 'meninaidlef',
+      frames: this.anims.generateFrameNumbers('MeninaIdleF', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninaidlec',
+      frames: this.anims.generateFrameNumbers('MeninaIdleC', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninaidlee',
+      frames: this.anims.generateFrameNumbers('MeninaIdleE', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'meninaidled',
+      frames: this.anims.generateFrameNumbers('MeninaIdleD', {
+        start: 0,
+        end: 0
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
 
     this.anims.create({
       key: 'caiof',
