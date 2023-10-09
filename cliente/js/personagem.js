@@ -129,7 +129,9 @@ export default class personagem extends Phaser.Scene {
 
     this.botaoinvisivelH = this.physics.add.image(750, 225, 'monster')
 
-    this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.gameover, null, this)
+    this.physics.add.collider(this.personagem, this.botaoinvisivelH, () => {
+      this.gameover()
+    })
 
     /* Animação dos Personagens */
 
@@ -230,55 +232,57 @@ export default class personagem extends Phaser.Scene {
   update () {
     const cursorKeys = this.joystick.createCursorKeys()
 
-    // defina a velocidade do personagem com base nas teclas pressionadas
-    const speed = 150 // velocidade do personagem
-    let velocityX = 0
-    let velocityY = 0
+    if (cursorKeys) {
+      // defina a velocidade do personagem com base nas teclas pressionadas
+      const speed = 150 // velocidade do personagem
+      let velocityX = 0
+      let velocityY = 0
 
-    if (cursorKeys.up.isDown) {
-      velocityY = -speed
-      this.animationKey = 'caioc'
-    } else if (cursorKeys.down.isDown) {
-      velocityY = speed
-      this.animationKey = 'caiof'
-    }
-
-    if (cursorKeys.left.isDown) {
-      velocityX = -speed
-      this.animationKey = 'caioe'
-    } else if (cursorKeys.right.isDown) {
-      velocityX = speed
-      this.animationKey = 'caiod'
-    }
-
-    // Verifique se o personagem está parado
-    if (velocityX === 0 && velocityY === 0) {
-      // personagem parado, determine a animação de "idle" com base na direção em que ele andava
-      if (this.animationKey === 'caiod') {
-        this.animationKey = 'calvoidled'
-      } else if (this.animationKey === 'caioe') {
-        this.animationKey = 'calvoidlee'
-      } else if (this.animationKey === 'caiof') {
-        this.animationKey = 'calvoidlef'
-      } else if (this.animationKey === 'caioc') {
-        this.animationKey = 'calvoidlec'
+      if (cursorKeys.up.isDown) {
+        velocityY = -speed
+        this.animationKey = 'caioc'
+      } else if (cursorKeys.down.isDown) {
+        velocityY = speed
+        this.animationKey = 'caiof'
       }
+
+      if (cursorKeys.left.isDown) {
+        velocityX = -speed
+        this.animationKey = 'caioe'
+      } else if (cursorKeys.right.isDown) {
+        velocityX = speed
+        this.animationKey = 'caiod'
+      }
+
+      // Verifique se o personagem está parado
+      if (velocityX === 0 && velocityY === 0) {
+        // personagem parado, determine a animação de "idle" com base na direção em que ele andava
+        if (this.animationKey === 'caiod') {
+          this.animationKey = 'calvoidled'
+        } else if (this.animationKey === 'caioe') {
+          this.animationKey = 'calvoidlee'
+        } else if (this.animationKey === 'caiof') {
+          this.animationKey = 'calvoidlef'
+        } else if (this.animationKey === 'caioc') {
+          this.animationKey = 'calvoidlec'
+        }
+      }
+
+      // (idle) de frente por padrão
+      if (!this.animationKey) {
+        this.animationKey = 'calvoidlef'
+      }
+
+      this.personagem.anims.play(this.animationKey, true)
+
+      // normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
+      if (velocityX !== 0 && velocityY !== 0) {
+        velocityX *= Math.sqrt(0.5)
+        velocityY *= Math.sqrt(0.5)
+      }
+
+      this.personagem.setVelocity(velocityX, velocityY)
     }
-
-    // (idle) de frente por padrão
-    if (!this.animationKey) {
-      this.animationKey = 'calvoidlef'
-    }
-
-    this.personagem.anims.play(this.animationKey, true)
-
-    // normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
-    if (velocityX !== 0 && velocityY !== 0) {
-      velocityX *= Math.sqrt(0.5)
-      velocityY *= Math.sqrt(0.5)
-    }
-
-    this.personagem.setVelocity(velocityX, velocityY)
   }
 
   gameover () {
