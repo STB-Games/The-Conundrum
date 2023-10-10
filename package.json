@@ -73,6 +73,6 @@
     "install": "npm install --prefix servidor",
     "start": "npm start --prefix servidor"
   },
-  "author": "Caio Eduardo e Isabela Abreu <caio.ea@aluno.ifsc.edu.br>",
+  "author": "Caio Eduardo de Aguiar e Isabela Abreu da Costa <caio.ea@aluno.ifsc.edu.br>",
   "license": "ISC"
 }

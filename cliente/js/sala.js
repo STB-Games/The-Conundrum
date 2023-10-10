@@ -154,7 +154,6 @@ export default class sala extends Phaser.Scene {
           })
           this.game.sala = item.numero
           this.game.socket.emit('entrar-na-sala', this.game.sala)
-          this.game.sala = sala.numero
         })
     })
 
