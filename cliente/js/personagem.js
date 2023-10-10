@@ -361,6 +361,8 @@ export default class personagem extends Phaser.Scene {
     }).on('pointerup', () => {
       this.personagem.setVelocity(0, 0) // parar o personagem quando o joystick é solto
     })
+
+    this.game.socket.emit('estado-notificar', ({ cena, x, y, frame }) => { })
   }
 
   update () {
