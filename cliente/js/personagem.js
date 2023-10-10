@@ -417,6 +417,17 @@ export default class personagem extends Phaser.Scene {
 
       this.personagem.setVelocity(velocityX, velocityY)
     }
+
+    try {
+      this.game.socket.emit('estado-publicar', this.game.sala, {
+        cena: 'personagem',
+        x: this.personagem.x,
+        y: this.personagem.y,
+        frame: this.personagem.frame.name
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   gameover () {
