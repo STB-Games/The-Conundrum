@@ -19,7 +19,7 @@
 
 <h3 align="center">Personagens:</h3>
 
-<p align="center">  ***Rodrigo Silva -***</p>
+<p align="center">Rodrigo Silva -</p>
   
 &nbsp; &nbsp; Rodrigo nasceu e cresceu nas vastas terras do Rio Grande do Sul. Ele sempre teve uma queda por desvendar mistérios e compreender o contexto histórico por trás de cada caso. Desde jovem, mostrou grande astúcia e habilidade analítica, o que o levou a estudar Criminologia e se formar como detetive.
 
