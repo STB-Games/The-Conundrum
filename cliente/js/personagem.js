@@ -215,7 +215,11 @@ export default class personagem extends Phaser.Scene {
       this.personagem.setVelocity(0, 0) // parar o personagem quando o joystick é solto
     })
 
-    this.game.socket.emit('estado-notificar', ({ cena, x, y, frame }) => { })
+    this.game.socket.on('estado-notificar', ({ cena, x, y, frame }) => {
+      this.personagemRemoto.x = x
+      this.personagemRemoto.y = y
+      this.personagemRemoto.setFrame(frame)
+    })
   }
 
   update () {
