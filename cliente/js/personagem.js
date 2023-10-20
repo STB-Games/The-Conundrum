@@ -14,6 +14,10 @@ export default class personagem extends Phaser.Scene {
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
 
+    /* Sabrina Torres */
+
+    this.load.spritesheet('Sabrina', '../assets/Menina/SabrinaTorres')
+
     /* Personagem Andando (Masculino) */
 
     this.load.spritesheet('CalvoFrente', '../assets/Calvo/Calvo_Frente.png', {
@@ -159,11 +163,11 @@ export default class personagem extends Phaser.Scene {
 
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = 'CalvoFrente'
-      this.remoto = 'MeninaFrente'
+      this.remoto = 'SabrinaTorres'
       this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
       this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
     } else if (this.game.jogadores.segundo === this.game.socket.id) {
-      this.local = 'MeninaFrente'
+      this.local = 'SabrinaTorres'
       this.remoto = 'CalvoFrente'
       this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
       this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
@@ -188,8 +192,8 @@ export default class personagem extends Phaser.Scene {
     /* Animação dos Personagens */
 
     this.anims.create({
-      key: 'meninaf',
-      frames: this.anims.generateFrameNumbers('MeninaFrente', {
+      key: 'personagem-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 4
       }),
@@ -198,8 +202,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninac',
-      frames: this.anims.generateFrameNumbers('MeninaCosta', {
+      key: 'personagem-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -208,8 +212,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninae',
-      frames: this.anims.generateFrameNumbers('MeninaEsquerda', {
+      key: 'personagem-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -218,8 +222,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninad',
-      frames: this.anims.generateFrameNumbers('MeninaDireita', {
+      key: 'personagem-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -230,8 +234,8 @@ export default class personagem extends Phaser.Scene {
     /* Animação dos Personagens IDLE */
 
     this.anims.create({
-      key: 'meninaidlef',
-      frames: this.anims.generateFrameNumbers('MeninaIdleF', {
+      key: 'personagem-idle-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -240,8 +244,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninaidlec',
-      frames: this.anims.generateFrameNumbers('MeninaIdleC', {
+      key: 'personagem-idle-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -250,8 +254,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninaidlee',
-      frames: this.anims.generateFrameNumbers('MeninaIdleE', {
+      key: 'personagem-idle-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -260,8 +264,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'meninaidled',
-      frames: this.anims.generateFrameNumbers('MeninaIdleD', {
+      key: 'personagem-idle-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -270,8 +274,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'caiof',
-      frames: this.anims.generateFrameNumbers('CalvoFrente', {
+      key: 'personagem-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 4
       }),
@@ -280,8 +284,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'caioc',
-      frames: this.anims.generateFrameNumbers('CalvoCosta', {
+      key: 'personagem-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -290,8 +294,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'caioe',
-      frames: this.anims.generateFrameNumbers('CalvoEsquerdo', {
+      key: 'personagem-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -300,8 +304,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'caiod',
-      frames: this.anims.generateFrameNumbers('CalvoDireita', {
+      key: 'personagem-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 5
       }),
@@ -310,8 +314,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'calvoidlef',
-      frames: this.anims.generateFrameNumbers('CalvoIdleF', {
+      key: 'personagem-idle-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -320,8 +324,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'calvoidled',
-      frames: this.anims.generateFrameNumbers('CalvoIdleD', {
+      key: 'personagem-idle-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -330,8 +334,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'calvoidlee',
-      frames: this.anims.generateFrameNumbers('CalvoIdleE', {
+      key: 'personagem-idle-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -340,8 +344,8 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'calvoidlec',
-      frames: this.anims.generateFrameNumbers('CalvoIdleC', {
+      key: 'personagem-idle-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0
       }),
@@ -376,37 +380,37 @@ export default class personagem extends Phaser.Scene {
 
       if (cursorKeys.up.isDown) {
         velocityY = -speed
-        this.animationKey = 'caioc'
+        this.animationKey = 'personagem-costa'
       } else if (cursorKeys.down.isDown) {
         velocityY = speed
-        this.animationKey = 'caiof'
+        this.animationKey = 'personagem-frente'
       }
 
       if (cursorKeys.left.isDown) {
         velocityX = -speed
-        this.animationKey = 'caioe'
+        this.animationKey = 'personagem-esquerda'
       } else if (cursorKeys.right.isDown) {
         velocityX = speed
-        this.animationKey = 'caiod'
+        this.animationKey = 'personagem-direita'
       }
 
       // Verifique se o personagem está parado
       if (velocityX === 0 && velocityY === 0) {
         // personagem parado, determine a animação de "idle" com base na direção em que ele andava
-        if (this.animationKey === 'caiod') {
-          this.animationKey = 'calvoidled'
-        } else if (this.animationKey === 'caioe') {
-          this.animationKey = 'calvoidlee'
-        } else if (this.animationKey === 'caiof') {
-          this.animationKey = 'calvoidlef'
-        } else if (this.animationKey === 'caioc') {
-          this.animationKey = 'calvoidlec'
+        if (this.animationKey === 'personagem-direita') {
+          this.animationKey = 'personagem-idle-direita'
+        } else if (this.animationKey === 'personagem-esquerda') {
+          this.animationKey = 'personagem-idle-esquerda'
+        } else if (this.animationKey === 'personagem-frente') {
+          this.animationKey = 'personagem-idle-frente'
+        } else if (this.animationKey === 'personagem-costa') {
+          this.animationKey = 'personagem-idle-costa'
         }
       }
 
       // (idle) de frente por padrão
       if (!this.animationKey) {
-        this.animationKey = 'calvoidlef'
+        this.animationKey = 'personagem-idle-frente'
       }
 
       this.personagem.anims.play(this.animationKey, true)
