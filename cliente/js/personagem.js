@@ -6,59 +6,31 @@ export default class personagem extends Phaser.Scene {
   }
 
   preload () {
+    // Joystick
+
     this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
+
+    // Fundo
+
     this.load.spritesheet('fundo', '../assets/fundocinza.png', {
       frameWidth: 800,
       frameHeight: 450
     })
 
+    // EndGame
+
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
 
     /* Sabrina Torres */
 
-    this.load.spritesheet('Sabrina', '../assets/Menina/SabrinaTorres')
-
-    /* Personagem Andando (Masculino) */
-
-    this.load.spritesheet('CalvoFrente', '../assets/Calvo/Calvo_Frente.png', {
-      frameWidth: 64,
-      frameHeight: 64
-
-    })
-
-    this.load.spritesheet('CalvoDireita', '../assets/Calvo/Calvo_Direita.png', {
+    this.load.spritesheet('Sabrina', '../assets/Menina/SabrinaTorres.png', {
       frameWidth: 64,
       frameHeight: 64
     })
 
-    this.load.spritesheet('CalvoCosta', '../assets/Calvo/Calvo_Costa.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
+    /* Rodrigo Silva */
 
-    this.load.spritesheet('CalvoEsquerdo', '../assets/Calvo/Calvo_Esquerdo.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    /* Personagem Idle (MASCULINO) */
-
-    this.load.spritesheet('CalvoIdleF', '../assets/Calvo/CalvoIdleF.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleD', '../assets/Calvo/CalvoIdleD.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleC', '../assets/Calvo/CalvoIdleC.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleE', '../assets/Calvo/CalvoIdleE.png', {
+    this.load.spritesheet('Rodrigo', '../assets/Calvo/RodrigoSilva.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -91,49 +63,6 @@ export default class personagem extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64
     })
-
-    this.load.spritesheet('MeninaFrente', '../assets/Menina/Menina_Frente.png', {
-      frameWidth: 64,
-      frameHeight: 64
-
-    })
-
-    this.load.spritesheet('MeninaDireita', '../assets/Menina/Menina_Direita.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('MeninaCosta', '../assets/Menina/Menina_Costa.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('MeninaEsquerda', '../assets/Menina/Menina_Esquerda.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    /* Personagem Idle (FEMININO) */
-
-    this.load.spritesheet('MeninaIdleF', '../assets/Menina/MeninaIdleF.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('MeninaIdleD', '../assets/Menina/MeninaIdleD.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('MeninaIdleC', '../assets/Menina/MeninaIdleC.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('MeninaIdleE', '../assets/Menina/MeninaIdleE.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
   }
 
   create () {
@@ -162,13 +91,13 @@ export default class personagem extends Phaser.Scene {
     /* Colisão */
 
     if (this.game.jogadores.primeiro === this.game.socket.id) {
-      this.local = 'CalvoFrente'
-      this.remoto = 'SabrinaTorres'
+      this.local = 'Rodrigo'
+      this.remoto = 'Sabrina'
       this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
       this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
     } else if (this.game.jogadores.segundo === this.game.socket.id) {
-      this.local = 'SabrinaTorres'
-      this.remoto = 'CalvoFrente'
+      this.local = 'Sabrina'
+      this.remoto = 'Rodrigo'
       this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
       this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
     }
