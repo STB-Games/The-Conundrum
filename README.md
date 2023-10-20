@@ -1,6 +1,7 @@
 
 <div align="justify">
 <div align="center">
+
 ![TheConundrum](https://github.com/STB-Games/The-Conundrum/assets/141068586/423023a5-6b4f-4a94-aff6-264e6e0e167c)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new/#github.com/STB-Games/The-Conundrum)
