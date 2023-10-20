@@ -1,9 +1,10 @@
 
 <div align="justify">
-<h1 align="center">![TheConundrum](https://github.com/STB-Games/The-Conundrum/assets/141068586/423023a5-6b4f-4a94-aff6-264e6e0e167c)</h1>
+<div align="center">
+![TheConundrum](https://github.com/STB-Games/The-Conundrum/assets/141068586/423023a5-6b4f-4a94-aff6-264e6e0e167c)
 
-<h1 align="center">[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new/#github.com/STB-Games/The-Conundrum)</h1>
-
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new/#github.com/STB-Games/The-Conundrum)
+</div>
 
 <h1 align="center"> The Conundrum</h1>
 
@@ -19,7 +20,7 @@
 
 <h3 align="center">Personagens:</h3>
 
-<p align="center">Rodrigo Silva -</p>
+  ***Rodrigo Silva -***
   
 &nbsp; &nbsp; Rodrigo nasceu e cresceu nas vastas terras do Rio Grande do Sul. Ele sempre teve uma queda por desvendar mistérios e compreender o contexto histórico por trás de cada caso. Desde jovem, mostrou grande astúcia e habilidade analítica, o que o levou a estudar Criminologia e se formar como detetive.
 
