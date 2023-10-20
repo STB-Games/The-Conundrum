@@ -98,8 +98,8 @@ export default class personagem extends Phaser.Scene {
     } else if (this.game.jogadores.segundo === this.game.socket.id) {
       this.local = 'Sabrina'
       this.remoto = 'Rodrigo'
-      this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
-      this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
+      this.personagemRemoto = this.add.sprite(650, 50, this.remoto, 1)
+      this.personagem = this.physics.add.sprite(350, 50, this.local, 1)
     }
     // Defina as dimensões da hitbox
     const hitboxWidth = 24
@@ -131,20 +131,10 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'personagem-costa',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
       key: 'personagem-esquerda',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
+        start: 5,
+        end: 10
       }),
       frameRate: 4,
       repeat: -1
@@ -153,8 +143,18 @@ export default class personagem extends Phaser.Scene {
     this.anims.create({
       key: 'personagem-direita',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
+        start: 11,
+        end: 16
+      }),
+      frameRate: 4,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'personagem-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 17,
+        end: 22
       }),
       frameRate: 4,
       repeat: -1
@@ -165,120 +165,40 @@ export default class personagem extends Phaser.Scene {
     this.anims.create({
       key: 'personagem-idle-frente',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
+        start: 23,
+        end: 23
       }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-idle-costa',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
-      }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
       key: 'personagem-idle-esquerda',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
+        start: 24,
+        end: 24
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
       key: 'personagem-idle-direita',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
+        start: 25,
+        end: 25
       }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-frente',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 4
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-costa',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-esquerda',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-direita',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 5
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-idle-frente',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-idle-direita',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
-      }),
-      frameRate: 4,
-      repeat: -1
-    })
-
-    this.anims.create({
-      key: 'personagem-idle-esquerda',
-      frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
-      }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
       key: 'personagem-idle-costa',
       frames: this.anims.generateFrameNumbers(this.local, {
-        start: 0,
-        end: 0
+        start: 26,
+        end: 26
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
