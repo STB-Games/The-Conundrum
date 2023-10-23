@@ -167,6 +167,13 @@ export default class sala extends Phaser.Scene {
       } else if (jogadores.primeiro) {
         this.imagem.destroy()
         this.mensagem.setText('')
+        this.mensagem.setText('Aguardando segundo jogador...')
+        navigator.mediaDevices
+          .getUserMedia({ video: false, audio: true })
+          .then((stream) => {
+            this.game.midias = stream
+          })
+          .catch((error) => console.error(error))
         this.imagem = this.add.image(400, 225, 'fundobordav2V')
         this.mensagem = this.add.text(165, 50, 'Esperando proximo jogador para iniciar o jogo...', {
           fontFamily: 'Felipa',
