@@ -75,5 +75,7 @@
 * Enigma do Medo
 * Folclore
 * Uma Noite no Museu (Filme)
+* We Were Here
+* We Were Here Too
 
 </div>
