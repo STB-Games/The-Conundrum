@@ -1,7 +1,6 @@
 tasks:
   - name: servidor
     init: npm install --prefix servidor
-    command: npm start --prefix servidor
   - name: eslint
     init: npm install eslint --save-dev
 

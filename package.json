@@ -60,7 +60,7 @@
     "vary": "^1.1.2"
   },
   "devDependencies": {
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^16.0.2",
@@ -73,6 +73,6 @@
     "install": "npm install --prefix servidor",
     "start": "npm start --prefix servidor"
   },
-  "author": "Caio Eduardo e Isabela Abreu <caio.ea@aluno.ifsc.edu.br>",
+  "author": "Caio Eduardo de Aguiar e Isabela Abreu da Costa <caio.ea@aluno.ifsc.edu.br>",
   "license": "ISC"
 }

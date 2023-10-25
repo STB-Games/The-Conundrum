@@ -6,55 +6,31 @@ export default class personagem extends Phaser.Scene {
   }
 
   preload () {
+    // Joystick
+
     this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
+
+    // Fundo
+
     this.load.spritesheet('fundo', '../assets/fundocinza.png', {
       frameWidth: 800,
       frameHeight: 450
     })
 
+    // EndGame
+
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
 
-    /* Personagem Andando (Masculino) */
+    /* Sabrina Torres */
 
-    this.load.spritesheet('CalvoFrente', '../assets/Calvo/Calvo_Frente.png', {
-      frameWidth: 64,
-      frameHeight: 64
-
-    })
-
-    this.load.spritesheet('CalvoDireita', '../assets/Calvo/Calvo_Direita.png', {
+    this.load.spritesheet('Sabrina', '../assets/Menina/SabrinaTorres.png', {
       frameWidth: 64,
       frameHeight: 64
     })
 
-    this.load.spritesheet('CalvoCosta', '../assets/Calvo/Calvo_Costa.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
+    /* Rodrigo Silva */
 
-    this.load.spritesheet('CalvoEsquerdo', '../assets/Calvo/Calvo_Esquerdo.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    /* Personagem Idle (MASCULINO) */
-
-    this.load.spritesheet('CalvoIdleF', '../assets/Calvo/CalvoIdleF.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleD', '../assets/Calvo/CalvoIdleD.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleC', '../assets/Calvo/CalvoIdleC.png', {
-      frameWidth: 64,
-      frameHeight: 64
-    })
-
-    this.load.spritesheet('CalvoIdleE', '../assets/Calvo/CalvoIdleE.png', {
+    this.load.spritesheet('Rodrigo', '../assets/Calvo/RodrigoSilva.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -114,8 +90,17 @@ export default class personagem extends Phaser.Scene {
 
     /* Colisão */
 
-    this.personagem = this.physics.add.sprite(400, 225, 'CalvoFrente')
-
+    if (this.game.jogadores.primeiro === this.game.socket.id) {
+      this.local = 'Rodrigo'
+      this.remoto = 'Sabrina'
+      this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
+      this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
+    } else if (this.game.jogadores.segundo === this.game.socket.id) {
+      this.local = 'Sabrina'
+      this.remoto = 'Rodrigo'
+      this.personagemRemoto = this.add.sprite(650, 50, this.remoto, 1)
+      this.personagem = this.physics.add.sprite(350, 50, this.local, 1)
+    }
     // Defina as dimensões da hitbox
     const hitboxWidth = 24
     const hitboxHeight = 60
@@ -136,8 +121,8 @@ export default class personagem extends Phaser.Scene {
     /* Animação dos Personagens */
 
     this.anims.create({
-      key: 'caiof',
-      frames: this.anims.generateFrameNumbers('CalvoFrente', {
+      key: 'personagem-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 4
       }),
@@ -146,72 +131,74 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'caioc',
-      frames: this.anims.generateFrameNumbers('CalvoCosta', {
-        start: 0,
-        end: 5
+      key: 'personagem-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 5,
+        end: 10
       }),
       frameRate: 4,
       repeat: -1
     })
 
     this.anims.create({
-      key: 'caioe',
-      frames: this.anims.generateFrameNumbers('CalvoEsquerdo', {
-        start: 0,
-        end: 5
+      key: 'personagem-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 11,
+        end: 16
       }),
       frameRate: 4,
       repeat: -1
     })
 
     this.anims.create({
-      key: 'caiod',
-      frames: this.anims.generateFrameNumbers('CalvoDireita', {
-        start: 0,
-        end: 5
+      key: 'personagem-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 17,
+        end: 22
       }),
       frameRate: 4,
       repeat: -1
     })
 
+    /* Animação dos Personagens IDLE */
+
     this.anims.create({
-      key: 'calvoidlef',
-      frames: this.anims.generateFrameNumbers('CalvoIdleF', {
-        start: 0,
-        end: 0
+      key: 'personagem-idle-frente',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 23,
+        end: 23
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
-      key: 'calvoidled',
-      frames: this.anims.generateFrameNumbers('CalvoIdleD', {
-        start: 0,
-        end: 0
+      key: 'personagem-idle-esquerda',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 24,
+        end: 24
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
-      key: 'calvoidlee',
-      frames: this.anims.generateFrameNumbers('CalvoIdleE', {
-        start: 0,
-        end: 0
+      key: 'personagem-idle-direita',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 25,
+        end: 25
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
     this.anims.create({
-      key: 'calvoidlec',
-      frames: this.anims.generateFrameNumbers('CalvoIdleC', {
-        start: 0,
-        end: 0
+      key: 'personagem-idle-costa',
+      frames: this.anims.generateFrameNumbers(this.local, {
+        start: 26,
+        end: 26
       }),
-      frameRate: 4,
+      frameRate: 0,
       repeat: -1
     })
 
@@ -227,6 +214,12 @@ export default class personagem extends Phaser.Scene {
     }).on('pointerup', () => {
       this.personagem.setVelocity(0, 0) // parar o personagem quando o joystick é solto
     })
+
+    this.game.socket.on('estado-notificar', ({ cena, x, y, frame }) => {
+      this.personagemRemoto.x = x
+      this.personagemRemoto.y = y
+      this.personagemRemoto.setFrame(frame)
+    })
   }
 
   update () {
@@ -240,37 +233,37 @@ export default class personagem extends Phaser.Scene {
 
       if (cursorKeys.up.isDown) {
         velocityY = -speed
-        this.animationKey = 'caioc'
+        this.animationKey = 'personagem-costa'
       } else if (cursorKeys.down.isDown) {
         velocityY = speed
-        this.animationKey = 'caiof'
+        this.animationKey = 'personagem-frente'
       }
 
       if (cursorKeys.left.isDown) {
         velocityX = -speed
-        this.animationKey = 'caioe'
+        this.animationKey = 'personagem-esquerda'
       } else if (cursorKeys.right.isDown) {
         velocityX = speed
-        this.animationKey = 'caiod'
+        this.animationKey = 'personagem-direita'
       }
 
       // Verifique se o personagem está parado
       if (velocityX === 0 && velocityY === 0) {
         // personagem parado, determine a animação de "idle" com base na direção em que ele andava
-        if (this.animationKey === 'caiod') {
-          this.animationKey = 'calvoidled'
-        } else if (this.animationKey === 'caioe') {
-          this.animationKey = 'calvoidlee'
-        } else if (this.animationKey === 'caiof') {
-          this.animationKey = 'calvoidlef'
-        } else if (this.animationKey === 'caioc') {
-          this.animationKey = 'calvoidlec'
+        if (this.animationKey === 'personagem-direita') {
+          this.animationKey = 'personagem-idle-direita'
+        } else if (this.animationKey === 'personagem-esquerda') {
+          this.animationKey = 'personagem-idle-esquerda'
+        } else if (this.animationKey === 'personagem-frente') {
+          this.animationKey = 'personagem-idle-frente'
+        } else if (this.animationKey === 'personagem-costa') {
+          this.animationKey = 'personagem-idle-costa'
         }
       }
 
       // (idle) de frente por padrão
       if (!this.animationKey) {
-        this.animationKey = 'calvoidlef'
+        this.animationKey = 'personagem-idle-frente'
       }
 
       this.personagem.anims.play(this.animationKey, true)
@@ -282,6 +275,17 @@ export default class personagem extends Phaser.Scene {
       }
 
       this.personagem.setVelocity(velocityX, velocityY)
+    }
+
+    try {
+      this.game.socket.emit('estado-publicar', this.game.sala, {
+        cena: 'personagem',
+        x: this.personagem.x,
+        y: this.personagem.y,
+        frame: this.personagem.frame.name
+      })
+    } catch (error) {
+      console.error(error)
     }
   }
 
