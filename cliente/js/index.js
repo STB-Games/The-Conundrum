@@ -38,7 +38,6 @@ class Game extends Phaser.Game {
     this.iceServers = { iceServers }
     this.audio = document.querySelector('audio')
 
-
     this.socket = io() /* global io */
     this.socket.on('connect', () => {
       console.log('Connected to server!')

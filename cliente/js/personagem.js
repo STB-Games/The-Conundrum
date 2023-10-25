@@ -3,6 +3,7 @@ export default class personagem extends Phaser.Scene {
     super('personagem')
 
     this.animationKey = undefined
+    this.monsterTouches = 0 // Variável para rastrear quantas vezes o "monstro" foi tocado
   }
 
   preload () {
@@ -15,6 +16,13 @@ export default class personagem extends Phaser.Scene {
     this.load.spritesheet('fundo', '../assets/fundocinza.png', {
       frameWidth: 800,
       frameHeight: 450
+    })
+
+    // Medo
+
+    this.load.spritesheet('barraMedo', '../assets/barraMedo.png', {
+      frameWidth: 190,
+      frameHeight: 60
     })
 
     // EndGame
@@ -68,6 +76,10 @@ export default class personagem extends Phaser.Scene {
   create () {
     this.abertura = this.add.sprite(400, 225, 'fundo')
 
+    // Medo no canto superior esquerdo
+
+    this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
+
     /* Full Screen */
 
     this.tela_cheia = this.add
@@ -87,6 +99,10 @@ export default class personagem extends Phaser.Scene {
     /* Animação */
 
     /* Personagem */
+
+    // Variável para rastrear o frame da barra de medo
+    this.medoFrame = 0
+    this.startMedoTimer()
 
     /* Colisão */
 
@@ -113,10 +129,10 @@ export default class personagem extends Phaser.Scene {
     this.personagem.setCollideWorldBounds(true)
 
     this.botaoinvisivelH = this.physics.add.image(750, 225, 'monster')
+    this.botaoinvisivelH.setCollideWorldBounds(true)
+    this.botaoinvisivelH.body.setImmovable(true)
 
-    this.physics.add.collider(this.personagem, this.botaoinvisivelH, () => {
-      this.gameover()
-    })
+    this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
 
     /* Animação dos Personagens */
 
@@ -202,7 +218,20 @@ export default class personagem extends Phaser.Scene {
       repeat: -1
     })
 
+    // Barra de Medo
+
+    this.anims.create({
+      key: 'medo',
+      frames: this.anims.generateFrameNumbers('barraMedo', {
+        start: 0,
+        end: 3
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
     // Configuração do joystick para 8 direções
+
     this.joystick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
       x: 75,
       y: 375,
@@ -286,6 +315,55 @@ export default class personagem extends Phaser.Scene {
       })
     } catch (error) {
       console.error(error)
+    }
+  }
+
+  startMedoTimer () {
+    this.medoTimer = this.time.addEvent({
+      delay: 10000, // 10000 milissegundos = 10 segundos
+      callback: this.decreaseMedo,
+      callbackScope: this,
+      repeat: 2 // Repetir 2 vezes para diminuir para 2 e 1
+    })
+  }
+
+  decreaseMedo () {
+    if (this.medoFrame > 0) {
+      this.medoFrame -= 1
+      this.spritesheet.setFrame(this.medoFrame)
+
+      if (this.medoFrame === 0) {
+        // Se o nível de medo chegar a 0, encerre o temporizador
+        this.medoTimer.remove(false)
+      }
+    }
+  }
+
+  onCollideMonster (personagem, botaoinvisivelH) {
+    // se ja foi tocado 3 vezes, na proxima vez que tocar, chamar o gameover
+    if (this.monsterTouches === 3) {
+      this.medoFrame = 4
+      this.spritesheet.setFrame(this.medoFrame)
+      this.gameover()
+    } else {
+      // caso ele nao tenha sido tocado 3 vezes ainda,
+      this.monsterTouches += 1
+
+      // aumentar o frame do medo
+      this.medoFrame += 1
+
+      // frame att
+      this.spritesheet.setFrame(this.medoFrame)
+
+      // Empurre o personagem para longe do "monstro" (CHATGPT)
+      const angle = Phaser.Math.Angle.Between(botaoinvisivelH.x, botaoinvisivelH.y, personagem.x, personagem.y)
+      const distance = 100 // distancia que é empurrado
+      const velocityX = Math.cos(angle) * distance
+      const velocityY = Math.sin(angle) * distance
+
+      // Atualize a posição do personagem com base no ângulo e na distância (CHATGPT)
+      personagem.x += velocityX
+      personagem.y += velocityY
     }
   }
 
