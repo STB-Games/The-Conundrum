@@ -13,7 +13,7 @@ export default class personagem extends Phaser.Scene {
 
     // Fundo
 
-    this.load.spritesheet('fundo', '../assets/fundocinza.png', {
+    this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
       frameWidth: 800,
       frameHeight: 450
     })
