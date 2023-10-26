@@ -330,6 +330,7 @@ export default class personagem extends Phaser.Scene {
   decreaseMedo () {
     if (this.medoFrame > 0) {
       this.medoFrame -= 1
+      this.monsterTouches -= 1
       this.spritesheet.setFrame(this.medoFrame)
 
       if (this.medoFrame === 0) {
