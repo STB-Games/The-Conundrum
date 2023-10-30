@@ -1,6 +1,6 @@
-export default class gameover extends Phaser.Scene {
+export default class gameOver extends Phaser.Scene {
   constructor () {
-    super('gameover')
+    super('gameOver')
   }
 
   preload () {
@@ -23,7 +23,7 @@ export default class gameover extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.imagem.destroy()
-        this.game.scene.stop('gameover')
+        this.game.scene.stop('gameOver')
         this.game.scene.start('abertura')
       })
   }
