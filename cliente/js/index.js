@@ -11,6 +11,7 @@ import cutsceneDELE from './cutsceneDELE.js'
 import cutsceneDELA from './cutsceneDELA.js'
 import loading from './loading.js'
 import characters from './characters.js'
+import livro from './livro.js'
 
 class Game extends Phaser.Game {
   constructor () {
@@ -60,8 +61,9 @@ class Game extends Phaser.Game {
     this.scene.add('cutsceneDELA', cutsceneDELA)
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
+    this.scene.add('livro', livro)
 
-    this.scene.start('abertura')
+    this.scene.start('livro')
   }
 }
 
