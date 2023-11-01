@@ -24,6 +24,13 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 60
     })
 
+    // Portão
+
+    this.load.spritesheet('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -78,6 +85,12 @@ export default class personagem extends Phaser.Scene {
     // Medo no canto superior esquerdo
 
     this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
+
+    // PORTA
+
+    this.portaVerdeSobe = this.physics.add.image(176, 158, 'portaVerdeSobe')
+    this.portaVerdeSobe.body.setAllowGravity(true)
+    this.portaVerdeSobe.setImmovable(true)
 
     /* Full Screen */
 
@@ -296,6 +309,8 @@ export default class personagem extends Phaser.Scene {
       this.personagemRemoto.y = y
       this.personagemRemoto.setFrame(frame)
     })
+
+    this.physics.add.collider(this.personagem, this.portaVerdeSobe)
   }
 
   update () {
