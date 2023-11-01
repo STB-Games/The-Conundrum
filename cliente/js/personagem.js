@@ -10,6 +10,8 @@ export default class personagem extends Phaser.Scene {
 
     this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
 
+    this.load.image('transparente', 'assets/fase2/transparente.png')
+
     // Fundo
 
     this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
@@ -99,9 +101,18 @@ export default class personagem extends Phaser.Scene {
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
 
+    this.transparente = this.physics.add.image(250, 158, 'transparente')
+    this.transparente.body.setAllowGravity(false)
+    this.transparente.setImmovable(true)
+    this.transparente.setAlpha(0) // Define a transparência para 0 para torná-lo invisível
+
     // ALAVANCA
 
-    this.alavancaVerde = this.add.sprite(400, 70, 'alavancaVerde').setFrame(1)
+    this.alavancaVerde = this.add
+      .sprite(400, 220, 'alavancaVerde', 1)
+    this.alavancaVerdeCollider = this.add.rectangle(400, 260, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVerde
+    this.physics.world.enable(this.alavancaVerdeCollider) // Habilita a física para o retângulo
+    this.alavancaVerdeCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     /* Full Screen */
 
@@ -206,6 +217,23 @@ export default class personagem extends Phaser.Scene {
     this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
 
     /* Animação dos Personagens */
+
+    this.BotãoInt = this.add
+      .sprite(750, 30, 'cima', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        this.portaVerdeSobe.setVelocityX(-30)
+        this.alavancaVerde.setAlpha(0)
+      })
+      .on('pointerup', () => {
+        this.portaVerdeSobe.setVelocityX(30)
+        this.alavancaVerde.setAlpha(1)
+      })
+
+      .setScrollFactor(0, 0)
+
+    // Inicialmente, oculte o botão
+    this.BotãoInt.setVisible(false)
 
     this.anims.create({
       key: 'personagem-frente',
@@ -322,6 +350,7 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
+    this.physics.add.collider(this.portaVerdeSobe, this.transparente)
   }
 
   update () {
@@ -389,6 +418,26 @@ export default class personagem extends Phaser.Scene {
     } catch (error) {
       console.error(error)
     }
+
+    // Verifica a sobreposição entre o personagem e o alavancaVerdeCollider
+    const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaVerdeCollider.getBounds()
+    )
+
+    if (isOverlapping) {
+      this.BotãoInt.setVisible(true)
+    } else {
+      this.BotãoInt.setVisible(false)
+    }
+
+    this.physics.add.overlap(this.portaVerdeSobe, this.transparente, this.onOverlapTransparente, null, this)
+  }
+
+  onOverlapTransparente (portaVerdeSobe, transparente) {
+    // Ações a serem tomadas quando o personagem se sobrepõe com o "transparente"
+    // Por exemplo, pare a porta aqui
+    this.portaVerdeSobe.setVelocityX(0)
   }
 
   startMedoTimer () {
