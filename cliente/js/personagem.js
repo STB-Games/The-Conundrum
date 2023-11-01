@@ -26,9 +26,16 @@ export default class personagem extends Phaser.Scene {
 
     // Portão
 
-    this.load.spritesheet('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
+    this.load.image('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
       frameWidth: 96,
       frameHeight: 96
+    })
+
+    // Alavanca
+
+    this.load.spritesheet('alavancaVerde', '../assets/alavancas/alavancaVerde.png', {
+      frameWidth: 64,
+      frameHeight: 32
     })
 
     // EndGame
@@ -91,6 +98,10 @@ export default class personagem extends Phaser.Scene {
     this.portaVerdeSobe = this.physics.add.image(176, 158, 'portaVerdeSobe')
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
+
+    // ALAVANCA
+
+    this.alavancaVerde = this.add.sprite(400, 70, 'alavancaVerde').setFrame(1)
 
     /* Full Screen */
 
