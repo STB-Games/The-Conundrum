@@ -97,14 +97,13 @@ export default class personagem extends Phaser.Scene {
 
     // PORTA
 
-    this.portaVerdeSobe = this.physics.add.image(176, 158, 'portaVerdeSobe')
+    this.portaVerdeSobe = this.physics.add.image(500, 200, 'portaVerdeSobe')
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
 
-    this.transparente = this.physics.add.image(250, 158, 'transparente')
-    this.transparente.body.setAllowGravity(false)
-    this.transparente.setImmovable(true)
-    this.transparente.setAlpha(0) // Define a transparência para 0 para torná-lo invisível
+    this.portaVerdeSobe1 = this.physics.add.image(300, 100, 'portaVerdeSobe')
+    this.portaVerdeSobe1.body.setAllowGravity(true)
+    this.portaVerdeSobe1.setImmovable(true)
 
     // ALAVANCA
 
@@ -218,16 +217,27 @@ export default class personagem extends Phaser.Scene {
 
     /* Animação dos Personagens */
 
+    let alavancaState = 0
+
     this.BotãoInt = this.add
-      .sprite(750, 30, 'cima', 0)
+      .sprite(750, 400, 'cima', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.portaVerdeSobe.setVelocityX(-30)
-        this.alavancaVerde.setAlpha(0)
-      })
-      .on('pointerup', () => {
-        this.portaVerdeSobe.setVelocityX(30)
-        this.alavancaVerde.setAlpha(1)
+        if (alavancaState === 0) {
+          this.alavancaVerde.setFrame(1)
+          alavancaState = 1
+          this.portaVerdeSobe.x = 500
+          this.portaVerdeSobe.y = 200
+          this.portaVerdeSobe1.x = 300
+          this.portaVerdeSobe1.y = 100
+        } else {
+          this.alavancaVerde.setFrame(0)
+          alavancaState = 0
+          this.portaVerdeSobe.x = 700
+          this.portaVerdeSobe.y = 200
+          this.portaVerdeSobe1.x = 500
+          this.portaVerdeSobe1.y = 100
+        }
       })
 
       .setScrollFactor(0, 0)
@@ -350,7 +360,7 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
-    this.physics.add.collider(this.portaVerdeSobe, this.transparente)
+    this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
   }
 
   update () {
@@ -430,14 +440,6 @@ export default class personagem extends Phaser.Scene {
     } else {
       this.BotãoInt.setVisible(false)
     }
-
-    this.physics.add.overlap(this.portaVerdeSobe, this.transparente, this.onOverlapTransparente, null, this)
-  }
-
-  onOverlapTransparente (portaVerdeSobe, transparente) {
-    // Ações a serem tomadas quando o personagem se sobrepõe com o "transparente"
-    // Por exemplo, pare a porta aqui
-    this.portaVerdeSobe.setVelocityX(0)
   }
 
   startMedoTimer () {
