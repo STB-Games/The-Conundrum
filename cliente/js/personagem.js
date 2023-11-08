@@ -72,7 +72,7 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 64
     })
 
-    this.load.spritesheet('cima', '../assets/botoes/cima.png', {
+    this.load.spritesheet('interacao', '../assets/botoes/interacao.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -220,7 +220,7 @@ export default class personagem extends Phaser.Scene {
     let alavancaState = 0
 
     this.BotãoInt = this.add
-      .sprite(750, 400, 'cima', 0)
+      .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState === 0) {
