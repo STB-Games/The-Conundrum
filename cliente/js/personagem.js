@@ -3,7 +3,6 @@ export default class personagem extends Phaser.Scene {
     super('personagem')
 
     this.animationKey = undefined
-    this.monsterTouches = 0 // Variável para rastrear quantas vezes o "monstro" foi tocado
   }
 
   preload () {
@@ -102,7 +101,6 @@ export default class personagem extends Phaser.Scene {
 
     // Variável para rastrear o frame da barra de medo
     this.medoFrame = 0
-    this.startMedoTimer()
 
     /* Colisão */
 
@@ -368,8 +366,11 @@ export default class personagem extends Phaser.Scene {
   }
 
   startMedoTimer () {
+    if (this.medoTimer != null) {
+      this.medoTimer.remove(false)
+    }
     this.medoTimer = this.time.addEvent({
-      delay: 2000, // 10000 milissegundos = 10 segundos
+      delay: 5000, // 10000 milissegundos = 10 segundos
       callback: this.decreaseMedo,
       callbackScope: this,
       repeat: -1
@@ -379,33 +380,20 @@ export default class personagem extends Phaser.Scene {
   decreaseMedo () {
     if (this.medoFrame > 0) {
       this.medoFrame -= 1
-      this.monsterTouches -= 1
       this.spritesheet.setFrame(this.medoFrame)
-
       if (this.medoFrame === 0) {
-        // se o nível de medo chegar a 0,temporizador encerra
         this.medoTimer.remove(false)
       }
     }
   }
 
   onCollideMonster (personagem, botaoinvisivelH) {
-    // se ja foi tocado 3 vezes, na proxima vez que tocar, chamar o gameover
-    if (this.monsterTouches === 3) {
-      this.medoFrame = 4
-      this.spritesheet.setFrame(this.medoFrame)
+    if (this.medoFrame === 3) {
       this.gameOver()
     } else {
-      // caso ele nao tenha sido tocado 3 vezes ainda,
-      this.monsterTouches += 1
-
-      // aumentar o frame do medo
+      this.startMedoTimer()
       this.medoFrame += 1
-
-      // frame att
       this.spritesheet.setFrame(this.medoFrame)
-
-      // Empurre o personagem para longe do "monstro" (CHATGPT)
       const angle = Phaser.Math.Angle.Between(botaoinvisivelH.x, botaoinvisivelH.y, personagem.x, personagem.y)
       const distance = 100 // distancia que é empurrado
       const velocityX = Math.cos(angle) * distance
