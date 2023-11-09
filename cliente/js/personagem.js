@@ -33,6 +33,13 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 96
     })
 
+    // Alavanca
+
+    this.load.spritesheet('alavancaVerde', '../assets/alavancas/alavancaVerde.png', {
+      frameWidth: 64,
+      frameHeight: 32
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
