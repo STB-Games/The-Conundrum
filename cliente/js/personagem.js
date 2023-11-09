@@ -10,6 +10,8 @@ export default class personagem extends Phaser.Scene {
 
     this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
 
+    this.load.image('transparente', 'assets/fase2/transparente.png')
+
     // Fundo
 
     this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
@@ -56,7 +58,7 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 64
     })
 
-    this.load.spritesheet('cima', '../assets/botoes/cima.png', {
+    this.load.spritesheet('interacao', '../assets/botoes/interacao.png', {
       frameWidth: 64,
       frameHeight: 64
     })
@@ -78,6 +80,24 @@ export default class personagem extends Phaser.Scene {
     // Medo no canto superior esquerdo
 
     this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
+
+    // PORTA
+
+    this.portaVerdeSobe = this.physics.add.image(500, 200, 'portaVerdeSobe')
+    this.portaVerdeSobe.body.setAllowGravity(true)
+    this.portaVerdeSobe.setImmovable(true)
+
+    this.portaVerdeSobe1 = this.physics.add.image(300, 100, 'portaVerdeSobe')
+    this.portaVerdeSobe1.body.setAllowGravity(true)
+    this.portaVerdeSobe1.setImmovable(true)
+
+    // ALAVANCA
+
+    this.alavancaVerde = this.add
+      .sprite(400, 220, 'alavancaVerde', 1)
+    this.alavancaVerdeCollider = this.add.rectangle(400, 260, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVerde
+    this.physics.world.enable(this.alavancaVerdeCollider) // Habilita a física para o retângulo
+    this.alavancaVerdeCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     /* Full Screen */
 
@@ -182,6 +202,34 @@ export default class personagem extends Phaser.Scene {
     this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
 
     /* Animação dos Personagens */
+
+    let alavancaState = 0
+
+    this.BotãoInt = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (alavancaState === 0) {
+          this.alavancaVerde.setFrame(1)
+          alavancaState = 1
+          this.portaVerdeSobe.x = 500
+          this.portaVerdeSobe.y = 200
+          this.portaVerdeSobe1.x = 300
+          this.portaVerdeSobe1.y = 100
+        } else {
+          this.alavancaVerde.setFrame(0)
+          alavancaState = 0
+          this.portaVerdeSobe.x = 700
+          this.portaVerdeSobe.y = 200
+          this.portaVerdeSobe1.x = 500
+          this.portaVerdeSobe1.y = 100
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    // Inicialmente, oculte o botão
+    this.BotãoInt.setVisible(false)
 
     this.anims.create({
       key: 'personagem-frente',
@@ -296,6 +344,10 @@ export default class personagem extends Phaser.Scene {
       this.personagemRemoto.y = y
       this.personagemRemoto.setFrame(frame)
     })
+    
+    this.physics.add.collider(this.personagem, this.portaVerdeSobe)
+    this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
+    
   }
 
   update () {
@@ -362,6 +414,18 @@ export default class personagem extends Phaser.Scene {
       })
     } catch (error) {
       console.error(error)
+    }
+
+    // Verifica a sobreposição entre o personagem e o alavancaVerdeCollider
+    const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaVerdeCollider.getBounds()
+    )
+
+    if (isOverlapping) {
+      this.BotãoInt.setVisible(true)
+    } else {
+      this.BotãoInt.setVisible(false)
     }
   }
 
