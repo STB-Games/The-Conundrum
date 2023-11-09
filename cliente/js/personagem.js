@@ -26,6 +26,13 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 60
     })
 
+    // Porta
+
+    this.load.spritesheet('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
