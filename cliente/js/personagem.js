@@ -26,20 +26,6 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 60
     })
 
-    // Portão
-
-    this.load.image('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
-      frameWidth: 96,
-      frameHeight: 96
-    })
-
-    // Alavanca
-
-    this.load.spritesheet('alavancaVerde', '../assets/alavancas/alavancaVerde.png', {
-      frameWidth: 64,
-      frameHeight: 32
-    })
-
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -358,9 +344,10 @@ export default class personagem extends Phaser.Scene {
       this.personagemRemoto.y = y
       this.personagemRemoto.setFrame(frame)
     })
-
+    
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
     this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
+    
   }
 
   update () {
