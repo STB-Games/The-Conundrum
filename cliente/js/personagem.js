@@ -11,7 +11,7 @@ export default class personagem extends Phaser.Scene {
 
     /* Tilesets */
     this.load.image('Principal', './assets/mapa/mapaClosev5.png')
-    this.load.image('Principal2', './assets/mapa/PrincipalV2.png')
+    this.load.image('PrincipalV2', './assets/mapa/PrincipalV2.png')
 
     // Joystick
 
@@ -103,67 +103,55 @@ export default class personagem extends Phaser.Scene {
 
     /* Tilesets */
     this.tileset_Principal = this.mapa.addTilesetImage('Principal', 'Principal')
-    this.tileset_Principal2 = this.mapa.addTilesetImage('Principal2', 'Principal2')
+    this.tileset_PrincipalV2 = this.mapa.addTilesetImage('PrincipalV2', 'PrincipalV2')
 
     /* Camadas (layers) */
     this.chao = this.mapa.createLayer(
       'chao',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     this.Cchao = this.mapa.createLayer(
       'Cchao',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     this.CnaCchao = this.mapa.createLayer(
       'CnaCchao',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     this.moveis = this.mapa.createLayer(
       'moveis',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     this.Cmoveis = this.mapa.createLayer(
       'Cmoveis',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     this.Cparede = this.mapa.createLayer(
       'Cparede',
       [
         this.tileset_Principal,
-        this.tileset_Principal2
-      ],
-      0,
-      0
+        this.tileset_PrincipalV2
+      ]
     )
 
     // Medo no canto superior esquerdo
@@ -430,12 +418,12 @@ export default class personagem extends Phaser.Scene {
     })
 
     /* Colisões por camada */
-    this.chao.setCollisionByProperty({ collides: true })
-    this.Cchao.setCollisionByProperty({ collides: true })
-    this.CnaCchao.setCollisionByProperty({ collides: true })
-    this.moveis.setCollisionByProperty({ collides: true })
-    this.Cmoveis.setCollisionByProperty({ collides: true })
-    this.Cparede.setCollisionByProperty({ collides: true })
+    this.chao.setCollisionByProperty({ colisao: true })
+    this.Cchao.setCollisionByProperty({ colisao: true })
+    this.CnaCchao.setCollisionByProperty({ colisao: true })
+    this.moveis.setCollisionByProperty({ colisao: true })
+    this.Cmoveis.setCollisionByProperty({ colisao: true })
+    this.Cparede.setCollisionByProperty({ colisao: true })
 
     /* Colisão entre personagem 1 e mapa (por layer) */
     this.physics.add.collider(this.personagem, this.chao, null, null, this)
