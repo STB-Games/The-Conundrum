@@ -6,11 +6,18 @@ export default class personagem extends Phaser.Scene {
   }
 
   preload () {
+    /* Tilemap */
+    this.load.tilemapTiledJSON('Mansao', './assets/mapa/Mansao.json')
+
+    /* Tilesets */
+    this.load.image('Principal', './assets/mapa/mapaClosev5.png')
+    this.load.image('Principal2', './assets/mapa/PrincipalV2.png')
+
     // Joystick
 
     this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true)
 
-    this.load.image('transparente', 'assets/fase2/transparente.png')
+    this.load.image('transparente', 'assets/transparente.png')
 
     // Fundo
 
@@ -89,11 +96,80 @@ export default class personagem extends Phaser.Scene {
   }
 
   create () {
-    this.abertura = this.add.sprite(400, 225, 'fundo')
+    /* Tilemap */
+    this.mapa = this.make.tilemap({
+      key: 'Mansao'
+    })
+
+    /* Tilesets */
+    this.tileset_Principal = this.mapa.addTilesetImage('Principal', 'Principal')
+    this.tileset_Principal2 = this.mapa.addTilesetImage('Principal2', 'Principal2')
+
+    /* Camadas (layers) */
+    this.chao = this.mapa.createLayer(
+      'chao',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
+
+    this.Cchao = this.mapa.createLayer(
+      'Cchao',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
+
+    this.CnaCchao = this.mapa.createLayer(
+      'CnaCchao',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
+
+    this.moveis = this.mapa.createLayer(
+      'moveis',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
+
+    this.Cmoveis = this.mapa.createLayer(
+      'Cmoveis',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
+
+    this.Cparede = this.mapa.createLayer(
+      'Cparede',
+      [
+        this.tileset_Principal,
+        this.tileset_Principal2
+      ],
+      0,
+      0
+    )
 
     // Medo no canto superior esquerdo
 
     this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
+      .setScrollFactor(0, 0)
 
     // PORTA
 
@@ -353,15 +429,38 @@ export default class personagem extends Phaser.Scene {
       this.personagem.setVelocity(0, 0) // parar o personagem quando o joystick é solto
     })
 
+    /* Colisões por camada */
+    this.chao.setCollisionByProperty({ collides: true })
+    this.Cchao.setCollisionByProperty({ collides: true })
+    this.CnaCchao.setCollisionByProperty({ collides: true })
+    this.moveis.setCollisionByProperty({ collides: true })
+    this.Cmoveis.setCollisionByProperty({ collides: true })
+    this.Cparede.setCollisionByProperty({ collides: true })
+
+    /* Colisão entre personagem 1 e mapa (por layer) */
+    this.physics.add.collider(this.personagem, this.chao, null, null, this)
+    this.physics.add.collider(this.personagem, this.Cchao, null, null, this)
+    this.physics.add.collider(this.personagem, this.CnaCchao, null, null, this)
+    this.physics.add.collider(this.personagem, this.moveis, null, null, this)
+    this.physics.add.collider(this.personagem, this.Cmoveis, null, null, this)
+    this.physics.add.collider(this.personagem, this.Cparede, null, null, this)
+
+    /* Colisão com os limites da cena */
+    this.personagem.setCollideWorldBounds(true)
+
+    /* Cena (1920x1920) maior que a tela (800x450) */
+    this.cameras.main.setBounds(0, 0, 22912, 10240)
+    this.physics.world.setBounds(0, 0, 22912, 10240)
+    this.cameras.main.startFollow(this.personagem)
+
     this.game.socket.on('estado-notificar', ({ cena, x, y, frame }) => {
       this.personagemRemoto.x = x
       this.personagemRemoto.y = y
       this.personagemRemoto.setFrame(frame)
     })
-    
+
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
     this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
-    
   }
 
   update () {
@@ -412,8 +511,8 @@ export default class personagem extends Phaser.Scene {
 
       // normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
       if (velocityX !== 0 && velocityY !== 0) {
-        velocityX *= Math.sqrt(0.5)
-        velocityY *= Math.sqrt(0.5)
+        velocityX *= Math.sqrt(3.5)
+        velocityY *= Math.sqrt(3.5)
       }
 
       this.personagem.setVelocity(velocityX, velocityY)
