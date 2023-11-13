@@ -221,13 +221,13 @@ export default class personagem extends Phaser.Scene {
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = 'Rodrigo'
       this.remoto = 'Sabrina'
-      this.personagem = this.physics.add.sprite(650, 50, this.local, 1)
-      this.personagemRemoto = this.add.sprite(350, 50, this.remoto, 1)
+      this.personagem = this.physics.add.sprite(948, 1088, this.local, 1)
+      this.personagemRemoto = this.add.sprite(844, 1088, this.remoto, 1)
     } else if (this.game.jogadores.segundo === this.game.socket.id) {
       this.local = 'Sabrina'
       this.remoto = 'Rodrigo'
-      this.personagemRemoto = this.add.sprite(650, 50, this.remoto, 1)
-      this.personagem = this.physics.add.sprite(350, 50, this.local, 1)
+      this.personagemRemoto = this.add.sprite(948, 1088, this.remoto, 1)
+      this.personagem = this.physics.add.sprite(844, 1088, this.local, 1)
 
       navigator.mediaDevices.getUserMedia({ video: false, audio: true })
         .then((stream) => {
@@ -324,15 +324,22 @@ export default class personagem extends Phaser.Scene {
 
     this.teleportes = this.physics.add.group()
 
-    // Adicione um teleport invisível em (x, y) com uma chave única para identificação
+    // teleporte, x e y com key
     this.criarTeleporte(1512, 932, 'HalltoC1')
     this.criarTeleporte(2072, 948, 'C1toHall')
     this.criarTeleporte(3336, 936, 'C1toC2')
     this.criarTeleporte(3832, 948, 'C2toC1')
-    this.criarTeleporte(4078, 860, 'C2toCobra')
-    this.criarTeleporte(5416, 936, 'C2toC3')
 
-    // Inicialmente, oculte o botão
+    this.criarTeleporte(4078, 820, 'C2toCobra')
+    this.criarTeleporte(1453, 2471, 'CobratoC2')
+
+    this.criarTeleporte(4940, 936, 'C2toC3')
+    this.criarTeleporte(2424, 2604, 'C3toC2')
+
+    this.criarTeleporte(3278, 2484, 'C3tolab')
+    this.criarTeleporte(4305, 5416, 'labtoC3')
+
+    // botão oculto
     this.BotãoInt.setVisible(false)
 
     this.anims.create({
@@ -482,7 +489,7 @@ export default class personagem extends Phaser.Scene {
 
     if (cursorKeys) {
       // defina a velocidade do personagem com base nas teclas pressionadas
-      const speed = 450 // velocidade do personagem
+      const speed = 150 // velocidade do personagem
       let velocityX = 0
       let velocityY = 0
 
@@ -525,8 +532,8 @@ export default class personagem extends Phaser.Scene {
 
       // normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
       if (velocityX !== 0 && velocityY !== 0) {
-        velocityX *= Math.sqrt(3.5)
-        velocityY *= Math.sqrt(3.5)
+        velocityX *= Math.sqrt(1.5)
+        velocityY *= Math.sqrt(1.5)
       }
 
       this.personagem.setVelocity(velocityX, velocityY)
@@ -583,11 +590,26 @@ export default class personagem extends Phaser.Scene {
       case 'C2toC1':
         this.teleportarParaDestino(3291, 936)
         break
+
       case 'C2toCobra':
-        this.teleportarParaDestino(1456, 2432)
+        this.teleportarParaDestino(1456, 2402)
         break
+      case 'CobratoC2':
+        this.teleportarParaDestino(4078, 870)
+        break
+
       case 'C2toC3':
-        this.teleportarParaDestino(5852, 948)
+        this.teleportarParaDestino(2464, 2604)
+        break
+      case 'C3toC2':
+        this.teleportarParaDestino(4906, 936)
+        break
+
+      case 'C3tolab':
+        this.teleportarParaDestino(4305, 5331)
+        break
+      case 'labtoC3':
+        this.teleportarParaDestino(3278, 2564)
         break
     }
   }
