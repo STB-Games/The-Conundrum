@@ -327,9 +327,10 @@ export default class personagem extends Phaser.Scene {
     // Adicione um teleport invisível em (x, y) com uma chave única para identificação
     this.criarTeleporte(1512, 932, 'HalltoC1')
     this.criarTeleporte(2072, 948, 'C1toHall')
-    this.criarTeleporte(3316, 936, 'C1toC2')
+    this.criarTeleporte(3336, 936, 'C1toC2')
+    this.criarTeleporte(3832, 948, 'C2toC1')
     this.criarTeleporte(4078, 860, 'C2toCobra')
-    this.criarTeleporte(3316, 936, 'C2toC3')
+    this.criarTeleporte(5416, 936, 'C2toC3')
 
     // Inicialmente, oculte o botão
     this.BotãoInt.setVisible(false)
@@ -481,7 +482,7 @@ export default class personagem extends Phaser.Scene {
 
     if (cursorKeys) {
       // defina a velocidade do personagem com base nas teclas pressionadas
-      const speed = 150 // velocidade do personagem
+      const speed = 450 // velocidade do personagem
       let velocityX = 0
       let velocityY = 0
 
@@ -577,13 +578,16 @@ export default class personagem extends Phaser.Scene {
         this.teleportarParaDestino(1482, 932)
         break
       case 'C1toC2':
-        this.teleportarParaDestino(3852, 948)
+        this.teleportarParaDestino(3870, 948)
+        break
+      case 'C2toC1':
+        this.teleportarParaDestino(3291, 936)
         break
       case 'C2toCobra':
         this.teleportarParaDestino(1456, 2432)
         break
       case 'C2toC3':
-        this.teleportarParaDestino(3852, 948)
+        this.teleportarParaDestino(5852, 948)
         break
     }
   }
