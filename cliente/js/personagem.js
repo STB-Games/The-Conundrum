@@ -22,8 +22,8 @@ export default class personagem extends Phaser.Scene {
     // Fundo
 
     this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
-      frameWidth: 800,
-      frameHeight: 450
+      frameWidth: 32,
+      frameHeight: 32
     })
 
     // Medo
@@ -158,6 +158,22 @@ export default class personagem extends Phaser.Scene {
 
     this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
       .setScrollFactor(0, 0)
+
+    // Invisivel
+
+    this.objetoInvisivel = this.physics.add.image(2000, 2000, 'transparente')
+    this.objetoInvisivel.body.setImmovable(true)
+    this.objetoInvisivel.setVisible(false)
+    const hitboxWidthInvisivel = 32 // Ajuste conforme necessário
+    const hitboxHeightInvisivel = 128 // Ajuste conforme necessário
+    this.objetoInvisivel.setSize(hitboxWidthInvisivel, hitboxHeightInvisivel, true)
+
+    this.objetoInvisivel1 = this.physics.add.image(2000, 2000, 'transparente')
+    this.objetoInvisivel1.body.setImmovable(true)
+    this.objetoInvisivel1.setVisible(false)
+    const hitboxWidthInvisivel1 = 128 // Ajuste conforme necessário
+    const hitboxHeightInvisivel1 = 32 // Ajuste conforme necessário
+    this.objetoInvisivel1.setSize(hitboxWidthInvisivel1, hitboxHeightInvisivel1, true)
 
     // PORTA
 
@@ -305,6 +321,15 @@ export default class personagem extends Phaser.Scene {
       })
 
       .setScrollFactor(0, 0)
+
+    this.teleportes = this.physics.add.group()
+
+    // Adicione um teleport invisível em (x, y) com uma chave única para identificação
+    this.criarTeleporte(1512, 932, 'HalltoC1')
+    this.criarTeleporte(2072, 948, 'C1toHall')
+    this.criarTeleporte(3316, 936, 'C1toC2')
+    this.criarTeleporte(4078, 860, 'C2toCobra')
+    this.criarTeleporte(3316, 936, 'C2toC3')
 
     // Inicialmente, oculte o botão
     this.BotãoInt.setVisible(false)
@@ -528,6 +553,43 @@ export default class personagem extends Phaser.Scene {
     } else {
       this.BotãoInt.setVisible(false)
     }
+
+    this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
+  }
+
+  // Função para criar um teleporte
+  criarTeleporte (x, y, key) {
+    const teleporte = this.physics.add.image(x, y, 'fundo')
+      .setOrigin(0.5, 0.5)
+      .setAlpha(0)
+      .setDepth(-1)
+    this.teleportes.add(teleporte)
+    teleporte.setData('key', key)
+  }
+
+  usarTeleporte (personagem, teleporte) {
+    const key = teleporte.getData('key')
+    switch (key) {
+      case 'HalltoC1':
+        this.teleportarParaDestino(2102, 948)
+        break
+      case 'C1toHall':
+        this.teleportarParaDestino(1482, 932)
+        break
+      case 'C1toC2':
+        this.teleportarParaDestino(3852, 948)
+        break
+      case 'C2toCobra':
+        this.teleportarParaDestino(1456, 2432)
+        break
+      case 'C2toC3':
+        this.teleportarParaDestino(3852, 948)
+        break
+    }
+  }
+
+  teleportarParaDestino (x, y) {
+    this.personagem.setPosition(x, y)
   }
 
   startMedoTimer () {
