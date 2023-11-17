@@ -104,6 +104,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 64
     })
 
+    this.load.spritesheet('botaoCobra', '../assets/botoes/botaoCobra.png', {
+      frameWidth: 35,
+      frameHeight: 35
+    })
+
     this.load.spritesheet('interacao', '../assets/botoes/interacao.png', {
       frameWidth: 64,
       frameHeight: 64
@@ -247,6 +252,34 @@ export default class personagem extends Phaser.Scene {
     this.alavancaVermelhoCollider = this.add.rectangle(3747, 4326, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVermelho
     this.physics.world.enable(this.alavancaVermelhoCollider) // Habilita a física para o retângulo
     this.alavancaVermelhoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    // BOTAO COBRA
+
+    this.botaoCobra = this.add.sprite(1138, 2044, 'botaoCobra')
+    this.botaoCobraCollider = this.add.rectangle(1138, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra
+    this.physics.world.enable(this.botaoCobraCollider) // Habilita a física para o retângulo
+    this.botaoCobraCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.botaoCobra1 = this.add.sprite(1038, 2044, 'botaoCobra')
+    this.botaoCobra1Collider = this.add.rectangle(1038, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra1
+    this.physics.world.enable(this.botaoCobra1Collider) // Habilita a física para o retângulo
+    this.botaoCobra1Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.botaoCobra2 = this.add.sprite(938, 2044, 'botaoCobra')
+    this.botaoCobra2Collider = this.add.rectangle(938, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra2
+    this.physics.world.enable(this.botaoCobra2Collider) // Habilita a física para o retângulo
+    this.botaoCobra2Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.botaoCobra3 = this.add.sprite(838, 2044, 'botaoCobra')
+    this.botaoCobra3Collider = this.add.rectangle(838, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra3
+    this.physics.world.enable(this.botaoCobra3Collider) // Habilita a física para o retângulo
+    this.botaoCobra3Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.botaoCobra4 = this.add.sprite(738, 2044, 'botaoCobra')
+    this.botaoCobra4Collider = this.add.rectangle(738, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra4
+    this.physics.world.enable(this.botaoCobra4Collider) // Habilita a física para o retângulo
+    this.botaoCobra4Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
 
     /* Full Screen */
 
@@ -725,6 +758,63 @@ export default class personagem extends Phaser.Scene {
       this.BotãoInt3.setVisible(true)
     } else {
       this.BotãoInt3.setVisible(false)
+    }
+
+    // Puzzle Cobra
+
+    const botaoCobra = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobraCollider.getBounds()
+    )
+
+    if (botaoCobra) {
+      this.botaoCobra.setVisible(false)
+    } else {
+      this.botaoCobra.setVisible(true)
+    }
+
+    const botaoCobra1 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobra1Collider.getBounds()
+    )
+
+    if (botaoCobra1) {
+      this.botaoCobra1.setVisible(false)
+    } else {
+      this.botaoCobra1.setVisible(true)
+    }
+
+    const botaoCobra2 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobra2Collider.getBounds()
+    )
+
+    if (botaoCobra2) {
+      this.botaoCobra2.setVisible(false)
+    } else {
+      this.botaoCobra2.setVisible(true)
+    }
+
+    const botaoCobra3 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobra3Collider.getBounds()
+    )
+
+    if (botaoCobra3) {
+      this.botaoCobra3.setVisible(false)
+    } else {
+      this.botaoCobra3.setVisible(true)
+    }
+
+    const botaoCobra4 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobra4Collider.getBounds()
+    )
+
+    if (botaoCobra4) {
+      this.botaoCobra4.setVisible(false)
+    } else {
+      this.botaoCobra4.setVisible(true)
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
