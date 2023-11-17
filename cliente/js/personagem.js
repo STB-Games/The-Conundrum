@@ -772,11 +772,11 @@ export default class personagem extends Phaser.Scene {
 
       case 'C3tolab':
         this.teleportarParaDestino(4305, 5331)
-        this.cameras.main.setZoom(1.5)
+        // this.cameras.main.setZoom(1.5)
         break
       case 'labtoC3':
         this.teleportarParaDestino(3278, 2564)
-        this.cameras.main.setZoom(1)
+        // this.cameras.main.setZoom(1)
         break
 
       case 'HallDtoC1':
