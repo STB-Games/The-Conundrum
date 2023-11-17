@@ -443,6 +443,7 @@ export default class personagem extends Phaser.Scene {
     // teleporte, x e y com key
     this.criarTeleporte(1512, 932, 'HalltoC1')
     this.criarTeleporte(2072, 948, 'C1toHall')
+
     this.criarTeleporte(3336, 936, 'C1toC2')
     this.criarTeleporte(3832, 948, 'C2toC1')
 
@@ -451,6 +452,14 @@ export default class personagem extends Phaser.Scene {
 
     this.criarTeleporte(4940, 936, 'C2toC3')
     this.criarTeleporte(2424, 2604, 'C3toC2')
+
+    this.criarTeleporte(3278, 2484, 'C3tolab')
+    this.criarTeleporte(4305, 5416, 'labtoC3')
+
+    this.criarTeleporte(1864, 4100, 'HallDtoC1')
+
+    this.criarTeleporte(1082, 3816, 'HallDtoSecret')
+    this.criarTeleporte(972, 5748, 'SecrettoHallD')
 
     this.criarTeleporte(3278, 2484, 'C3tolab')
     this.criarTeleporte(4305, 5416, 'labtoC3')
@@ -763,9 +772,22 @@ export default class personagem extends Phaser.Scene {
 
       case 'C3tolab':
         this.teleportarParaDestino(4305, 5331)
+        this.cameras.main.setZoom(1.5)
         break
       case 'labtoC3':
         this.teleportarParaDestino(3278, 2564)
+        this.cameras.main.setZoom(1)
+        break
+
+      case 'HallDtoC1':
+        this.teleportarParaDestino(2102, 948)
+        break
+
+      case 'HallDtoSecret':
+        this.teleportarParaDestino(972, 5688)
+        break
+      case 'SecrettoHallD':
+        this.teleportarParaDestino(1082, 3871)
         break
     }
   }
