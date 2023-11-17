@@ -40,9 +40,29 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 96
     })
 
+    this.load.spritesheet('portaLaranjaSobe', '../assets/portoes/portaLaranja.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
+
+    this.load.spritesheet('portaAzulSobe', '../assets/portoes/portaAzul.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
+
     // Alavanca
 
     this.load.spritesheet('alavancaVerde', '../assets/alavancas/alavancaVerde.png', {
+      frameWidth: 64,
+      frameHeight: 32
+    })
+
+    this.load.spritesheet('alavancaLaranja', '../assets/alavancas/alavancaLaranja.png', {
+      frameWidth: 64,
+      frameHeight: 32
+    })
+
+    this.load.spritesheet('alavancaAzul', '../assets/alavancas/alavancaAzul.png', {
       frameWidth: 64,
       frameHeight: 32
     })
@@ -177,21 +197,46 @@ export default class personagem extends Phaser.Scene {
 
     // PORTA
 
-    this.portaVerdeSobe = this.physics.add.image(500, 200, 'portaVerdeSobe')
+    this.portaVerdeSobe = this.physics.add.image(5106, 4833, 'portaVerdeSobe')
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
 
-    this.portaVerdeSobe1 = this.physics.add.image(300, 100, 'portaVerdeSobe')
+    this.portaVerdeSobe1 = this.physics.add.image(2300, 6100, 'portaVerdeSobe')
     this.portaVerdeSobe1.body.setAllowGravity(true)
     this.portaVerdeSobe1.setImmovable(true)
 
+    this.portaLaranjaSobe = this.physics.add.image(4148, 3893, 'portaLaranjaSobe')
+    this.portaLaranjaSobe.body.setAllowGravity(true)
+    this.portaLaranjaSobe.setImmovable(true)
+
+    this.portaLaranjaSobe1 = this.physics.add.image(2300, 6100, 'portaLaranjaSobe')
+    this.portaLaranjaSobe1.body.setAllowGravity(true)
+    this.portaLaranjaSobe1.setImmovable(true)
+
+    this.portaAzulSobe = this.physics.add.image(3632, 5136, 'portaAzulSobe')
+    this.portaAzulSobe.body.setAllowGravity(true)
+    this.portaAzulSobe.setImmovable(true)
+
+    this.portaAzulSobe1 = this.physics.add.image(2300, 6100, 'portaAzulSobe')
+    this.portaAzulSobe1.body.setAllowGravity(true)
+    this.portaAzulSobe1.setImmovable(true)
+
     // ALAVANCA
 
-    this.alavancaVerde = this.add
-      .sprite(400, 220, 'alavancaVerde', 1)
-    this.alavancaVerdeCollider = this.add.rectangle(400, 260, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVerde
+    this.alavancaVerde = this.add.sprite(3116, 4904, 'alavancaVerde', 1)
+    this.alavancaVerdeCollider = this.add.rectangle(3116, 4944, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVerde
     this.physics.world.enable(this.alavancaVerdeCollider) // Habilita a física para o retângulo
     this.alavancaVerdeCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.alavancaLaranja = this.add.sprite(4924, 4924, 'alavancaLaranja', 1)
+    this.alavancaLaranjaCollider = this.add.rectangle(4924, 4964, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaLaranja
+    this.physics.world.enable(this.alavancaLaranjaCollider) // Habilita a física para o retângulo
+    this.alavancaLaranjaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.alavancaAzul = this.add.sprite(3477, 5480, 'alavancaAzul', 1)
+    this.alavancaAzulCollider = this.add.rectangle(3477, 5520, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaAzul
+    this.physics.world.enable(this.alavancaAzulCollider) // Habilita a física para o retângulo
+    this.alavancaAzulCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     /* Full Screen */
 
@@ -297,7 +342,7 @@ export default class personagem extends Phaser.Scene {
 
     /* Animação dos Personagens */
 
-    let alavancaState = 0
+    let alavancaState = 1
 
     this.BotãoInt = this.add
       .sprite(735, 400, 'interacao', 0)
@@ -306,17 +351,63 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 0) {
           this.alavancaVerde.setFrame(1)
           alavancaState = 1
-          this.portaVerdeSobe.x = 500
-          this.portaVerdeSobe.y = 200
-          this.portaVerdeSobe1.x = 300
-          this.portaVerdeSobe1.y = 100
+          this.portaVerdeSobe.x = 5106
+          this.portaVerdeSobe.y = 4833
+          this.portaVerdeSobe1.x = 2300
+          this.portaVerdeSobe1.y = 6100
         } else {
           this.alavancaVerde.setFrame(0)
           alavancaState = 0
-          this.portaVerdeSobe.x = 700
-          this.portaVerdeSobe.y = 200
-          this.portaVerdeSobe1.x = 500
-          this.portaVerdeSobe1.y = 100
+          this.portaVerdeSobe.x = 2300
+          this.portaVerdeSobe.y = 6100
+          this.portaVerdeSobe1.x = 3247
+          this.portaVerdeSobe1.y = 4824
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.BotãoInt1 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (alavancaState === 0) {
+          this.alavancaLaranja.setFrame(1)
+          alavancaState = 1
+          this.portaLaranjaSobe.x = 4148
+          this.portaLaranjaSobe.y = 3893
+          this.portaLaranjaSobe1.x = 2300
+          this.portaLaranjaSobe1.y = 6100
+        } else {
+          this.alavancaLaranja.setFrame(0)
+          alavancaState = 0
+          this.portaLaranjaSobe.x = 2300
+          this.portaLaranjaSobe.y = 6100
+          this.portaLaranjaSobe1.x = 5105
+          this.portaLaranjaSobe1.y = 4490
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.BotãoInt2 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (alavancaState === 0) {
+          this.alavancaAzul.setFrame(1)
+          alavancaState = 1
+          this.portaAzulSobe.x = 3632
+          this.portaAzulSobe.y = 5136
+          this.portaAzulSobe1.x = 2300
+          this.portaAzulSobe1.y = 6100
+        } else {
+          this.alavancaAzul.setFrame(0)
+          alavancaState = 0
+          this.portaAzulSobe.x = 2300
+          this.portaAzulSobe.y = 6100
+          this.portaAzulSobe1.x = 4592
+          this.portaAzulSobe1.y = 4920
         }
       })
 
@@ -341,6 +432,8 @@ export default class personagem extends Phaser.Scene {
 
     // botão oculto
     this.BotãoInt.setVisible(false)
+    this.BotãoInt1.setVisible(false)
+    this.BotãoInt2.setVisible(false)
 
     this.anims.create({
       key: 'personagem-frente',
@@ -482,6 +575,10 @@ export default class personagem extends Phaser.Scene {
 
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
     this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
+    this.physics.add.collider(this.personagem, this.portaLaranjaSobe)
+    this.physics.add.collider(this.personagem, this.portaLaranjaSobe1)
+    this.physics.add.collider(this.personagem, this.portaAzulSobe)
+    this.physics.add.collider(this.personagem, this.portaAzulSobe1)
   }
 
   update () {
@@ -560,6 +657,28 @@ export default class personagem extends Phaser.Scene {
       this.BotãoInt.setVisible(true)
     } else {
       this.BotãoInt.setVisible(false)
+    }
+
+    const isOverlapping1 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaLaranjaCollider.getBounds()
+    )
+
+    if (isOverlapping1) {
+      this.BotãoInt1.setVisible(true)
+    } else {
+      this.BotãoInt1.setVisible(false)
+    }
+
+    const isOverlapping2 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaAzulCollider.getBounds()
+    )
+
+    if (isOverlapping2) {
+      this.BotãoInt2.setVisible(true)
+    } else {
+      this.BotãoInt2.setVisible(false)
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
