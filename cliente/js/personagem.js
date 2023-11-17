@@ -67,6 +67,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 32
     })
 
+    this.load.spritesheet('alavancaVermelho', '../assets/alavancas/alavancaVermelha.png', {
+      frameWidth: 64,
+      frameHeight: 32
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -237,6 +242,11 @@ export default class personagem extends Phaser.Scene {
     this.alavancaAzulCollider = this.add.rectangle(3477, 5520, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaAzul
     this.physics.world.enable(this.alavancaAzulCollider) // Habilita a física para o retângulo
     this.alavancaAzulCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.alavancaVermelho = this.add.sprite(3747, 4286, 'alavancaVermelho', 1)
+    this.alavancaVermelhoCollider = this.add.rectangle(3747, 4326, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVermelho
+    this.physics.world.enable(this.alavancaVermelhoCollider) // Habilita a física para o retângulo
+    this.alavancaVermelhoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     /* Full Screen */
 
@@ -413,6 +423,21 @@ export default class personagem extends Phaser.Scene {
 
       .setScrollFactor(0, 0)
 
+    this.BotãoInt3 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.medoFrame === 3) {
+          this.gameOver()
+        } else {
+          this.startMedoTimer()
+          this.medoFrame += 1
+          this.spritesheet.setFrame(this.medoFrame)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
     this.teleportes = this.physics.add.group()
 
     // teleporte, x e y com key
@@ -434,6 +459,7 @@ export default class personagem extends Phaser.Scene {
     this.BotãoInt.setVisible(false)
     this.BotãoInt1.setVisible(false)
     this.BotãoInt2.setVisible(false)
+    this.BotãoInt3.setVisible(false)
 
     this.anims.create({
       key: 'personagem-frente',
@@ -679,6 +705,17 @@ export default class personagem extends Phaser.Scene {
       this.BotãoInt2.setVisible(true)
     } else {
       this.BotãoInt2.setVisible(false)
+    }
+
+    const isOverlapping3 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaVermelhoCollider.getBounds()
+    )
+
+    if (isOverlapping3) {
+      this.BotãoInt3.setVisible(true)
+    } else {
+      this.BotãoInt3.setVisible(false)
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
