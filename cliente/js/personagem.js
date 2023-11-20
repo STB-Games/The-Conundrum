@@ -276,7 +276,7 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.botaoCobra4Collider) // Habilita a física para o retângulo
     this.botaoCobra4Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    // OBJETOS INTERATIVOSA
+    // OBJETOS INTERATIVOS
 
     this.livro = this.add.sprite(2427, 584, 'livroCobra')
     this.livroCollider = this.add.rectangle(2390, 579, 1, 1, 0x000000) // O retângulo invisível que corresponde ao livro
@@ -478,6 +478,36 @@ export default class personagem extends Phaser.Scene {
 
       .setScrollFactor(0, 0)
 
+    this.botaoLivro = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.medoFrame === 3) {
+          this.gameOver()
+        } else {
+          this.startMedoTimer()
+          this.medoFrame += 1
+          this.spritesheet.setFrame(this.medoFrame)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoMesa = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.medoFrame === 3) {
+          this.gameOver()
+        } else {
+          this.startMedoTimer()
+          this.medoFrame += 1
+          this.spritesheet.setFrame(this.medoFrame)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
     this.teleportes = this.physics.add.group()
 
     // teleporte, x e y com key
@@ -610,8 +640,8 @@ export default class personagem extends Phaser.Scene {
       x: 75,
       y: 375,
       radius: 70,
-      base: this.add.circle(0, 0, 50, 0x888888),
-      thumb: this.add.circle(0, 0, 25, 0xcccccc),
+      base: this.add.circle(0, 0, 50, 0x790000, 60),
+      thumb: this.add.circle(0, 0, 25, 0xcccccc, 19),
       dir: '8dir', // configuração para 8 direções
       forceMin: 16
     }).on('pointerup', () => {
@@ -822,6 +852,28 @@ export default class personagem extends Phaser.Scene {
       this.botaoCobra4.setVisible(false)
     } else {
       this.botaoCobra4.setVisible(true)
+    }
+
+    const livro = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.livroCollider.getBounds()
+    )
+
+    if (livro) {
+      this.botaoLivro.setVisible(true)
+    } else {
+      this.botaoLivro.setVisible(false)
+    }
+
+    const mapaMesa = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.mapaMesaCollider.getBounds()
+    )
+
+    if (mapaMesa) {
+      this.botaoMesa.setVisible(true)
+    } else {
+      this.botaoMesa.setVisible(false)
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
