@@ -854,6 +854,8 @@ export default class personagem extends Phaser.Scene {
       this.botaoCobra4.setVisible(true)
     }
 
+    // Objetos
+
     const livro = Phaser.Geom.Intersects.RectangleToRectangle(
       this.personagem.getBounds(),
       this.livroCollider.getBounds()
