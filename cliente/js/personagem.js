@@ -72,6 +72,18 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 32
     })
 
+    // Objetos
+
+    this.load.spritesheet('livroCobra', '../assets/objetos/livroCobra.png', {
+      frameWidth: 32,
+      frameHeight: 24
+    })
+
+    this.load.spritesheet('mapaMesa', '../assets/objetos/mapaMesa.png', {
+      frameWidth: 32,
+      frameHeight: 15
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -189,22 +201,6 @@ export default class personagem extends Phaser.Scene {
     this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
       .setScrollFactor(0, 0)
 
-    // Invisivel
-
-    this.objetoInvisivel = this.physics.add.image(2000, 2000, 'transparente')
-    this.objetoInvisivel.body.setImmovable(true)
-    this.objetoInvisivel.setVisible(false)
-    const hitboxWidthInvisivel = 32 // Ajuste conforme necessário
-    const hitboxHeightInvisivel = 128 // Ajuste conforme necessário
-    this.objetoInvisivel.setSize(hitboxWidthInvisivel, hitboxHeightInvisivel, true)
-
-    this.objetoInvisivel1 = this.physics.add.image(2000, 2000, 'transparente')
-    this.objetoInvisivel1.body.setImmovable(true)
-    this.objetoInvisivel1.setVisible(false)
-    const hitboxWidthInvisivel1 = 128 // Ajuste conforme necessário
-    const hitboxHeightInvisivel1 = 32 // Ajuste conforme necessário
-    this.objetoInvisivel1.setSize(hitboxWidthInvisivel1, hitboxHeightInvisivel1, true)
-
     // PORTA
 
     this.portaVerdeSobe = this.physics.add.image(5106, 4833, 'portaVerdeSobe')
@@ -280,6 +276,17 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.botaoCobra4Collider) // Habilita a física para o retângulo
     this.botaoCobra4Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
+    // OBJETOS INTERATIVOSA
+
+    this.livro = this.add.sprite(2427, 584, 'livroCobra')
+    this.livroCollider = this.add.rectangle(2390, 579, 1, 1, 0x000000) // O retângulo invisível que corresponde ao livro
+    this.physics.world.enable(this.livroCollider) // Habilita a física para o retângulo
+    this.livroCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.mapaMesa = this.add.sprite(2806, 2124, 'mapaMesa')
+    this.mapaMesaCollider = this.add.rectangle(2806, 2100, 1, 1, 0x000000) // O retângulo invisível que corresponde ao mapaMesa
+    this.physics.world.enable(this.mapaMesaCollider) // Habilita a física para o retângulo
+    this.mapaMesaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     /* Full Screen */
 
