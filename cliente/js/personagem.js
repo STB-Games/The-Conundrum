@@ -310,7 +310,7 @@ export default class personagem extends Phaser.Scene {
 
     // Variável para rastrear o frame da barra de medo
     this.medoFrame = 0
-    const sequenciaAtual = []
+    let sequenciaAtual = []
     const sequenciaCorreta = [4, 2, 5, 1, 3]
 
     /* Colisão */
@@ -395,11 +395,6 @@ export default class personagem extends Phaser.Scene {
     /* Animação dos Personagens */
 
     let alavancaState = 1
-    let botaoState1 = 1
-    let botaoState2 = 1
-    let botaoState3 = 1
-    let botaoState4 = 1
-    let botaoState5 = 1
 
     this.BotãoInt = this.add
       .sprite(735, 400, 'interacao', 0)
@@ -487,6 +482,16 @@ export default class personagem extends Phaser.Scene {
 
     // Puzzle Cobra
 
+    function checkSequence () {
+      const atualString = sequenciaAtual.toString();
+      const corretaString = sequenciaCorreta.toString();
+
+      if (atualString === corretaString) {
+        this.teleportarParaDestino(2102, 948)
+        sequenciaAtual = []
+      }
+    }
+
     this.botaoIntCobra1 = this.add
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
@@ -498,6 +503,8 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.botaoCobra1.setVisible(true)
         }
+
+        checkSequence.call(this)
       })
 
       .setScrollFactor(0, 0)
@@ -513,6 +520,8 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.botaoCobra2.setVisible(true)
         }
+
+        checkSequence.call(this)
       })
 
       .setScrollFactor(0, 0)
@@ -528,6 +537,8 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.botaoCobra3.setVisible(true)
         }
+
+        checkSequence.call(this)
       })
 
       .setScrollFactor(0, 0)
@@ -543,6 +554,8 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.botaoCobra4.setVisible(true)
         }
+
+        checkSequence.call(this)
       })
 
       .setScrollFactor(0, 0)
@@ -558,6 +571,8 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.botaoCobra5.setVisible(true)
         }
+
+        checkSequence.call(this)
       })
 
       .setScrollFactor(0, 0)
