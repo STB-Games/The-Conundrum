@@ -251,30 +251,30 @@ export default class personagem extends Phaser.Scene {
 
     // BOTAO COBRA
 
-    this.botaoCobra = this.add.sprite(1138, 2044, 'botaoCobra')
-    this.botaoCobraCollider = this.add.rectangle(1138, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra
-    this.physics.world.enable(this.botaoCobraCollider) // Habilita a física para o retângulo
-    this.botaoCobraCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
-
-    this.botaoCobra1 = this.add.sprite(1038, 2044, 'botaoCobra')
-    this.botaoCobra1Collider = this.add.rectangle(1038, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra1
+    this.botaoCobra1 = this.add.sprite(1138, 2044, 'botaoCobra')
+    this.botaoCobra1Collider = this.add.rectangle(1138, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra1
     this.physics.world.enable(this.botaoCobra1Collider) // Habilita a física para o retângulo
     this.botaoCobra1Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.botaoCobra2 = this.add.sprite(938, 2044, 'botaoCobra')
-    this.botaoCobra2Collider = this.add.rectangle(938, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra2
+    this.botaoCobra2 = this.add.sprite(1038, 2044, 'botaoCobra')
+    this.botaoCobra2Collider = this.add.rectangle(1038, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra2
     this.physics.world.enable(this.botaoCobra2Collider) // Habilita a física para o retângulo
     this.botaoCobra2Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.botaoCobra3 = this.add.sprite(838, 2044, 'botaoCobra')
-    this.botaoCobra3Collider = this.add.rectangle(838, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra3
+    this.botaoCobra3 = this.add.sprite(938, 2044, 'botaoCobra')
+    this.botaoCobra3Collider = this.add.rectangle(938, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra3
     this.physics.world.enable(this.botaoCobra3Collider) // Habilita a física para o retângulo
     this.botaoCobra3Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.botaoCobra4 = this.add.sprite(738, 2044, 'botaoCobra')
-    this.botaoCobra4Collider = this.add.rectangle(738, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra4
+    this.botaoCobra4 = this.add.sprite(838, 2044, 'botaoCobra')
+    this.botaoCobra4Collider = this.add.rectangle(838, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra4
     this.physics.world.enable(this.botaoCobra4Collider) // Habilita a física para o retângulo
     this.botaoCobra4Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.botaoCobra5 = this.add.sprite(738, 2044, 'botaoCobra')
+    this.botaoCobra5Collider = this.add.rectangle(738, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra5
+    this.physics.world.enable(this.botaoCobra5Collider) // Habilita a física para o retângulo
+    this.botaoCobra5Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     // OBJETOS INTERATIVOS
 
@@ -310,6 +310,8 @@ export default class personagem extends Phaser.Scene {
 
     // Variável para rastrear o frame da barra de medo
     this.medoFrame = 0
+    const sequenciaAtual = []
+    const sequenciaCorreta = [4, 2, 5, 1, 3]
 
     /* Colisão */
 
@@ -393,6 +395,11 @@ export default class personagem extends Phaser.Scene {
     /* Animação dos Personagens */
 
     let alavancaState = 1
+    let botaoState1 = 1
+    let botaoState2 = 1
+    let botaoState3 = 1
+    let botaoState4 = 1
+    let botaoState5 = 1
 
     this.BotãoInt = this.add
       .sprite(735, 400, 'interacao', 0)
@@ -477,6 +484,85 @@ export default class personagem extends Phaser.Scene {
       })
 
       .setScrollFactor(0, 0)
+
+    // Puzzle Cobra
+
+    this.botaoIntCobra1 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.botaoCobra1.visible === true) {
+          this.botaoCobra1.setVisible(false)
+          sequenciaAtual.push(1)
+          console.log(sequenciaAtual)
+        } else {
+          this.botaoCobra1.setVisible(true)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoIntCobra2 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.botaoCobra2.visible === true) {
+          this.botaoCobra2.setVisible(false)
+          sequenciaAtual.push(2)
+          console.log(sequenciaAtual)
+        } else {
+          this.botaoCobra2.setVisible(true)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoIntCobra3 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.botaoCobra3.visible === true) {
+          this.botaoCobra3.setVisible(false)
+          sequenciaAtual.push(3)
+          console.log(sequenciaAtual)
+        } else {
+          this.botaoCobra3.setVisible(true)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoIntCobra4 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.botaoCobra4.visible === true) {
+          this.botaoCobra4.setVisible(false)
+          sequenciaAtual.push(4)
+          console.log(sequenciaAtual)
+        } else {
+          this.botaoCobra4.setVisible(true)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoIntCobra5 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.botaoCobra5.visible === true) {
+          this.botaoCobra5.setVisible(false)
+          sequenciaAtual.push(5)
+          console.log(sequenciaAtual)
+        } else {
+          this.botaoCobra5.setVisible(true)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    // Objetos
 
     this.botaoLivro = this.add
       .sprite(735, 400, 'interacao', 0)
@@ -799,26 +885,15 @@ export default class personagem extends Phaser.Scene {
 
     // Puzzle Cobra
 
-    const botaoCobra = Phaser.Geom.Intersects.RectangleToRectangle(
-      this.personagem.getBounds(),
-      this.botaoCobraCollider.getBounds()
-    )
-
-    if (botaoCobra) {
-      this.botaoCobra.setVisible(false)
-    } else {
-      this.botaoCobra.setVisible(true)
-    }
-
     const botaoCobra1 = Phaser.Geom.Intersects.RectangleToRectangle(
       this.personagem.getBounds(),
       this.botaoCobra1Collider.getBounds()
     )
 
     if (botaoCobra1) {
-      this.botaoCobra1.setVisible(false)
+      this.botaoIntCobra1.setVisible(true)
     } else {
-      this.botaoCobra1.setVisible(true)
+      this.botaoIntCobra1.setVisible(false)
     }
 
     const botaoCobra2 = Phaser.Geom.Intersects.RectangleToRectangle(
@@ -827,9 +902,9 @@ export default class personagem extends Phaser.Scene {
     )
 
     if (botaoCobra2) {
-      this.botaoCobra2.setVisible(false)
+      this.botaoIntCobra2.setVisible(true)
     } else {
-      this.botaoCobra2.setVisible(true)
+      this.botaoIntCobra2.setVisible(false)
     }
 
     const botaoCobra3 = Phaser.Geom.Intersects.RectangleToRectangle(
@@ -838,9 +913,9 @@ export default class personagem extends Phaser.Scene {
     )
 
     if (botaoCobra3) {
-      this.botaoCobra3.setVisible(false)
+      this.botaoIntCobra3.setVisible(true)
     } else {
-      this.botaoCobra3.setVisible(true)
+      this.botaoIntCobra3.setVisible(false)
     }
 
     const botaoCobra4 = Phaser.Geom.Intersects.RectangleToRectangle(
@@ -849,9 +924,20 @@ export default class personagem extends Phaser.Scene {
     )
 
     if (botaoCobra4) {
-      this.botaoCobra4.setVisible(false)
+      this.botaoIntCobra4.setVisible(true)
     } else {
-      this.botaoCobra4.setVisible(true)
+      this.botaoIntCobra4.setVisible(false)
+    }
+
+    const botaoCobra5 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.botaoCobra5Collider.getBounds()
+    )
+
+    if (botaoCobra5) {
+      this.botaoIntCobra5.setVisible(true)
+    } else {
+      this.botaoIntCobra5.setVisible(false)
     }
 
     // Objetos
