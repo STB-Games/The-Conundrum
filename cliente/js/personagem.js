@@ -22,6 +22,7 @@ export default class personagem extends Phaser.Scene {
     // Fundo
 
     this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
+
       frameWidth: 32,
       frameHeight: 32
     })
@@ -244,8 +245,8 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.alavancaAzulCollider) // Habilita a física para o retângulo
     this.alavancaAzulCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.alavancaVermelho = this.add.sprite(3747, 4286, 'alavancaVermelho', 1)
-    this.alavancaVermelhoCollider = this.add.rectangle(3747, 4326, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVermelho
+    this.alavancaVermelho = this.add.sprite(4259, 3520, 'alavancaVermelho', 1)
+    this.alavancaVermelhoCollider = this.add.rectangle(4259, 3568, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVermelho
     this.physics.world.enable(this.alavancaVermelhoCollider) // Habilita a física para o retângulo
     this.alavancaVermelhoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
@@ -312,6 +313,7 @@ export default class personagem extends Phaser.Scene {
     this.medoFrame = 0
     let sequenciaAtual = []
     const sequenciaCorreta = [4, 2, 5, 1, 3]
+    let botoesPressionados = 0
 
     /* Colisão */
 
@@ -469,12 +471,16 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (this.medoFrame === 3) {
-          this.gameOver()
+        if (alavancaState === 0) {
+          this.alavancaVermelho.setFrame(1)
+          alavancaState = 1
+          this.C1toHallD.setVisible(false)
+          this.C1toHall.setVisible(true)
         } else {
-          this.startMedoTimer()
-          this.medoFrame += 1
-          this.spritesheet.setFrame(this.medoFrame)
+          this.alavancaVermelho.setFrame(0)
+          alavancaState = 0
+          this.C1toHallD.setVisible(true)
+          this.C1toHall.setVisible(false)
         }
       })
 
@@ -483,12 +489,21 @@ export default class personagem extends Phaser.Scene {
     // Puzzle Cobra
 
     function checkSequence () {
-      const atualString = sequenciaAtual.toString();
-      const corretaString = sequenciaCorreta.toString();
+      const atualString = sequenciaAtual.toString()
+      const corretaString = sequenciaCorreta.toString()
 
       if (atualString === corretaString) {
         this.teleportarParaDestino(2102, 948)
         sequenciaAtual = []
+        botoesPressionados = 0
+      }
+    }
+
+    function superBotoes () {
+      if (botoesPressionados === 5) {
+        // Reinicie a sequência atual
+        sequenciaAtual = []
+        botoesPressionados = 0
       }
     }
 
@@ -500,6 +515,8 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra1.setVisible(false)
           sequenciaAtual.push(1)
           console.log(sequenciaAtual)
+          botoesPressionados++
+          superBotoes()
         } else {
           this.botaoCobra1.setVisible(true)
         }
@@ -628,6 +645,7 @@ export default class personagem extends Phaser.Scene {
     this.criarTeleporte(4305, 5416, 'labtoC3')
 
     this.criarTeleporte(1864, 4100, 'HallDtoC1')
+    this.criarTeleporte(2072, 948, 'C1toHallD')
 
     this.criarTeleporte(1082, 3816, 'HallDtoSecret')
     this.criarTeleporte(972, 5748, 'SecrettoHallD')
@@ -1033,6 +1051,9 @@ export default class personagem extends Phaser.Scene {
 
       case 'HallDtoC1':
         this.teleportarParaDestino(2102, 948)
+        break
+      case 'C1toHallD':
+        this.teleportarParaDestino(1823, 4096)
         break
 
       case 'HallDtoSecret':
