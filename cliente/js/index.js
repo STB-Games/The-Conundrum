@@ -12,10 +12,14 @@ import cutsceneDELA from './cutsceneDELA.js'
 import loading from './loading.js'
 import characters from './characters.js'
 import livro from './livro.js'
+import finalFeliz from './finalFeliz.js'
 
 class Game extends Phaser.Game {
   constructor () {
     super(config)
+
+    this.id = 12 // Jogo The-Conumdrum, id 1
+    this.valor = 100 // crédito padrão em Tijolinhos quando termina o jogo
 
     let iceServers
     if (window.location.host === 'feira-de-jogos.sj.ifsc.edu.br') {
@@ -62,8 +66,9 @@ class Game extends Phaser.Game {
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
     this.scene.add('livro', livro)
+    this.scene.add('final-feliz', finalFeliz)
 
-    this.scene.start('sala')
+    this.scene.start('finalFeliz')
   }
 }
 
