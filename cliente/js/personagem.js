@@ -110,6 +110,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 32
     })
 
+    this.load.image('mapaLab', './assets/mapaLab.png', {
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
     /* Botões */
 
     this.load.spritesheet('direita', '../assets/botoes/direita.png', {
@@ -470,16 +475,11 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (alavancaState === 0) {
-          this.alavancaVermelho.setFrame(1)
-          alavancaState = 1
-          this.C1toHallD.setVisible(false)
-          this.C1toHall.setVisible(true)
-        } else {
+        if (alavancaState === 1) {
           this.alavancaVermelho.setFrame(0)
           alavancaState = 0
-          this.C1toHallD.setVisible(true)
-          this.C1toHall.setVisible(false)
+          this.criarTeleporte(2075, 948, 'C1toHallD')
+          this.BotãoInt3.destroy()
         }
       })
 
@@ -613,13 +613,7 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (this.medoFrame === 3) {
-          this.gameOver()
-        } else {
-          this.startMedoTimer()
-          this.medoFrame += 1
-          this.spritesheet.setFrame(this.medoFrame)
-        }
+        this.load.image('mapaLab.png')
       })
 
       .setScrollFactor(0, 0)
@@ -643,7 +637,6 @@ export default class personagem extends Phaser.Scene {
     this.criarTeleporte(4305, 5416, 'labtoC3')
 
     this.criarTeleporte(1864, 4100, 'HallDtoC1')
-    this.criarTeleporte(2072, 948, 'C1toHallD')
 
     this.criarTeleporte(1082, 3816, 'HallDtoSecret')
     this.criarTeleporte(972, 5748, 'SecrettoHallD')
