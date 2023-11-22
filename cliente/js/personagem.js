@@ -313,7 +313,6 @@ export default class personagem extends Phaser.Scene {
     this.medoFrame = 0
     let sequenciaAtual = []
     const sequenciaCorreta = [4, 2, 5, 1, 3]
-    let botoesPressionados = 0
 
     /* Colisão */
 
@@ -489,21 +488,22 @@ export default class personagem extends Phaser.Scene {
     // Puzzle Cobra
 
     function checkSequence () {
-      const atualString = sequenciaAtual.toString()
-      const corretaString = sequenciaCorreta.toString()
-
-      if (atualString === corretaString) {
-        this.teleportarParaDestino(2102, 948)
+      if (sequenciaAtual.toString() === sequenciaCorreta.toString()) {
+        console.log('Você acertou a sequência!')
         sequenciaAtual = []
-        botoesPressionados = 0
-      }
-    }
-
-    function superBotoes () {
-      if (botoesPressionados === 5) {
-        // Reinicie a sequência atual
+        this.botaoIntCobra1.destroy()
+        this.botaoIntCobra2.destroy()
+        this.botaoIntCobra3.destroy()
+        this.botaoIntCobra4.destroy()
+        this.botaoIntCobra5.destroy()
+      } else if (sequenciaAtual.length === sequenciaCorreta.length) {
+        console.log('Resetando sequencial atual')
         sequenciaAtual = []
-        botoesPressionados = 0
+        this.botaoCobra1.setVisible(true)
+        this.botaoCobra2.setVisible(true)
+        this.botaoCobra3.setVisible(true)
+        this.botaoCobra4.setVisible(true)
+        this.botaoCobra5.setVisible(true)
       }
     }
 
@@ -515,8 +515,6 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra1.setVisible(false)
           sequenciaAtual.push(1)
           console.log(sequenciaAtual)
-          botoesPressionados++
-          superBotoes()
         } else {
           this.botaoCobra1.setVisible(true)
         }
