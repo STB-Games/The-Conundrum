@@ -141,9 +141,19 @@ export default class personagem extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64
     })
+
+    // Sons
+
+    this.load.audio('vidroQuebrando', '../assets/sons/vidroQuebrando.mp3')
+    this.load.audio('audioAlavanca', '../assets/sons/alavancaInt.mp3')
   }
 
   create () {
+    // Sons
+
+    this.audioVidro = this.sound.add('vidroQuebrando')
+    this.audioAlavanca = this.sound.add('audioAlavanca')
+
     /* Tilemap */
     this.mapa = this.make.tilemap({
       key: 'Mansao'
@@ -409,6 +419,7 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 0) {
           this.alavancaVerde.setFrame(1)
           alavancaState = 1
+          this.audioAlavanca.play()
           this.portaVerdeSobe.x = 5106
           this.portaVerdeSobe.y = 4833
           this.portaVerdeSobe1.x = 2300
@@ -416,6 +427,7 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.alavancaVerde.setFrame(0)
           alavancaState = 0
+          this.audioAlavanca.play()
           this.portaVerdeSobe.x = 2300
           this.portaVerdeSobe.y = 6100
           this.portaVerdeSobe1.x = 3247
@@ -432,6 +444,7 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 0) {
           this.alavancaLaranja.setFrame(1)
           alavancaState = 1
+          this.audioAlavanca.play()
           this.portaLaranjaSobe.x = 4148
           this.portaLaranjaSobe.y = 3893
           this.portaLaranjaSobe1.x = 2300
@@ -439,6 +452,7 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.alavancaLaranja.setFrame(0)
           alavancaState = 0
+          this.audioAlavanca.play()
           this.portaLaranjaSobe.x = 2300
           this.portaLaranjaSobe.y = 6100
           this.portaLaranjaSobe1.x = 5105
@@ -455,6 +469,7 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 0) {
           this.alavancaAzul.setFrame(1)
           alavancaState = 1
+          this.audioAlavanca.play()
           this.portaAzulSobe.x = 3632
           this.portaAzulSobe.y = 5136
           this.portaAzulSobe1.x = 2300
@@ -462,6 +477,7 @@ export default class personagem extends Phaser.Scene {
         } else {
           this.alavancaAzul.setFrame(0)
           alavancaState = 0
+          this.audioAlavanca.play()
           this.portaAzulSobe.x = 2300
           this.portaAzulSobe.y = 6100
           this.portaAzulSobe1.x = 4592
@@ -478,6 +494,8 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 1) {
           this.alavancaVermelho.setFrame(0)
           alavancaState = 0
+          this.audioAlavanca.play()
+          this.audioVidro.play()
           this.criarTeleporte(2075, 948, 'C1toHallD')
           this.BotãoInt3.destroy()
         }
@@ -613,7 +631,7 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.load.image('mapaLab.png')
+        this.add.image(800, 450, 'mapaLab')
       })
 
       .setScrollFactor(0, 0)
