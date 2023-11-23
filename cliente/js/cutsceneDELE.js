@@ -4,7 +4,7 @@ export default class cutsceneDELE extends Phaser.Scene {
   }
 
   preload () {
-    this.load.image('cutsceneDELE', 'assets/cutscenes/cutsceneDELE.png')
+    this.load.image('cutsceneDELE', './assets/cutscenes/cutsceneDELE.png')
 
     /* Full Screen */
 
