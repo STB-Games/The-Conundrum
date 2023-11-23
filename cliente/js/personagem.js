@@ -120,6 +120,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 450
     })
 
+    this.load.image('fonte', './assets/fonte.png', {
+      frameWidth: 75,
+      frameHeight: 75
+    })
+
     /* Botões */
 
     this.load.spritesheet('direita', '../assets/botoes/direita.png', {
@@ -327,10 +332,11 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.mapaMesaCollider) // Habilita a física para o retângulo
     this.mapaMesaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.fonteEnigma = this.add.image(1214, 5475, 'fonteEnigma')
+    this.fonteEnigma = this.physics.add.image(1214, 5475, 'fonte')
     this.fonteEnigma.body.setAllowGravity(true)
     this.fonteEnigma.setImmovable(true)
-    this.fonteEnigmaCollider = this.add.rectangle(1214, 5475, 80, 80, 0x000000) // O retângulo invisível que corresponde ao fonteEnigma
+
+    this.fonteEnigmaCollider = this.add.rectangle(1214, 5475, 80, 80) // O retângulo invisível que corresponde ao fonteEnigma
     this.physics.world.enable(this.fonteEnigmaCollider) // Habilita a física para o retângulo
     this.fonteEnigmaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
@@ -692,6 +698,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.add.image(800, 450, 'mapaLab')
+          .setScrollFactor(0, 0)
         this.audioLivro.play()
       })
 
@@ -894,6 +901,7 @@ export default class personagem extends Phaser.Scene {
     this.physics.add.collider(this.personagem, this.portaLaranjaSobe1)
     this.physics.add.collider(this.personagem, this.portaAzulSobe)
     this.physics.add.collider(this.personagem, this.portaAzulSobe1)
+    this.physics.add.collider(this.personagem, this.fonteEnigma)
   }
 
   update () {
