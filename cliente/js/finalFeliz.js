@@ -4,9 +4,10 @@ export default class finalFeliz extends Phaser.Scene {
   }
 
   preload () {
-    this.load.audio('clique', './assets/clique.mp3')
-    this.load.audio('credito', './assets/credito.mp3')
-    this.load.audio('erro', './assets/erro.mp3')
+    this.load.audio('clique', './assets/sons/clique.mp3')
+    this.load.audio('credito', './assets/sons/credito.mp3')
+    this.load.audio('erro', './assets/sons/erro.mp3')
+    this.load.image('fundoTeste', './assets/fundoTeste.png')
   }
 
   create () {
@@ -14,12 +15,24 @@ export default class finalFeliz extends Phaser.Scene {
     this.credito = this.sound.add('credito')
     this.erro = this.sound.add('erro')
 
+    this.imagem = this.add.image(400, 225, 'fundoTeste')
+
+    const texto4 = 'Obrigado por jogar!!!'
+
+    this.mensagem = this.add.text(440, 25, texto4, {
+      fontFamily: 'Felipa',
+      fontSize: 28 + 'px',
+      stroke: '#000000',
+      strokeThickness: 4,
+      resolution: 4
+    })
+
     this.posicao = ''
 
     this.usuarioTextoBase = 'Usuário: '
     this.usuarioDigitado = ''
     this.usuario = this.add.text(450, 100, this.usuarioTextoBase, {
-      fontFamily: 'monospace',
+      fontFamily: 'Felipa',
       font: '32px Courier',
       fill: '#cccccc'
     })
@@ -29,14 +42,12 @@ export default class finalFeliz extends Phaser.Scene {
         this.posicao = 'usuário'
         this.usuario.setFill('#ffffff')
         this.senha.setFill('#cccccc')
-        this.voltar.x = 750
-        this.voltar.y = this.usuario.y
       })
 
     this.senhaTextoBase = 'Senha: '
     this.senhaDigitada = ''
     this.senha = this.add.text(450, 200, this.senhaTextoBase, {
-      fontFamily: 'monospace',
+      fontFamily: 'Felipa',
       font: '32px Courier',
       fill: '#cccccc'
     })
@@ -46,15 +57,13 @@ export default class finalFeliz extends Phaser.Scene {
         this.posicao = 'senha'
         this.usuario.setFill('#cccccc')
         this.senha.setFill('#ffffff')
-        this.voltar.x = 750
-        this.voltar.y = this.senha.y
       })
 
     const teclado = [...Array(10).keys()]
     teclado.forEach(digito => {
       const valor = (digito + 1) % 10
       this.add.text(80 * ((digito % 3) + 1), 80 * (Math.floor(digito / 3) + 1), valor, {
-        fontFamily: 'monospace',
+        fontFamily: 'Felipa',
         font: '32px Courier',
         fill: '#ffffff'
       })
@@ -77,9 +86,9 @@ export default class finalFeliz extends Phaser.Scene {
             }
           }
           if (this.usuarioDigitado.length === 4 && this.senhaDigitada.length === 4) {
-            this.enviar = this.add.text(450, 300, '[ENVIAR]', {
-              fontFamily: 'monospace',
-              font: '64px Courier',
+            this.enviar = this.add.text(235, 310, '>', {
+              fontFamily: 'Felipa',
+              font: '60px Courier',
               fill: '#ffffff'
             })
               .setInteractive()
@@ -113,7 +122,9 @@ export default class finalFeliz extends Phaser.Scene {
                   .catch((error) => {
                     if (error.response.status === 401) {
                       this.erro.play()
-                      this.enviar.text = '[401]'
+                      this.enviar.x = 550
+                      this.enviar.y = 318
+                      this.enviar.text = 'Erro'
                       this.tempo = 2
                       this.relogio = this.time.addEvent({
                         delay: 1000,
@@ -135,7 +146,7 @@ export default class finalFeliz extends Phaser.Scene {
         })
     })
 
-    this.voltar = this.add.text(800, 100, '<', {
+    this.voltar = this.add.text(160, 318, 'X', {
       fontFamily: 'monospace',
       font: '32px Courier',
       fill: '#ffffff'
