@@ -85,6 +85,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 15
     })
 
+    this.load.spritesheet('olhoPiscando', './assets/olhoPiscando.png', {
+      frameWidth: 24,
+      frameHeight: 8
+    })
+
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -145,19 +150,42 @@ export default class personagem extends Phaser.Scene {
     // Sons
 
     this.load.audio('vidroQuebrando', '../assets/sons/vidroQuebrando.mp3')
+    this.load.audio('paredeQuebrando', '../assets/sons/paredeQuebrando.mp3')
     this.load.audio('audioAlavanca', '../assets/sons/alavancaInt.mp3')
+    this.load.audio('audioLivro', '../assets/sons/somLivro.mp3')
+    this.load.audio('audioFail', '../assets/sons/somFail.mp3')
+    this.load.audio('audioPorta', '../assets/sons/portaAbrindo.mp3')
+    this.load.audio('audioCobra', '../assets/sons/somCobra.mp3')
+    this.load.audio('audioChuva', '../assets/sons/somChuva.mp3')
+    this.load.audio('audioCaindo', '../assets/sons/somCaindo.mp3')
+    this.load.audio('audioMonstro', '../assets/sons/somMonstro.mp3')
+    this.load.audio('audioCoracao', '../assets/sons/somCoracao.mp3')
+    this.load.audio('audioRespirando', '../assets/sons/somRespirando.mp3')
   }
 
   create () {
     // Sons
 
     this.audioVidro = this.sound.add('vidroQuebrando')
+    this.audioParede = this.sound.add('paredeQuebrando')
     this.audioAlavanca = this.sound.add('audioAlavanca')
+    this.audioLivro = this.sound.add('audioLivro')
+    this.audioFail = this.sound.add('audioFail')
+    this.audioPorta = this.sound.add('audioPorta')
+    this.audioCobra = this.sound.add('audioCobra')
+    this.audioChuva = this.sound.add('audioChuva')
+    this.audioCaindo = this.sound.add('audioCaindo')
+    this.audioMonstro = this.sound.add('audioMonstro')
+    this.audioCoracao = this.sound.add('audioCoracao')
+    this.audioRespirando = this.sound.add('audioRespirando')
 
     /* Tilemap */
     this.mapa = this.make.tilemap({
       key: 'Mansao'
     })
+
+    this.audioChuva.play()
+    this.audioChuva.loop = true
 
     /* Tilesets */
     this.tileset_Principal = this.mapa.addTilesetImage('Principal', 'Principal')
@@ -211,11 +239,6 @@ export default class personagem extends Phaser.Scene {
         this.tileset_PrincipalV2
       ]
     )
-
-    // Medo no canto superior esquerdo
-
-    this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
-      .setScrollFactor(0, 0)
 
     // PORTA
 
@@ -304,6 +327,15 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.mapaMesaCollider) // Habilita a física para o retângulo
     this.mapaMesaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
+    this.fonteEnigma = this.add.image(1214, 5475, 'fonteEnigma')
+    this.fonteEnigma.body.setAllowGravity(true)
+    this.fonteEnigma.setImmovable(true)
+    this.fonteEnigmaCollider = this.add.rectangle(1214, 5475, 80, 80, 0x000000) // O retângulo invisível que corresponde ao fonteEnigma
+    this.physics.world.enable(this.fonteEnigmaCollider) // Habilita a física para o retângulo
+    this.fonteEnigmaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
+
     /* Full Screen */
 
     this.tela_cheia = this.add
@@ -318,6 +350,11 @@ export default class personagem extends Phaser.Scene {
           this.scale.startFullscreen()
         }
       })
+      .setScrollFactor(0, 0)
+
+    // Medo no canto superior esquerdo
+
+    this.spritesheet = this.add.sprite(110, 38, 'barraMedo')
       .setScrollFactor(0, 0)
 
     /* Animação */
@@ -494,10 +531,24 @@ export default class personagem extends Phaser.Scene {
         if (alavancaState === 1) {
           this.alavancaVermelho.setFrame(0)
           alavancaState = 0
-          this.audioAlavanca.play()
-          this.audioVidro.play()
-          this.criarTeleporte(2075, 948, 'C1toHallD')
-          this.BotãoInt3.destroy()
+          this.time.delayedCall(2000, () => {
+            this.audioMonstro.play()
+          })
+          this.time.delayedCall(3000, () => {
+            this.audioAlavanca.play()
+            this.audioVidro.play()
+            this.audioParede.play()
+            this.audioCaindo.play()
+            this.criarTeleporte(2075, 948, 'C1toHallD', {
+              if () {
+                this.audioRespirando.play()
+              }
+            })
+            this.BotãoInt3.destroy()
+            this.startMedoTimer()
+            this.medoFrame += 1
+            this.spritesheet.setFrame(this.medoFrame)
+          })
         }
       })
 
@@ -514,6 +565,7 @@ export default class personagem extends Phaser.Scene {
         this.botaoIntCobra3.destroy()
         this.botaoIntCobra4.destroy()
         this.botaoIntCobra5.destroy()
+        this.audioCobra.play()
       } else if (sequenciaAtual.length === sequenciaCorreta.length) {
         console.log('Resetando sequencial atual')
         sequenciaAtual = []
@@ -522,6 +574,8 @@ export default class personagem extends Phaser.Scene {
         this.botaoCobra3.setVisible(true)
         this.botaoCobra4.setVisible(true)
         this.botaoCobra5.setVisible(true)
+        this.audioAlavanca.play()
+        this.audioFail.play()
       }
     }
 
@@ -533,6 +587,7 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra1.setVisible(false)
           sequenciaAtual.push(1)
           console.log(sequenciaAtual)
+          this.audioAlavanca.play()
         } else {
           this.botaoCobra1.setVisible(true)
         }
@@ -550,6 +605,7 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra2.setVisible(false)
           sequenciaAtual.push(2)
           console.log(sequenciaAtual)
+          this.audioAlavanca.play()
         } else {
           this.botaoCobra2.setVisible(true)
         }
@@ -567,6 +623,7 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra3.setVisible(false)
           sequenciaAtual.push(3)
           console.log(sequenciaAtual)
+          this.audioAlavanca.play()
         } else {
           this.botaoCobra3.setVisible(true)
         }
@@ -584,6 +641,7 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra4.setVisible(false)
           sequenciaAtual.push(4)
           console.log(sequenciaAtual)
+          this.audioAlavanca.play()
         } else {
           this.botaoCobra4.setVisible(true)
         }
@@ -601,6 +659,7 @@ export default class personagem extends Phaser.Scene {
           this.botaoCobra5.setVisible(false)
           sequenciaAtual.push(5)
           console.log(sequenciaAtual)
+          this.audioAlavanca.play()
         } else {
           this.botaoCobra5.setVisible(true)
         }
@@ -622,6 +681,7 @@ export default class personagem extends Phaser.Scene {
           this.startMedoTimer()
           this.medoFrame += 1
           this.spritesheet.setFrame(this.medoFrame)
+          this.audioLivro.play()
         }
       })
 
@@ -632,6 +692,16 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.add.image(800, 450, 'mapaLab')
+        this.audioLivro.play()
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.botaoFonte = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        this.audioLivro.play()
       })
 
       .setScrollFactor(0, 0)
@@ -667,6 +737,18 @@ export default class personagem extends Phaser.Scene {
     this.BotãoInt1.setVisible(false)
     this.BotãoInt2.setVisible(false)
     this.BotãoInt3.setVisible(false)
+
+    this.anims.create({
+      key: 'olhoPiscando',
+      frames: this.anims.generateFrameNumbers('olhoPiscando', {
+        start: 0,
+        end: 12
+      }),
+      frameRate: 5,
+      repeat: -1
+    })
+
+    this.olhoPiscando.anims.play('olhoPiscando')
 
     this.anims.create({
       key: 'personagem-frente',
@@ -1006,6 +1088,17 @@ export default class personagem extends Phaser.Scene {
       this.botaoMesa.setVisible(false)
     }
 
+    const fonteEnigma = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.fonteEnigmaCollider.getBounds()
+    )
+
+    if (fonteEnigma) {
+      this.botaoFonte.setVisible(true)
+    } else {
+      this.botaoFonte.setVisible(false)
+    }
+
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
   }
 
@@ -1037,9 +1130,11 @@ export default class personagem extends Phaser.Scene {
 
       case 'C2toCobra':
         this.teleportarParaDestino(1456, 2402)
+        this.audioPorta.play()
         break
       case 'CobratoC2':
         this.teleportarParaDestino(4078, 870)
+        this.audioPorta.play()
         break
 
       case 'C2toC3':
@@ -1051,10 +1146,12 @@ export default class personagem extends Phaser.Scene {
 
       case 'C3tolab':
         this.teleportarParaDestino(4305, 5331)
+        this.audioPorta.play()
         // this.cameras.main.setZoom(1.5)
         break
       case 'labtoC3':
         this.teleportarParaDestino(3278, 2564)
+        this.audioPorta.play()
         // this.cameras.main.setZoom(1)
         break
 
@@ -1063,6 +1160,7 @@ export default class personagem extends Phaser.Scene {
         break
       case 'C1toHallD':
         this.teleportarParaDestino(1823, 4096)
+        this.audioRespirando.play()
         break
 
       case 'HallDtoSecret':
@@ -1083,11 +1181,13 @@ export default class personagem extends Phaser.Scene {
       this.medoTimer.remove(false)
     }
     this.medoTimer = this.time.addEvent({
-      delay: 5000, // 10000 milissegundos = 10 segundos
+      delay: 20000, // 20000 milissegundos = 20 segundos
       callback: this.decreaseMedo,
       callbackScope: this,
       repeat: -1
     })
+    this.audioCoracao.play()
+    this.audioCoracao.loop = true
   }
 
   decreaseMedo () {
@@ -1097,6 +1197,7 @@ export default class personagem extends Phaser.Scene {
       if (this.medoFrame === 0) {
         this.medoTimer.remove(false)
       }
+      this.audioCoracao.stop()
     }
   }
 
