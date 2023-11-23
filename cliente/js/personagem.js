@@ -247,7 +247,7 @@ export default class personagem extends Phaser.Scene {
 
     // PORTA
 
-    this.portaVerdeSobe = this.physics.add.image(5106, 4833, 'portaVerdeSobe')
+    this.portaVerdeSobe = this.physics.add.image(5104, 4833, 'portaVerdeSobe')
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
 
@@ -255,7 +255,7 @@ export default class personagem extends Phaser.Scene {
     this.portaVerdeSobe1.body.setAllowGravity(true)
     this.portaVerdeSobe1.setImmovable(true)
 
-    this.portaLaranjaSobe = this.physics.add.image(4148, 3893, 'portaLaranjaSobe')
+    this.portaLaranjaSobe = this.physics.add.image(4144, 3893, 'portaLaranjaSobe')
     this.portaLaranjaSobe.body.setAllowGravity(true)
     this.portaLaranjaSobe.setImmovable(true)
 
@@ -274,61 +274,61 @@ export default class personagem extends Phaser.Scene {
     // ALAVANCA
 
     this.alavancaVerde = this.add.sprite(3116, 4904, 'alavancaVerde', 1)
-    this.alavancaVerdeCollider = this.add.rectangle(3116, 4944, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVerde
+    this.alavancaVerdeCollider = this.add.rectangle(3116, 4944, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaVerde
     this.physics.world.enable(this.alavancaVerdeCollider) // Habilita a física para o retângulo
     this.alavancaVerdeCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
-    this.alavancaLaranja = this.add.sprite(4924, 4924, 'alavancaLaranja', 1)
-    this.alavancaLaranjaCollider = this.add.rectangle(4924, 4964, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaLaranja
+    this.alavancaLaranja = this.add.sprite(4924, 4889, 'alavancaLaranja', 1)
+    this.alavancaLaranjaCollider = this.add.rectangle(4894, 4909, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaLaranja
     this.physics.world.enable(this.alavancaLaranjaCollider) // Habilita a física para o retângulo
     this.alavancaLaranjaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.alavancaAzul = this.add.sprite(3477, 5480, 'alavancaAzul', 1)
-    this.alavancaAzulCollider = this.add.rectangle(3477, 5520, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaAzul
+    this.alavancaAzulCollider = this.add.rectangle(3477, 5520, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaAzul
     this.physics.world.enable(this.alavancaAzulCollider) // Habilita a física para o retângulo
     this.alavancaAzulCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.alavancaVermelho = this.add.sprite(4259, 3520, 'alavancaVermelho', 1)
-    this.alavancaVermelhoCollider = this.add.rectangle(4259, 3568, 20, 20, 0x000000, 1) // O retângulo invisível que corresponde ao alavancaVermelho
+    this.alavancaVermelhoCollider = this.add.rectangle(4259, 3568, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaVermelho
     this.physics.world.enable(this.alavancaVermelhoCollider) // Habilita a física para o retângulo
     this.alavancaVermelhoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     // BOTAO COBRA
 
     this.botaoCobra1 = this.add.sprite(1138, 2044, 'botaoCobra')
-    this.botaoCobra1Collider = this.add.rectangle(1138, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra1
+    this.botaoCobra1Collider = this.add.rectangle(1138, 2044, 1, 1) // O retângulo invisível que corresponde ao botaoCobra1
     this.physics.world.enable(this.botaoCobra1Collider) // Habilita a física para o retângulo
     this.botaoCobra1Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.botaoCobra2 = this.add.sprite(1038, 2044, 'botaoCobra')
-    this.botaoCobra2Collider = this.add.rectangle(1038, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra2
+    this.botaoCobra2Collider = this.add.rectangle(1038, 2044, 1, 1) // O retângulo invisível que corresponde ao botaoCobra2
     this.physics.world.enable(this.botaoCobra2Collider) // Habilita a física para o retângulo
     this.botaoCobra2Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.botaoCobra3 = this.add.sprite(938, 2044, 'botaoCobra')
-    this.botaoCobra3Collider = this.add.rectangle(938, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra3
+    this.botaoCobra3Collider = this.add.rectangle(938, 2044, 1, 1) // O retângulo invisível que corresponde ao botaoCobra3
     this.physics.world.enable(this.botaoCobra3Collider) // Habilita a física para o retângulo
     this.botaoCobra3Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.botaoCobra4 = this.add.sprite(838, 2044, 'botaoCobra')
-    this.botaoCobra4Collider = this.add.rectangle(838, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra4
+    this.botaoCobra4Collider = this.add.rectangle(838, 2044, 1, 1) // O retângulo invisível que corresponde ao botaoCobra4
     this.physics.world.enable(this.botaoCobra4Collider) // Habilita a física para o retângulo
     this.botaoCobra4Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.botaoCobra5 = this.add.sprite(738, 2044, 'botaoCobra')
-    this.botaoCobra5Collider = this.add.rectangle(738, 2044, 1, 1, 0x000000) // O retângulo invisível que corresponde ao botaoCobra5
+    this.botaoCobra5Collider = this.add.rectangle(738, 2044, 1, 1) // O retângulo invisível que corresponde ao botaoCobra5
     this.physics.world.enable(this.botaoCobra5Collider) // Habilita a física para o retângulo
     this.botaoCobra5Collider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     // OBJETOS INTERATIVOS
 
     this.livro = this.add.sprite(2427, 584, 'livroCobra')
-    this.livroCollider = this.add.rectangle(2390, 579, 1, 1, 0x000000) // O retângulo invisível que corresponde ao livro
+    this.livroCollider = this.add.rectangle(2390, 579, 1, 1) // O retângulo invisível que corresponde ao livro
     this.physics.world.enable(this.livroCollider) // Habilita a física para o retângulo
     this.livroCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.mapaMesa = this.add.sprite(2806, 2124, 'mapaMesa')
-    this.mapaMesaCollider = this.add.rectangle(2806, 2100, 1, 1, 0x000000) // O retângulo invisível que corresponde ao mapaMesa
+    this.mapaMesaCollider = this.add.rectangle(2806, 2100, 1, 1) // O retângulo invisível que corresponde ao mapaMesa
     this.physics.world.enable(this.mapaMesaCollider) // Habilita a física para o retângulo
     this.mapaMesaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
@@ -364,6 +364,19 @@ export default class personagem extends Phaser.Scene {
       .setScrollFactor(0, 0)
 
     /* Animação */
+
+    const effect = this.alavancaAzul.preFX.addShine(0.5, 0.5, 3, false)
+    const effect1 = this.alavancaLaranja.preFX.addShine(0.5, 0.5, 3, false)
+    const effect2 = this.alavancaVermelho.preFX.addShine(0.5, 0.5, 3, false)
+    const effect3 = this.alavancaVerde.preFX.addShine(0.5, 0.5, 3, false)
+    const effect4 = this.mapaMesa.preFX.addShine(0.5, 0.5, 3, false)
+    const effect5 = this.livro.preFX.addShine(0.5, 0.5, 3, false)
+    const effect6 = this.botaoCobra1.preFX.addShine(0.5, 0.5, 3, false)
+    const effect7 = this.botaoCobra2.preFX.addShine(0.5, 0.5, 3, false)
+    const effect8 = this.botaoCobra3.preFX.addShine(0.5, 0.5, 3, false)
+    const effect9 = this.botaoCobra4.preFX.addShine(0.5, 0.5, 3, false)
+    const effect10 = this.botaoCobra5.preFX.addShine(0.5, 0.5, 3, false)
+    const effect11 = this.fonteEnigma.preFX.addShine(0.5, 0.5, 3, false)
 
     /* Personagem */
 
@@ -492,13 +505,14 @@ export default class personagem extends Phaser.Scene {
           this.portaLaranjaSobe.y = 3893
           this.portaLaranjaSobe1.x = 2300
           this.portaLaranjaSobe1.y = 6100
+          this.alavancaLaranja.effect()
         } else {
           this.alavancaLaranja.setFrame(0)
           alavancaState = 0
           this.audioAlavanca.play()
           this.portaLaranjaSobe.x = 2300
           this.portaLaranjaSobe.y = 6100
-          this.portaLaranjaSobe1.x = 5105
+          this.portaLaranjaSobe1.x = 5103
           this.portaLaranjaSobe1.y = 4490
         }
       })
@@ -884,7 +898,7 @@ export default class personagem extends Phaser.Scene {
     /* Colisão com os limites da cena */
     this.personagem.setCollideWorldBounds(true)
 
-    /* Cena (1920x1920) maior que a tela (800x450) */
+    /* Cena (1920x1920) maior que a tela (80x450) */
     this.cameras.main.setBounds(0, 0, 22912, 10240)
     this.physics.world.setBounds(0, 0, 22912, 10240)
     this.cameras.main.startFollow(this.personagem)
