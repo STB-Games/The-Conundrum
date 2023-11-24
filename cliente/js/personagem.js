@@ -738,7 +738,7 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.add.image(800, 450, 'mapaLab')
+        this.add.image(400, 225, 'mapaLab')
           .setScrollFactor(0, 0)
         this.audioLivro.play()
       })
