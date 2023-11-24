@@ -21,10 +21,10 @@ export default class personagem extends Phaser.Scene {
 
     // Fundo
 
-    this.load.spritesheet('fundo', '../assets/mapaTROLL.png', {
+    this.load.spritesheet('telaQuadrinho', '../assets/telaQuadrinho.png', {
 
-      frameWidth: 32,
-      frameHeight: 32
+      frameWidth: 800,
+      frameHeight: 450
     })
 
     // Medo
@@ -730,7 +730,7 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.add.image(800, 450, 'mapaLab')
+        this.add.image(400, 225, 'mapaLab')
           .setScrollFactor(0, 0)
         this.audioLivro.play()
       })
@@ -869,6 +869,8 @@ export default class personagem extends Phaser.Scene {
                                                                                 this.bola4.setFrame(9)
 
                                                                                 this.time.delayedCall(1000, () => {
+                                                                                  this.add.image(400, 225, 'telaQuadrinho')
+                                                                                    .setScrollFactor(0, 0)
                                                                                   this.bola1.setVisible(false)
                                                                                   this.bola2.setVisible(false)
                                                                                   this.bola3.setVisible(false)
