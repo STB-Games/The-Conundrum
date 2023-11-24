@@ -346,16 +346,16 @@ export default class personagem extends Phaser.Scene {
 
     this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
 
-    this.bola1 = this.add.sprite(1110, 5462, 'bolaAnim')
+    this.bola1 = this.add.sprite(1110, 5475, 'bolaAnim')
     this.bola1.setVisible(false)
 
-    this.bola2 = this.add.sprite(1217, 5571, 'bolaAnim')
+    this.bola2 = this.add.sprite(1215, 5571, 'bolaAnim')
     this.bola2.setVisible(false)
 
-    this.bola3 = this.add.sprite(1311, 5462, 'bolaAnim')
+    this.bola3 = this.add.sprite(1311, 5475, 'bolaAnim')
     this.bola3.setVisible(false)
 
-    this.bola4 = this.add.sprite(1217, 5372, 'bolaAnim')
+    this.bola4 = this.add.sprite(1215, 5372, 'bolaAnim')
     this.bola4.setVisible(false)
 
     /* Full Screen */
@@ -393,10 +393,10 @@ export default class personagem extends Phaser.Scene {
     const effect9 = this.botaoCobra4.preFX.addShine(0.5, 0.5, 3, false)
     const effect10 = this.botaoCobra5.preFX.addShine(0.5, 0.5, 3, false)
     const effect11 = this.fonteEnigma.preFX.addShine(0.5, 0.5, 3, false)
-    const effect12 = this.bola1.preFX.addShine(0.5, 0.5, 3, false)
-    const effect13 = this.bola2.preFX.addShine(0.5, 0.5, 3, false)
-    const effect14 = this.bola3.preFX.addShine(0.5, 0.5, 3, false)
-    const effect15 = this.bola4.preFX.addShine(0.5, 0.5, 3, false)
+    const effect12 = this.bola1.preFX.addShine(2, 0.5, 6, false)
+    const effect13 = this.bola2.preFX.addShine(2, 0.5, 6, false)
+    const effect14 = this.bola3.preFX.addShine(2, 0.5, 6, false)
+    const effect15 = this.bola4.preFX.addShine(2, 0.5, 6, false)
 
     /* Personagem */
 
@@ -783,6 +783,9 @@ export default class personagem extends Phaser.Scene {
 
                             this.time.delayedCall(1000, () => {
                               this.bola2.setFrame(2)
+                              this.startMedoTimer()
+                              this.medoFrame += 1
+                              this.spritesheet.setFrame(this.medoFrame)
 
                               this.time.delayedCall(1000, () => {
                                 this.bola2.setFrame(3)
@@ -816,6 +819,9 @@ export default class personagem extends Phaser.Scene {
 
                                                   this.time.delayedCall(1000, () => {
                                                     this.bola3.setFrame(4)
+                                                    this.startMedoTimer()
+                                                    this.medoFrame += 1
+                                                    this.spritesheet.setFrame(this.medoFrame)
 
                                                     this.time.delayedCall(1000, () => {
                                                       this.bola3.setFrame(5)
@@ -849,6 +855,9 @@ export default class personagem extends Phaser.Scene {
 
                                                                         this.time.delayedCall(1000, () => {
                                                                           this.bola4.setFrame(6)
+                                                                          this.startMedoTimer()
+                                                                          this.medoFrame += 1
+                                                                          this.spritesheet.setFrame(this.medoFrame)
 
                                                                           this.time.delayedCall(1000, () => {
                                                                             this.bola4.setFrame(7)
@@ -864,6 +873,8 @@ export default class personagem extends Phaser.Scene {
                                                                                   this.bola2.setVisible(false)
                                                                                   this.bola3.setVisible(false)
                                                                                   this.bola4.setVisible(false)
+                                                                                  this.botaoFonte.destroy()
+                                                                                  this.time.delayedCall(1000, () => {
                                                                                 })
                                                                               })
                                                                             })
