@@ -366,15 +366,15 @@ export default class personagem extends Phaser.Scene {
 
     /* Full Screen */
 
-    this.tela_cheia = this.add
+    const telaCheia = this.add
       .sprite(770, 30, 'tela-cheia', 0)
       .setInteractive()
       .on('pointerdown', () => {
         if (this.scale.isFullscreen) {
-          this.tela_cheia.setFrame(0)
+          telaCheia.setFrame(0)
           this.scale.stopFullscreen()
         } else {
-          this.tela_cheia.setFrame(1)
+          telaCheia.setFrame(1)
           this.scale.startFullscreen()
         }
       })
@@ -403,6 +403,8 @@ export default class personagem extends Phaser.Scene {
     const effect13 = this.bola2.preFX.addShine(2, 0.5, 6, false)
     const effect14 = this.bola3.preFX.addShine(2, 0.5, 6, false)
     const effect15 = this.bola4.preFX.addShine(2, 0.5, 6, false)
+
+    const botaoX = this.add.image(765, 35, 'botaoX')
 
     /* Personagem */
 
@@ -875,6 +877,17 @@ export default class personagem extends Phaser.Scene {
                                                                                 this.bola4.setFrame(9)
 
                                                                                 this.time.delayedCall(1000, () => {
+                                                                                  const telaQuadrinho = this.add.image(400, 225, 'telaQuadrinho')
+                                                                                    .setScrollFactor(0, 0)
+                                                                                  telaCheia.destroy()
+                                                                                  botaoX.setInteractive()
+                                                                                  botaoX.on('pointerdown', function () {
+                                                                                    // Excluir a imagem quando clicada
+                                                                                    telaQuadrinho.destroy()
+                                                                                    botaoX.destroy()
+                                                                                    telaCheia.create()
+                                                                                  }, this)
+                                                                                    .setScrollFactor(0, 0)
                                                                                   this.bola1.setVisible(false)
                                                                                   this.bola2.setVisible(false)
                                                                                   this.bola3.setVisible(false)
