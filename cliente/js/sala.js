@@ -230,8 +230,9 @@ export default class sala extends Phaser.Scene {
         .setInteractive()
         .on('pointerdown', () => {
           this.salas.forEach((item) => {
-            item.botao.setFrame(1)
+            item.botao.setFrame(0)
           })
+          item.botao.setFrame(1)
           this.game.sala = item.numero
           this.game.socket.emit('entrar-na-sala', this.game.sala)
         })
