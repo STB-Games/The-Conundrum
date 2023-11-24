@@ -90,6 +90,10 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 8
     })
 
+    this.load.spritesheet('bolaAnim', './assets/objetos/bolaAnim.png', {
+      frameWidth: 16,
+      frameHeight: 16
+    })
     // EndGame
 
     this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
@@ -342,6 +346,18 @@ export default class personagem extends Phaser.Scene {
 
     this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
 
+    this.bola1 = this.add.sprite(1110, 5462, 'bolaAnim')
+    this.bola1.setVisible(false)
+
+    this.bola2 = this.add.sprite(1217, 5571, 'bolaAnim')
+    this.bola2.setVisible(false)
+
+    this.bola3 = this.add.sprite(1311, 5462, 'bolaAnim')
+    this.bola3.setVisible(false)
+
+    this.bola4 = this.add.sprite(1217, 5372, 'bolaAnim')
+    this.bola4.setVisible(false)
+
     /* Full Screen */
 
     this.tela_cheia = this.add
@@ -377,6 +393,10 @@ export default class personagem extends Phaser.Scene {
     const effect9 = this.botaoCobra4.preFX.addShine(0.5, 0.5, 3, false)
     const effect10 = this.botaoCobra5.preFX.addShine(0.5, 0.5, 3, false)
     const effect11 = this.fonteEnigma.preFX.addShine(0.5, 0.5, 3, false)
+    const effect12 = this.bola1.preFX.addShine(0.5, 0.5, 3, false)
+    const effect13 = this.bola2.preFX.addShine(0.5, 0.5, 3, false)
+    const effect14 = this.bola3.preFX.addShine(0.5, 0.5, 3, false)
+    const effect15 = this.bola4.preFX.addShine(0.5, 0.5, 3, false)
 
     /* Personagem */
 
@@ -505,7 +525,6 @@ export default class personagem extends Phaser.Scene {
           this.portaLaranjaSobe.y = 3893
           this.portaLaranjaSobe1.x = 2300
           this.portaLaranjaSobe1.y = 6100
-          this.alavancaLaranja.effect()
         } else {
           this.alavancaLaranja.setFrame(0)
           alavancaState = 0
@@ -723,8 +742,166 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.audioLivro.play()
-      })
 
+        this.bola1.setVisible(true)
+
+        this.bola2.setVisible(true)
+
+        this.bola3.setVisible(true)
+
+        this.bola4.setVisible(true)
+
+        this.time.delayedCall(1000, () => {
+          this.bola1.setFrame(1)
+
+          this.time.delayedCall(1000, () => {
+            this.bola1.setFrame(2)
+
+            this.time.delayedCall(1000, () => {
+              this.bola1.setFrame(3)
+
+              this.time.delayedCall(1000, () => {
+                this.bola1.setFrame(4)
+
+                this.time.delayedCall(1000, () => {
+                  this.bola1.setFrame(5)
+
+                  this.time.delayedCall(1000, () => {
+                    this.bola1.setFrame(6)
+
+                    this.time.delayedCall(1000, () => {
+                      this.bola1.setFrame(7)
+
+                      this.time.delayedCall(1000, () => {
+                        this.bola1.setFrame(8)
+
+                        this.time.delayedCall(1000, () => {
+                          this.bola1.setFrame(9)
+
+                          this.time.delayedCall(1000, () => {
+                            this.bola2.setFrame(1)
+
+                            this.time.delayedCall(1000, () => {
+                              this.bola2.setFrame(2)
+
+                              this.time.delayedCall(1000, () => {
+                                this.bola2.setFrame(3)
+
+                                this.time.delayedCall(1000, () => {
+                                  this.bola2.setFrame(4)
+
+                                  this.time.delayedCall(1000, () => {
+                                    this.bola2.setFrame(5)
+
+                                    this.time.delayedCall(1000, () => {
+                                      this.bola2.setFrame(6)
+
+                                      this.time.delayedCall(1000, () => {
+                                        this.bola2.setFrame(7)
+
+                                        this.time.delayedCall(1000, () => {
+                                          this.bola2.setFrame(8)
+
+                                          this.time.delayedCall(1000, () => {
+                                            this.bola2.setFrame(9)
+
+                                            this.time.delayedCall(1000, () => {
+                                              this.bola3.setFrame(1)
+
+                                              this.time.delayedCall(1000, () => {
+                                                this.bola3.setFrame(2)
+
+                                                this.time.delayedCall(1000, () => {
+                                                  this.bola3.setFrame(3)
+
+                                                  this.time.delayedCall(1000, () => {
+                                                    this.bola3.setFrame(4)
+
+                                                    this.time.delayedCall(1000, () => {
+                                                      this.bola3.setFrame(5)
+
+                                                      this.time.delayedCall(1000, () => {
+                                                        this.bola3.setFrame(6)
+
+                                                        this.time.delayedCall(1000, () => {
+                                                          this.bola3.setFrame(7)
+
+                                                          this.time.delayedCall(1000, () => {
+                                                            this.bola3.setFrame(8)
+
+                                                            this.time.delayedCall(1000, () => {
+                                                              this.bola3.setFrame(9)
+
+                                                              this.time.delayedCall(1000, () => {
+                                                                this.bola4.setFrame(1)
+
+                                                                this.time.delayedCall(1000, () => {
+                                                                  this.bola4.setFrame(2)
+
+                                                                  this.time.delayedCall(1000, () => {
+                                                                    this.bola4.setFrame(3)
+
+                                                                    this.time.delayedCall(1000, () => {
+                                                                      this.bola4.setFrame(4)
+
+                                                                      this.time.delayedCall(1000, () => {
+                                                                        this.bola4.setFrame(5)
+
+                                                                        this.time.delayedCall(1000, () => {
+                                                                          this.bola4.setFrame(6)
+
+                                                                          this.time.delayedCall(1000, () => {
+                                                                            this.bola4.setFrame(7)
+
+                                                                            this.time.delayedCall(1000, () => {
+                                                                              this.bola4.setFrame(8)
+
+                                                                              this.time.delayedCall(1000, () => {
+                                                                                this.bola4.setFrame(9)
+
+                                                                                this.time.delayedCall(1000, () => {
+                                                                                  this.bola1.setVisible(false)
+                                                                                  this.bola2.setVisible(false)
+                                                                                  this.bola3.setVisible(false)
+                                                                                  this.bola4.setVisible(false)
+                                                                                })
+                                                                              })
+                                                                            })
+                                                                          })
+                                                                        })
+                                                                      })
+                                                                    })
+                                                                  })
+                                                                })
+                                                              })
+                                                            })
+                                                          })
+                                                        })
+                                                      })
+                                                    })
+                                                  })
+                                                })
+                                              })
+                                            })
+                                          })
+                                        })
+                                      })
+                                    })
+                                  })
+                                })
+                              })
+                            })
+                          })
+                        })
+                      })
+                    })
+                  })
+                })
+              })
+            })
+          })
+        })
+      })
       .setScrollFactor(0, 0)
 
     this.teleportes = this.physics.add.group()
