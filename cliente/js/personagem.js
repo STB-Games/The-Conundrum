@@ -19,12 +19,18 @@ export default class personagem extends Phaser.Scene {
 
     this.load.image('transparente', 'assets/transparente.png')
 
-    // Fundo
+    // Quadrinho
 
-    this.load.spritesheet('telaQuadrinho', '../assets/telaQuadrinho.png', {
+    this.load.image('telaQuadrinho', '../assets/telaQuadrinho.png', {
 
       frameWidth: 800,
       frameHeight: 450
+    })
+
+    this.load.image('botaoX', '../assets/botoes/botaoX.png', {
+
+      frameWidth: 32,
+      frameHeight: 32
     })
 
     // Medo
@@ -730,7 +736,7 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.add.image(400, 225, 'mapaLab')
+        this.add.image(800, 450, 'mapaLab')
           .setScrollFactor(0, 0)
         this.audioLivro.play()
       })
@@ -869,14 +875,14 @@ export default class personagem extends Phaser.Scene {
                                                                                 this.bola4.setFrame(9)
 
                                                                                 this.time.delayedCall(1000, () => {
-                                                                                  this.add.image(400, 225, 'telaQuadrinho')
-                                                                                    .setScrollFactor(0, 0)
                                                                                   this.bola1.setVisible(false)
                                                                                   this.bola2.setVisible(false)
                                                                                   this.bola3.setVisible(false)
                                                                                   this.bola4.setVisible(false)
                                                                                   this.botaoFonte.destroy()
                                                                                   this.time.delayedCall(1000, () => {
+                                                                                    this.bola4.setVisible(false)
+                                                                                  })
                                                                                 })
                                                                               })
                                                                             })
