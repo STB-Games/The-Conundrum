@@ -178,6 +178,7 @@ export default class personagem extends Phaser.Scene {
     this.load.audio('audioMonstro', '../assets/sons/somMonstro.mp3')
     this.load.audio('audioCoracao', '../assets/sons/somCoracao.mp3')
     this.load.audio('audioRespirando', '../assets/sons/somRespirando.mp3')
+    this.load.audio('musicaFoda', '../assets/sons/HeilagVagga.mp3')
   }
 
   create () {
@@ -195,6 +196,7 @@ export default class personagem extends Phaser.Scene {
     this.audioMonstro = this.sound.add('audioMonstro')
     this.audioCoracao = this.sound.add('audioCoracao')
     this.audioRespirando = this.sound.add('audioRespirando')
+    this.musicaFoda = this.sound.add('musicaFoda')
 
     /* Tilemap */
     this.mapa = this.make.tilemap({
@@ -773,7 +775,10 @@ export default class personagem extends Phaser.Scene {
 
         this.bola4.setVisible(true)
 
-        this.time.delayedCall(1000, () => {
+        this.musicaFoda.play()
+        this.audioChuva.stop()
+
+        this.time.delayedCall(7500, () => {
           this.bola1.setFrame(1)
 
           this.time.delayedCall(1000, () => {
@@ -911,6 +916,8 @@ export default class personagem extends Phaser.Scene {
                                                                                   this.botaoFonte.destroy()
                                                                                   this.time.delayedCall(1000, () => {
                                                                                     this.bola4.setVisible(false)
+                                                                                    this.audioChuva.play()
+                                                                                    this.audioChuva.loop = true
                                                                                   })
                                                                                 })
                                                                               })
