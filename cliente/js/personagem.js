@@ -130,6 +130,8 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 450
     })
 
+    this.load.image('fundoP', './assets/fundopreto.png')
+
     this.load.image('fonte', './assets/fonte.png', {
       frameWidth: 75,
       frameHeight: 75
@@ -734,13 +736,25 @@ export default class personagem extends Phaser.Scene {
 
       .setScrollFactor(0, 0)
 
-    this.botaoMesa = this.add
-      .sprite(735, 400, 'interacao', 0)
+    this.botaoMesa = this.add.sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        this.add.image(400, 225, 'mapaLab')
-          .setScrollFactor(0, 0)
         this.audioLivro.play()
+        const preto = this.add.image(400, 225, 'fundoP')
+          .setScrollFactor(0, 0)
+        const mapaLab = this.add.image(400, 225, 'mapaLab')
+          .setScrollFactor(0, 0)
+        const botaoX = this.add.image(765, 35, 'botaoX')
+          .setScrollFactor(0, 0)
+        telaCheia.setVisible(false)
+        botaoX.setInteractive()
+        botaoX.on('pointerdown', function () {
+          // Excluir a imagem quando clicada
+          mapaLab.destroy()
+          preto.destroy()
+          botaoX.destroy()
+          telaCheia.setVisible(true)
+        }, this)
       })
 
       .setScrollFactor(0, 0)
@@ -879,13 +893,15 @@ export default class personagem extends Phaser.Scene {
                                                                                 this.time.delayedCall(1000, () => {
                                                                                   const telaQuadrinho = this.add.image(400, 225, 'telaQuadrinho')
                                                                                     .setScrollFactor(0, 0)
-                                                                                  telaCheia.destroy()
+                                                                                  const botaoX = this.add.image(765, 35, 'botaoX')
+                                                                                    .setScrollFactor(0, 0)
+                                                                                  telaCheia.setVisible(false)
                                                                                   botaoX.setInteractive()
                                                                                   botaoX.on('pointerdown', function () {
                                                                                     // Excluir a imagem quando clicada
                                                                                     telaQuadrinho.destroy()
                                                                                     botaoX.destroy()
-                                                                                    telaCheia.create()
+                                                                                    telaCheia.setVisible(true)
                                                                                   }, this)
                                                                                     .setScrollFactor(0, 0)
                                                                                   this.bola1.setVisible(false)
