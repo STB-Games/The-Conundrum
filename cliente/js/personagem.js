@@ -776,6 +776,7 @@ export default class personagem extends Phaser.Scene {
         this.bola4.setVisible(true)
 
         this.musicaFoda.play()
+        this.botaoFonte.destroy()
         this.audioChuva.stop()
 
         this.time.delayedCall(7500, () => {
