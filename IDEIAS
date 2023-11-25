@@ -1,32 +1,5 @@
-fazer tela de encerramento (done)
-fazer botoes (done)
-fazer animação boneco calvo (done)
-fazer boneco feminino (half-done)
-fazer animação boneco feminino (half-done)
-definir como será o hall do museu (done)
-definir como será as salas (done)
-definir quantos corredores e quantos coletáveis terá (done)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-arrumar cena abertura, (half-done)
-arrumar nuvem (done)
-arrumar botao tela cheia (done)
-arrumar chapeu menina (not done)
-arrumar tela sala (done)
-arrumar cena 0, botar tudo para cena 1 e deixar apenas a abertura. (done)
+2 quadros, configurar 2 quadros, começam com sombra e atualizam o frame para sem sombra,
+musica tensa e para a de chuva na fonte
+alavanca ou algo assim (rosa) para nao poder ir até o labirinto antes das cobras.
+alavanca rosa abre a passagem pro labirinto (ate no mapa está assim)
+deixar mais explicito o motivo do jogo deixando frases pelo caminho nas folhas sobre os monstros.
