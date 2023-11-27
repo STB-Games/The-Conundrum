@@ -40,6 +40,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 60
     })
 
+    this.load.spritesheet('fogo', '../assets/fogo.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
     // Porta
 
     this.load.spritesheet('portaVerdeSobe', '../assets/portoes/portaVerde.png', {
@@ -179,6 +184,33 @@ export default class personagem extends Phaser.Scene {
     this.load.audio('audioCoracao', '../assets/sons/somCoracao.mp3')
     this.load.audio('audioRespirando', '../assets/sons/somRespirando.mp3')
     this.load.audio('musicaFoda', '../assets/sons/HeilagVagga.mp3')
+
+    // Símbolos
+
+    this.load.spritesheet('conhecimento', './assets/simbolos/conhecimento.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('energia', './assets/simbolos/energia.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('morte', './assets/simbolos/morte.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('sangue', './assets/simbolos/sangue.png', {
+      frameWidth: 64,
+      frameHeight: 64
+    })
+
+    this.load.spritesheet('medoS', './assets/simbolos/medo.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
   }
 
   create () {
@@ -356,17 +388,22 @@ export default class personagem extends Phaser.Scene {
 
     this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
 
-    this.bola1 = this.add.sprite(1110, 5475, 'bolaAnim')
-    this.bola1.setVisible(false)
+    this.fogo = this.add.sprite(706, 2340, 'fogo')
 
-    this.bola2 = this.add.sprite(1215, 5571, 'bolaAnim')
-    this.bola2.setVisible(false)
+    this.sangue = this.add.sprite(1110, 5475, 'sangue')
+    this.sangue.setVisible(false)
 
-    this.bola3 = this.add.sprite(1311, 5475, 'bolaAnim')
-    this.bola3.setVisible(false)
+    this.morte = this.add.sprite(1215, 5571, 'morte')
+    this.morte.setVisible(false)
 
-    this.bola4 = this.add.sprite(1215, 5372, 'bolaAnim')
-    this.bola4.setVisible(false)
+    this.energia = this.add.sprite(1311, 5475, 'energia')
+    this.energia.setVisible(false)
+
+    this.conhecimento = this.add.sprite(1215, 5372, 'conhecimento')
+    this.conhecimento.setVisible(false)
+
+    this.medo = this.add.sprite(1218, 5255, 'medoS')
+    this.medo.setVisible(false)
 
     /* Full Screen */
 
@@ -403,10 +440,6 @@ export default class personagem extends Phaser.Scene {
     const effect9 = this.botaoCobra4.preFX.addShine(0.5, 0.5, 3, false)
     const effect10 = this.botaoCobra5.preFX.addShine(0.5, 0.5, 3, false)
     const effect11 = this.fonteEnigma.preFX.addShine(0.5, 0.5, 3, false)
-    const effect12 = this.bola1.preFX.addShine(2, 0.5, 6, false)
-    const effect13 = this.bola2.preFX.addShine(2, 0.5, 6, false)
-    const effect14 = this.bola3.preFX.addShine(2, 0.5, 6, false)
-    const effect15 = this.bola4.preFX.addShine(2, 0.5, 6, false)
 
     const botaoX = this.add.image(765, 35, 'botaoX')
 
@@ -496,7 +529,9 @@ export default class personagem extends Phaser.Scene {
 
     this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
 
-    /* Animação dos Personagens */
+    /* fogo */
+
+    // alavanca
 
     let alavancaState = 0
     let alavancaState1 = 0
@@ -620,20 +655,35 @@ export default class personagem extends Phaser.Scene {
       if (sequenciaAtual.toString() === sequenciaCorreta.toString()) {
         console.log('Você acertou a sequência!')
         sequenciaAtual = []
+
         this.botaoIntCobra1.destroy()
         this.botaoIntCobra2.destroy()
         this.botaoIntCobra3.destroy()
         this.botaoIntCobra4.destroy()
         this.botaoIntCobra5.destroy()
+
+        this.anims.create({
+          key: 'fogo',
+          frames: this.anims.generateFrameNumbers(this.fogo, {
+            start: 0,
+            end: 24
+          }),
+          frameRate: 8,
+          repeat: -1
+        })
+
+        this.fogo.anims.play('fogo')
         this.audioCobra.play()
       } else if (sequenciaAtual.length === sequenciaCorreta.length) {
         console.log('Resetando sequencial atual')
         sequenciaAtual = []
+
         this.botaoCobra1.setVisible(true)
         this.botaoCobra2.setVisible(true)
         this.botaoCobra3.setVisible(true)
         this.botaoCobra4.setVisible(true)
         this.botaoCobra5.setVisible(true)
+
         this.audioAlavanca.play()
         this.audioFail.play()
       }
@@ -775,135 +825,130 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.audioLivro.play()
-
-        this.bola1.setVisible(true)
-
-        this.bola2.setVisible(true)
-
-        this.bola3.setVisible(true)
-
-        this.bola4.setVisible(true)
-
         this.musicaFoda.play()
         this.botaoFonte.destroy()
         this.audioChuva.stop()
 
-        this.time.delayedCall(7500, () => {
-          this.bola1.setFrame(1)
+        this.time.delayedCall(8500, () => {
+          this.sangue.setVisible(true)
+          this.sangue.setFrame(1)
 
           this.time.delayedCall(1000, () => {
-            this.bola1.setFrame(2)
+            this.sangue.setFrame(2)
 
             this.time.delayedCall(1000, () => {
-              this.bola1.setFrame(3)
+              this.sangue.setFrame(3)
 
               this.time.delayedCall(1000, () => {
-                this.bola1.setFrame(4)
+                this.sangue.setFrame(4)
 
                 this.time.delayedCall(1000, () => {
-                  this.bola1.setFrame(5)
+                  this.sangue.setFrame(5)
 
                   this.time.delayedCall(1000, () => {
-                    this.bola1.setFrame(6)
+                    this.sangue.setFrame(6)
 
                     this.time.delayedCall(1000, () => {
-                      this.bola1.setFrame(7)
+                      this.sangue.setFrame(7)
 
                       this.time.delayedCall(1000, () => {
-                        this.bola1.setFrame(8)
+                        this.sangue.setFrame(8)
 
                         this.time.delayedCall(1000, () => {
-                          this.bola1.setFrame(9)
+                          this.sangue.setFrame(9)
 
                           this.time.delayedCall(1000, () => {
-                            this.bola2.setFrame(1)
+                            this.morte.setVisible(true)
+                            this.morte.setFrame(1)
 
                             this.time.delayedCall(1000, () => {
-                              this.bola2.setFrame(2)
+                              this.morte.setFrame(2)
                               this.startMedoTimer()
                               this.medoFrame += 1
                               this.spritesheet.setFrame(this.medoFrame)
 
                               this.time.delayedCall(1000, () => {
-                                this.bola2.setFrame(3)
+                                this.morte.setFrame(3)
 
                                 this.time.delayedCall(1000, () => {
-                                  this.bola2.setFrame(4)
+                                  this.morte.setFrame(4)
 
                                   this.time.delayedCall(1000, () => {
-                                    this.bola2.setFrame(5)
+                                    this.morte.setFrame(5)
 
                                     this.time.delayedCall(1000, () => {
-                                      this.bola2.setFrame(6)
+                                      this.morte.setFrame(6)
 
                                       this.time.delayedCall(1000, () => {
-                                        this.bola2.setFrame(7)
+                                        this.morte.setFrame(7)
 
                                         this.time.delayedCall(1000, () => {
-                                          this.bola2.setFrame(8)
+                                          this.morte.setFrame(8)
 
                                           this.time.delayedCall(1000, () => {
-                                            this.bola2.setFrame(9)
+                                            this.morte.setFrame(9)
 
                                             this.time.delayedCall(1000, () => {
-                                              this.bola3.setFrame(1)
+                                              this.energia.setVisible(true)
+                                              this.energia.setFrame(1)
 
                                               this.time.delayedCall(1000, () => {
-                                                this.bola3.setFrame(2)
+                                                this.energia.setFrame(2)
 
                                                 this.time.delayedCall(1000, () => {
-                                                  this.bola3.setFrame(3)
+                                                  this.energia.setFrame(3)
 
                                                   this.time.delayedCall(1000, () => {
-                                                    this.bola3.setFrame(4)
+                                                    this.energia.setFrame(4)
                                                     this.startMedoTimer()
                                                     this.medoFrame += 1
                                                     this.spritesheet.setFrame(this.medoFrame)
 
                                                     this.time.delayedCall(1000, () => {
-                                                      this.bola3.setFrame(5)
+                                                      this.energia.setFrame(5)
 
                                                       this.time.delayedCall(1000, () => {
-                                                        this.bola3.setFrame(6)
+                                                        this.energia.setFrame(6)
 
                                                         this.time.delayedCall(1000, () => {
-                                                          this.bola3.setFrame(7)
+                                                          this.energia.setFrame(7)
 
                                                           this.time.delayedCall(1000, () => {
-                                                            this.bola3.setFrame(8)
+                                                            this.energia.setFrame(8)
 
                                                             this.time.delayedCall(1000, () => {
-                                                              this.bola3.setFrame(9)
+                                                              this.energia.setFrame(9)
 
                                                               this.time.delayedCall(1000, () => {
-                                                                this.bola4.setFrame(1)
+                                                                this.conhecimento.setVisible(true)
+                                                                this.conhecimento.setFrame(1)
 
                                                                 this.time.delayedCall(1000, () => {
-                                                                  this.bola4.setFrame(2)
+                                                                  this.conhecimento.setFrame(2)
 
                                                                   this.time.delayedCall(1000, () => {
-                                                                    this.bola4.setFrame(3)
+                                                                    this.conhecimento.setFrame(3)
 
                                                                     this.time.delayedCall(1000, () => {
-                                                                      this.bola4.setFrame(4)
+                                                                      this.conhecimento.setFrame(4)
 
                                                                       this.time.delayedCall(1000, () => {
-                                                                        this.bola4.setFrame(5)
+                                                                        this.conhecimento.setFrame(5)
 
                                                                         this.time.delayedCall(1000, () => {
-                                                                          this.bola4.setFrame(6)
+                                                                          this.conhecimento.setFrame(6)
                                                                           this.startMedoTimer()
                                                                           this.medoFrame += 1
                                                                           this.spritesheet.setFrame(this.medoFrame)
 
                                                                           this.time.delayedCall(1000, () => {
-                                                                            this.bola4.setFrame(7)
+                                                                            this.conhecimento.setFrame(7)
 
                                                                             this.time.delayedCall(1000, () => {
-                                                                              this.bola4.setFrame(8)
+                                                                              this.conhecimento.setFrame(8)
 
                                                                               this.time.delayedCall(1000, () => {
-                                                                                this.bola4.setFrame(9)
+                                                                                this.conhecimento.setFrame(9)
 
                                                                                 this.time.delayedCall(1000, () => {
                                                                                   const telaQuadrinho = this.add.image(400, 225, 'telaQuadrinho')
@@ -919,13 +964,14 @@ export default class personagem extends Phaser.Scene {
                                                                                     telaCheia.setVisible(true)
                                                                                   }, this)
                                                                                     .setScrollFactor(0, 0)
-                                                                                  this.bola1.setVisible(false)
-                                                                                  this.bola2.setVisible(false)
-                                                                                  this.bola3.setVisible(false)
-                                                                                  this.bola4.setVisible(false)
+                                                                                  const effect12 = this.sangue.preFX.addShine(2, 0.5, 3, false)
+                                                                                  const effect13 = this.morte.preFX.addShine(2, 0.5, 3, false)
+                                                                                  const effect14 = this.energia.preFX.addShine(2, 0.5, 3, false)
+                                                                                  const effect15 = this.conhecimento.preFX.addShine(2, 0.5, 3, false)
+                                                                                  const effect16 = this.medo.preFX.addShine(2, 0.5, 3, false)
+                                                                                  this.medo.setVisible(true)
                                                                                   this.botaoFonte.destroy()
                                                                                   this.time.delayedCall(1000, () => {
-                                                                                    this.bola4.setVisible(false)
                                                                                     this.audioChuva.play()
                                                                                     this.audioChuva.loop = true
                                                                                   })
