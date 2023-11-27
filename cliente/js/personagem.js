@@ -498,28 +498,33 @@ export default class personagem extends Phaser.Scene {
 
     /* Animação dos Personagens */
 
-    let alavancaState = 1
+    let alavancaState = 0
+    let alavancaState1 = 0
+    let alavancaState2 = 0
+    let alavancaState3 = 0
 
     this.BotãoInt = this.add
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState === 0) {
-          this.alavancaVerde.setFrame(1)
-          alavancaState = 1
-          this.audioAlavanca.play()
-          this.portaVerdeSobe.x = 5106
-          this.portaVerdeSobe.y = 4833
-          this.portaVerdeSobe1.x = 2300
-          this.portaVerdeSobe1.y = 6100
-        } else {
           this.alavancaVerde.setFrame(0)
-          alavancaState = 0
+          alavancaState = 1
           this.audioAlavanca.play()
           this.portaVerdeSobe.x = 2300
           this.portaVerdeSobe.y = 6100
           this.portaVerdeSobe1.x = 3247
           this.portaVerdeSobe1.y = 4824
+          console.log('Alavanca state atual %d', alavancaState)
+        } else {
+          this.alavancaVerde.setFrame(1)
+          alavancaState = 0
+          this.audioAlavanca.play()
+          this.portaVerdeSobe.x = 5106
+          this.portaVerdeSobe.y = 4833
+          this.portaVerdeSobe1.x = 2300
+          this.portaVerdeSobe1.y = 6100
+          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -529,22 +534,24 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (alavancaState === 0) {
-          this.alavancaLaranja.setFrame(1)
-          alavancaState = 1
-          this.audioAlavanca.play()
-          this.portaLaranjaSobe.x = 4148
-          this.portaLaranjaSobe.y = 3893
-          this.portaLaranjaSobe1.x = 2300
-          this.portaLaranjaSobe1.y = 6100
-        } else {
+        if (alavancaState1 === 0) {
           this.alavancaLaranja.setFrame(0)
-          alavancaState = 0
+          alavancaState1 = 1
           this.audioAlavanca.play()
           this.portaLaranjaSobe.x = 2300
           this.portaLaranjaSobe.y = 6100
           this.portaLaranjaSobe1.x = 5103
           this.portaLaranjaSobe1.y = 4490
+          console.log('Alavanca state atual %d', alavancaState)
+        } else {
+          this.alavancaLaranja.setFrame(1)
+          alavancaState1 = 0
+          this.audioAlavanca.play()
+          this.portaLaranjaSobe.x = 4148
+          this.portaLaranjaSobe.y = 3893
+          this.portaLaranjaSobe1.x = 2300
+          this.portaLaranjaSobe1.y = 6100
+          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -554,22 +561,24 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (alavancaState === 0) {
-          this.alavancaAzul.setFrame(1)
-          alavancaState = 1
-          this.audioAlavanca.play()
-          this.portaAzulSobe.x = 3632
-          this.portaAzulSobe.y = 5136
-          this.portaAzulSobe1.x = 2300
-          this.portaAzulSobe1.y = 6100
-        } else {
+        if (alavancaState2 === 0) {
           this.alavancaAzul.setFrame(0)
-          alavancaState = 0
+          alavancaState2 = 1
           this.audioAlavanca.play()
           this.portaAzulSobe.x = 2300
           this.portaAzulSobe.y = 6100
           this.portaAzulSobe1.x = 4592
           this.portaAzulSobe1.y = 4920
+          console.log('Alavanca state atual %d', alavancaState)
+        } else {
+          this.alavancaAzul.setFrame(1)
+          alavancaState2 = 0
+          this.audioAlavanca.play()
+          this.portaAzulSobe.x = 3632
+          this.portaAzulSobe.y = 5136
+          this.portaAzulSobe1.x = 2300
+          this.portaAzulSobe1.y = 6100
+          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -579,9 +588,10 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (alavancaState === 1) {
+        if (alavancaState3 === 0) {
           this.alavancaVermelho.setFrame(0)
-          alavancaState = 0
+          alavancaState3 = 1
+          this.BotãoInt3.destroy()
           this.time.delayedCall(2000, () => {
             this.audioMonstro.play()
           })
@@ -595,7 +605,6 @@ export default class personagem extends Phaser.Scene {
                 this.audioRespirando.play()
               }
             })
-            this.BotãoInt3.destroy()
             this.startMedoTimer()
             this.medoFrame += 1
             this.spritesheet.setFrame(this.medoFrame)
