@@ -62,6 +62,11 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 96
     })
 
+    this.load.spritesheet('portaRosaSobe', '../assets/portoes/portaRosa.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    })
+
     // Alavanca
 
     this.load.spritesheet('alavancaVerde', '../assets/alavancas/alavancaVerde.png', {
@@ -80,6 +85,11 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.load.spritesheet('alavancaVermelho', '../assets/alavancas/alavancaVermelha.png', {
+      frameWidth: 64,
+      frameHeight: 32
+    })
+
+    this.load.spritesheet('alavancaRosa', '../assets/alavancas/alavancaRosa.png', {
       frameWidth: 64,
       frameHeight: 32
     })
@@ -317,6 +327,10 @@ export default class personagem extends Phaser.Scene {
     this.portaAzulSobe1.body.setAllowGravity(true)
     this.portaAzulSobe1.setImmovable(true)
 
+    this.portaRosaSobe = this.physics.add.image(4305, 5233, 'portaRosaSobe')
+    this.portaRosaSobe.body.setAllowGravity(true)
+    this.portaRosaSobe.setImmovable(true)
+
     // ALAVANCA
 
     this.alavancaVerde = this.add.sprite(3116, 4904, 'alavancaVerde', 1)
@@ -338,6 +352,11 @@ export default class personagem extends Phaser.Scene {
     this.alavancaVermelhoCollider = this.add.rectangle(4259, 3568, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaVermelho
     this.physics.world.enable(this.alavancaVermelhoCollider) // Habilita a física para o retângulo
     this.alavancaVermelhoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.alavancaRosa = this.add.sprite(2619, 409, 'alavancaRosa', 1)
+    this.alavancaRosaCollider = this.add.rectangle(2619, 449, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaRosa
+    this.physics.world.enable(this.alavancaRosaCollider) // Habilita a física para o retângulo
+    this.alavancaRosaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     // BOTAO COBRA
 
@@ -537,6 +556,7 @@ export default class personagem extends Phaser.Scene {
     let alavancaState1 = 0
     let alavancaState2 = 0
     let alavancaState3 = 0
+    let alavancaState4 = 0
 
     this.BotãoInt = this.add
       .sprite(735, 400, 'interacao', 0)
@@ -649,6 +669,24 @@ export default class personagem extends Phaser.Scene {
 
       .setScrollFactor(0, 0)
 
+    this.BotãoInt4 = this.add
+      .sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (alavancaState4 === 0) {
+          this.alavancaRosa.setFrame(0)
+          alavancaState4 = 1
+          this.portaRosaSobe.x = 2300
+          this.portaRosaSobe.y = 6100
+          this.BotãoInt4.destroy()
+          console.log('Alavanca state atual %d', alavancaState)
+        }
+      })
+
+      .setScrollFactor(0, 0)
+
+    this.BotãoInt4.disableBody(true, true)
+
     // Puzzle Cobra
 
     function checkSequence () {
@@ -662,17 +700,10 @@ export default class personagem extends Phaser.Scene {
         this.botaoIntCobra4.destroy()
         this.botaoIntCobra5.destroy()
 
-        this.anims.create({
-          key: 'fogo',
-          frames: this.anims.generateFrameNumbers(this.fogo, {
-            start: 0,
-            end: 24
-          }),
-          frameRate: 8,
-          repeat: -1
-        })
+        this.BotãoInt4.disableBody(false, false)
 
-        this.fogo.anims.play('fogo')
+        const effect17 = this.alavancaRosa.preFX.addShine(2, 0.5, 3, false)
+
         this.audioCobra.play()
       } else if (sequenciaAtual.length === sequenciaCorreta.length) {
         console.log('Resetando sequencial atual')
@@ -1046,6 +1077,7 @@ export default class personagem extends Phaser.Scene {
     this.BotãoInt1.setVisible(false)
     this.BotãoInt2.setVisible(false)
     this.BotãoInt3.setVisible(false)
+    this.BotãoInt4.setVisible(false)
 
     this.anims.create({
       key: 'olhoPiscando',
@@ -1203,6 +1235,7 @@ export default class personagem extends Phaser.Scene {
     this.physics.add.collider(this.personagem, this.portaLaranjaSobe1)
     this.physics.add.collider(this.personagem, this.portaAzulSobe)
     this.physics.add.collider(this.personagem, this.portaAzulSobe1)
+    this.physics.add.collider(this.personagem, this.portaRosaSobe)
     this.physics.add.collider(this.personagem, this.fonteEnigma)
   }
 
@@ -1315,6 +1348,17 @@ export default class personagem extends Phaser.Scene {
       this.BotãoInt3.setVisible(true)
     } else {
       this.BotãoInt3.setVisible(false)
+    }
+
+    const isOverlapping4 = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.alavancaRosaCollider.getBounds()
+    )
+
+    if (isOverlapping4) {
+      this.BotãoInt4.setVisible(true)
+    } else {
+      this.BotãoInt4.setVisible(false)
     }
 
     // Puzzle Cobra
@@ -1455,7 +1499,7 @@ export default class personagem extends Phaser.Scene {
         break
 
       case 'C3tolab':
-        this.teleportarParaDestino(4305, 5331)
+        this.teleportarParaDestino(4305, 5325)
         this.audioPorta.play()
         // this.cameras.main.setZoom(1.5)
         break
