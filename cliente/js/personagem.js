@@ -34,6 +34,18 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 32
     })
 
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+
+      frameWidth: 48,
+      frameHeight: 48
+    })
+
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+
+      frameWidth: 48,
+      frameHeight: 48
+    })
+
     // Medo
 
     this.load.spritesheet('barraMedo', '../assets/barraMedo.png', {
@@ -462,6 +474,8 @@ export default class personagem extends Phaser.Scene {
     const effect11 = this.fonteEnigma.preFX.addShine(0.5, 0.5, 3, false)
 
     const botaoX = this.add.image(765, 35, 'botaoX')
+    const setaD = this.add.image(750, 225, 'setaD')
+    const setaE = this.add.image(50, 225, 'setaE')
 
     /* Personagem */
 
@@ -719,6 +733,8 @@ export default class personagem extends Phaser.Scene {
         this.botaoCobra4.setVisible(true)
         this.botaoCobra5.setVisible(true)
 
+        this.validacao = 0
+
         this.audioAlavanca.play()
         this.audioFail.play()
       }
@@ -820,14 +836,40 @@ export default class personagem extends Phaser.Scene {
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
-        if (this.medoFrame === 3) {
-          this.gameOver()
-        } else {
-          this.startMedoTimer()
-          this.medoFrame += 1
-          this.spritesheet.setFrame(this.medoFrame)
-          this.audioLivro.play()
-        }
+        this.audioLivro.play()
+        const preto = this.add.image(400, 225, 'fundoP')
+          .setScrollFactor(0, 0)
+        const mapaLab = this.add.image(400, 225, 'mapaLab')
+          .setScrollFactor(0, 0)
+        const botaoX = this.add.image(765, 35, 'botaoX')
+          .setScrollFactor(0, 0)
+        const setaD = this.add.image(750, 225, 'setaD')
+          .setScrollFactor(0, 0)
+        const setaE = this.add.image(50, 225, 'setaE')
+          .setScrollFactor(0, 0)
+        telaCheia.setVisible(false)
+        botaoX.setInteractive()
+        setaD.on('pointerdown', function () {
+          // Excluir a imagem quando clicada
+          mapaLab.destroy()
+          preto.destroy()
+          setaD.destroy()
+          telaCheia.setVisible(true)
+        }, this)
+        setaE.on('pointerdown', function () {
+          // Excluir a imagem quando clicada
+          mapaLab.destroy()
+          preto.destroy()
+          botaoX.destroy()
+          telaCheia.setVisible(true)
+        }, this)
+        botaoX.on('pointerdown', function () {
+          // Excluir a imagem quando clicada
+          mapaLab.destroy()
+          preto.destroy()
+          botaoX.destroy()
+          telaCheia.setVisible(true)
+        }, this)
       })
 
       .setScrollFactor(0, 0)
