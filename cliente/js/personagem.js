@@ -4,7 +4,6 @@ export default class personagem extends Phaser.Scene {
 
     this.animationKey = undefined
     this.validacao = 0
-    this.currentBook = 1
   }
 
   preload () {
@@ -72,6 +71,12 @@ export default class personagem extends Phaser.Scene {
     })
 
     this.load.image('livroCobra5', '../assets/livros/livroCobra5.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.spritesheet('livroCobraT', '../assets/livros/livroCobraT.png', {
 
       frameWidth: 800,
       frameHeight: 450
@@ -863,64 +868,49 @@ export default class personagem extends Phaser.Scene {
 
     // Objetos
 
-    const livros = []
-
-    for (let i = 1; i <= 5; i++) {
-      const livro = this.add.image(400, 300, 'livroCobra' + i).setVisible(false)
-      livros.push(livro)
-    }
-
-    this.botaoLivro = this.add
-      .sprite(735, 400, 'interacao', 0)
+    this.botaoLivro = this.add.sprite(735, 400, 'interacao')
       .setInteractive()
       .on('pointerdown', () => {
-        this.audioLivro.play()
-        console.log(this.currentBook)
+        this.botaoLivro.setVisible(false)
+        this.livroCobraT.setVisible(true)
+        this.setaD.setVisible(true)
+        this.setaE.setVisible(true)
         const botaoX = this.add.image(770, 30, 'botaoX')
           .setScrollFactor(0, 0)
-        const setaD = this.add.image(750, 225, 'setaD').setInteractive()
-        setaD.on('pointerdown', function () {
-          if (this.currentBook < 5) {
-            livros[this.currentBook - 1].setVisible(false)
-            this.currentBook++
-            livros[this.currentBook - 1].setVisible(true)
-          }
-
-          if (this.currentBook === 5) {
-            setaD.setVisible(false)
-          }
-
-          setaE.setVisible(true)
-        })
-        const setaE = this.add.image(50, 225, 'setaE')
-          .setInteractive()
-        setaE.on('pointerdown', function () {
-          if (this.currentBook > 1) {
-            livros[this.currentBook - 1].setVisible(false)
-            this.currentBook--
-            livros[this.currentBook - 1].setVisible(true)
-            console.log('aaaa')
-          }
-
-          if (this.currentBook === 1) {
-            setaE.setVisible(false)
-          }
-
-          setaD.setVisible(true)
-        })
-
-        livros[this.currentBook - 1].setVisible(true)
-        setaE.setVisible(false)
         botaoX.setInteractive()
         botaoX.on('pointerdown', function () {
           // Excluir a imagem quando clicada
-          livros[this.currentBook].destroy()
-          setaE.destroy()
-          setaD.destroy()
+          this.livroCobraT.setVisible(false)
+          this.setaD.setVisible(false)
+          this.setaE.setVisible(false)
+          this.botaoLivro.setVisible(true)
           botaoX.destroy()
           telaCheia.setVisible(true)
         }, this)
       })
+
+      .setScrollFactor(0, 0)
+
+    // Adicione o livroCobraT (inicialmente invisível)
+    this.livroCobraT = this.add.sprite(400, 225, 'livroCobraT', 0).setVisible(false).setScrollFactor(0, 0)
+
+    // Adicione a setaD
+    this.setaD = this.add.sprite(750, 225, 'setaD', 0).setVisible(false).setInteractive().on('pointerdown', () => {
+      // Lógica quando a setaD é clicada
+      if (this.livroCobraT.frame.name < 4) {
+        this.livroCobraT.setFrame(this.livroCobraT.frame.name + 1)
+      }
+    })
+
+      .setScrollFactor(0, 0)
+
+    // Adicione a setaE
+    this.setaE = this.add.sprite(50, 225, 'setaE', 0).setVisible(false).setInteractive().on('pointerdown', () => {
+      // Lógica quando a setaE é clicada
+      if (this.livroCobraT.frame.name > 0) {
+        this.livroCobraT.setFrame(this.livroCobraT.frame.name - 1)
+      }
+    })
 
       .setScrollFactor(0, 0)
 
@@ -1225,6 +1215,18 @@ export default class personagem extends Phaser.Scene {
       }),
       frameRate: 4,
       repeat: -1
+    })
+
+    /* livro */
+
+    this.anims.create({
+      key: 'livro',
+      frames: this.anims.generateFrameNumbers('livroCobraT', {
+        start: 0,
+        end: 4
+      }),
+      frameRate: 0,
+      repeat: 0
     })
 
     /* Animação dos Personagens IDLE */
