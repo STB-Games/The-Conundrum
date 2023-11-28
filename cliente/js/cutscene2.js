@@ -4,7 +4,7 @@ export default class Cutscene2 extends Phaser.Scene {
   }
 
   preload () {
-    this.load.image('cutscene2_fundo', 'assets/cutscenes/cutscene2_fundo.png')
+    this.load.image('cutscene2img', 'assets/cutscenes/cutscene2img.png')
 
     /* Full Screen */
 
@@ -37,16 +37,16 @@ export default class Cutscene2 extends Phaser.Scene {
       })
       .setScrollFactor(0, 0)
 
-    const FlorestaFundoImage = this.add.image(400, 225, 'cutscene2_fundo').setAlpha(0)
+    const FlorestaFundoImage = this.add.image(400, 225, 'cutscene2img').setAlpha(0)
 
     const telaLargura = 800
     // const telaAltura = 450
 
-    const texto = 'Cercado por uma grande floresta densa, vários boatos cercavam este mansão, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores.'
+    const texto = 'No final do vilarejo, uma majestosa mansão sussurra lendas noturnas, onde sombras dançam em janelas, luzes cintilam em cômodos vazios e risadas ecoam ao anoitecer. Dizem que vestidos antigos roçam pelos corredores ao entardecer, evocando um passado misterioso. Os moradores, em tom de temor, mal mencionam seu nome, receosos de despertar entidades ocultas.'
 
     // const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1) // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
-    this.mensagem = this.add.text(120, 100, texto, {
+    this.mensagem = this.add.text(80, 85, texto, {
       fontFamily: 'Felipa',
       color: '#FFFFFF',
       fontSize: 32 + 'px',
@@ -54,7 +54,7 @@ export default class Cutscene2 extends Phaser.Scene {
       strokeThickness: 4,
       resolution: 2,
       wordWrap: {
-        width: telaLargura - 200, // largura máxima
+        width: telaLargura - 130, // largura máxima
         useAdvancedWrap: true
       }
     })
@@ -113,7 +113,7 @@ export default class Cutscene2 extends Phaser.Scene {
       })
     }
 
-    // iniciar a cena com o Fade In para 'cutscene2_fundo'
+    // iniciar a cena com o Fade In para 'cutscene2img'
     fadeIn(FlorestaFundoImage, 1000)
   }
 }

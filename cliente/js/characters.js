@@ -23,6 +23,20 @@ export default class characters extends Phaser.Scene {
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     const telacharImage = this.add.image(400, 225, 'telachar').setAlpha(0)
 
     this.imagem = this.add
