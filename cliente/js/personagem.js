@@ -3,6 +3,7 @@ export default class personagem extends Phaser.Scene {
     super('personagem')
 
     this.animationKey = undefined
+    this.validacao = 0
   }
 
   preload () {
@@ -671,8 +672,10 @@ export default class personagem extends Phaser.Scene {
 
     this.BotãoInt4 = this.add
       .sprite(735, 400, 'interacao', 0)
-      .setInteractive()
-      .on('pointerdown', () => {
+      .setScrollFactor(0, 0)
+
+    function funcaobot4 () {
+      this.BotãoInt4.setInteractive().on('pointerdown', () => {
         if (alavancaState4 === 0) {
           this.alavancaRosa.setFrame(0)
           alavancaState4 = 1
@@ -682,10 +685,7 @@ export default class personagem extends Phaser.Scene {
           console.log('Alavanca state atual %d', alavancaState)
         }
       })
-
-      .setScrollFactor(0, 0)
-
-    this.BotãoInt4.disableBody(true, true)
+    }
 
     // Puzzle Cobra
 
@@ -700,7 +700,11 @@ export default class personagem extends Phaser.Scene {
         this.botaoIntCobra4.destroy()
         this.botaoIntCobra5.destroy()
 
-        this.BotãoInt4.disableBody(false, false)
+        this.validacao = 1
+
+        this.BotãoInt4.setInteractive()
+
+        funcaobot4.call(this)
 
         const effect17 = this.alavancaRosa.preFX.addShine(2, 0.5, 3, false)
 
@@ -1355,7 +1359,7 @@ export default class personagem extends Phaser.Scene {
       this.alavancaRosaCollider.getBounds()
     )
 
-    if (isOverlapping4) {
+    if (isOverlapping4 && this.validacao === 1) {
       this.BotãoInt4.setVisible(true)
     } else {
       this.BotãoInt4.setVisible(false)
