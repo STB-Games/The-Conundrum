@@ -4,6 +4,7 @@ export default class personagem extends Phaser.Scene {
 
     this.animationKey = undefined
     this.validacao = 0
+    this.currentBook = 1
   }
 
   preload () {
@@ -44,6 +45,36 @@ export default class personagem extends Phaser.Scene {
 
       frameWidth: 48,
       frameHeight: 48
+    })
+
+    this.load.image('livroCobra1', '../assets/livros/livroCobra1.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.image('livroCobra2', '../assets/livros/livroCobra2.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.image('livroCobra3', '../assets/livros/livroCobra3.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.image('livroCobra4', '../assets/livros/livroCobra4.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
+    })
+
+    this.load.image('livroCobra5', '../assets/livros/livroCobra5.png', {
+
+      frameWidth: 800,
+      frameHeight: 450
     })
 
     // Medo
@@ -832,41 +863,60 @@ export default class personagem extends Phaser.Scene {
 
     // Objetos
 
+    const livros = []
+
+    for (let i = 1; i <= 5; i++) {
+      const livro = this.add.image(400, 300, 'livroCobra' + i).setVisible(false)
+      livros.push(livro)
+    }
+
     this.botaoLivro = this.add
       .sprite(735, 400, 'interacao', 0)
       .setInteractive()
       .on('pointerdown', () => {
         this.audioLivro.play()
-        const preto = this.add.image(400, 225, 'fundoP')
+        console.log(this.currentBook)
+        const botaoX = this.add.image(770, 30, 'botaoX')
           .setScrollFactor(0, 0)
-        const mapaLab = this.add.image(400, 225, 'mapaLab')
-          .setScrollFactor(0, 0)
-        const botaoX = this.add.image(765, 35, 'botaoX')
-          .setScrollFactor(0, 0)
-        const setaD = this.add.image(750, 225, 'setaD')
-          .setScrollFactor(0, 0)
-        const setaE = this.add.image(50, 225, 'setaE')
-          .setScrollFactor(0, 0)
-        telaCheia.setVisible(false)
-        botaoX.setInteractive()
+        const setaD = this.add.image(750, 225, 'setaD').setInteractive()
         setaD.on('pointerdown', function () {
-          // Excluir a imagem quando clicada
-          mapaLab.destroy()
-          preto.destroy()
-          setaD.destroy()
-          telaCheia.setVisible(true)
-        }, this)
+          if (this.currentBook < 5) {
+            livros[this.currentBook - 1].setVisible(false)
+            this.currentBook++
+            livros[this.currentBook - 1].setVisible(true)
+          }
+
+          if (this.currentBook === 5) {
+            setaD.setVisible(false)
+          }
+
+          setaE.setVisible(true)
+        })
+        const setaE = this.add.image(50, 225, 'setaE')
+          .setInteractive()
         setaE.on('pointerdown', function () {
-          // Excluir a imagem quando clicada
-          mapaLab.destroy()
-          preto.destroy()
-          botaoX.destroy()
-          telaCheia.setVisible(true)
-        }, this)
+          if (this.currentBook > 1) {
+            livros[this.currentBook - 1].setVisible(false)
+            this.currentBook--
+            livros[this.currentBook - 1].setVisible(true)
+            console.log('aaaa')
+          }
+
+          if (this.currentBook === 1) {
+            setaE.setVisible(false)
+          }
+
+          setaD.setVisible(true)
+        })
+
+        livros[this.currentBook - 1].setVisible(true)
+        setaE.setVisible(false)
+        botaoX.setInteractive()
         botaoX.on('pointerdown', function () {
           // Excluir a imagem quando clicada
-          mapaLab.destroy()
-          preto.destroy()
+          livros[this.currentBook].destroy()
+          setaE.destroy()
+          setaD.destroy()
           botaoX.destroy()
           telaCheia.setVisible(true)
         }, this)
@@ -882,7 +932,7 @@ export default class personagem extends Phaser.Scene {
           .setScrollFactor(0, 0)
         const mapaLab = this.add.image(400, 225, 'mapaLab')
           .setScrollFactor(0, 0)
-        const botaoX = this.add.image(765, 35, 'botaoX')
+        const botaoX = this.add.image(770, 30, 'botaoX')
           .setScrollFactor(0, 0)
         telaCheia.setVisible(false)
         botaoX.setInteractive()
