@@ -12,6 +12,14 @@ export default class characters extends Phaser.Scene {
       frameWidth: 225,
       frameHeight: 351
     })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
   }
 
   create () {
@@ -36,13 +44,7 @@ export default class characters extends Phaser.Scene {
       })
 
     // botões
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
@@ -55,7 +57,7 @@ export default class characters extends Phaser.Scene {
       alpha: 1,
       duration: 1000,
       ease: 'Linear',
-      delay: 3000
+      delay: 2000
     })
 
     // animar a transição para a próxima cena

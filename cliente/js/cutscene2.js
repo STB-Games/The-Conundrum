@@ -12,6 +12,14 @@ export default class Cutscene2 extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
   }
 
   create () {
@@ -52,23 +60,11 @@ export default class Cutscene2 extends Phaser.Scene {
     })
 
     // botões
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '28px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
-    const prevButton = this.add.text(50, 225, '<-', {
-      fontSize: '28px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const prevButton = this.add.image(50, 225, 'setaE')
     prevButton.setOrigin(0.5)
     prevButton.setInteractive()
 

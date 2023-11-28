@@ -19,6 +19,18 @@ export default class Cutscene1 extends Phaser.Scene {
       .setScrollFactor(0, 0)
     this.load.image('fundocinza', 'assets/fundocinza.png')
 
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+
+      frameWidth: 48,
+      frameHeight: 48
+    })
+
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+
+      frameWidth: 48,
+      frameHeight: 48
+    })
+
     /* Full Screen */
 
     this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
@@ -33,7 +45,7 @@ export default class Cutscene1 extends Phaser.Scene {
     const telaLargura = 800
     // const telaAltura = 450
 
-    const texto = 'Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em uma mansão abandonada, Rodrigo e Patrícia, uma dupla de investigadores especializado em operações paranormais.' // Substitua pelo seu texto real
+    const texto = 'Dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em uma mansão abandonada, Rodrigo e Sabrina, uma dupla de investigadores especializado em operações paranormais.' // Substitua pelo seu texto real
 
     // const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1) // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
@@ -50,23 +62,11 @@ export default class Cutscene1 extends Phaser.Scene {
     })
 
     // botões
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
-    const prevButton = this.add.text(50, 225, '<-', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const prevButton = this.add.image(50, 225, 'setaE')
     prevButton.setOrigin(0.5)
     prevButton.setInteractive()
 

@@ -12,6 +12,14 @@ export default class cutsceneDELE extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
   }
 
   create () {
@@ -77,13 +85,7 @@ export default class cutsceneDELE extends Phaser.Scene {
     })
 
     // botões
-    const nextButton = this.add.text(765, 35, '->', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 4
-    })
+    const nextButton = this.add.image(765, 35, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
