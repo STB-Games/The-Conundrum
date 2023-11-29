@@ -482,6 +482,11 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.balaoMapaCollider) // Habilita a física para o retângulo
     this.balaoMapaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
+    this.fimdojogo = this.add.sprite(1246, 4408, 'monster')
+    this.fimdojogoCollider = this.add.rectangle(1246, 4408, 200, 200) // O retângulo invisível que corresponde ao fimdojogo
+    this.physics.world.enable(this.fimdojogoCollider) // Habilita a física para o retângulo
+    this.fimdojogoCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
     this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
 
     this.fogo = this.add.sprite(706, 2340, 'fogo')
@@ -621,11 +626,11 @@ export default class personagem extends Phaser.Scene {
     this.personagem.setOffset(offsetX, offsetY)
     this.personagem.setCollideWorldBounds(true)
 
-    this.abc123 = this.physics.add.image(1246, 4308, 'monster')
-    this.abc123.setCollideWorldBounds(true)
-    this.abc123.body.setImmovable(true)
+    // this.abc123 = this.physics.add.image(1246, 4408, 'monster')
+    // this.abc123.setCollideWorldBounds(true)
+    // this.abc123.body.setImmovable(true)
 
-    this.physics.add.collider(this.personagem, this.abc123, this.gameOver, null, this)
+    // this.physics.add.collider(this.personagem, this.abc123, this.gameOver, null, this)
 
     /* baloes */
 
@@ -1121,7 +1126,6 @@ export default class personagem extends Phaser.Scene {
                                                                                   const effect15 = this.conhecimento.preFX.addShine(2, 0.5, 3, false)
                                                                                   const effect16 = this.medo.preFX.addShine(2, 0.5, 3, false)
                                                                                   this.medo.setVisible(true)
-                                                                                  this.botaoFonte.destroy()
                                                                                   this.time.delayedCall(1000, () => {
                                                                                     this.audioChuva.play()
                                                                                     this.audioChuva.loop = true
@@ -1163,6 +1167,14 @@ export default class personagem extends Phaser.Scene {
             })
           })
         })
+      })
+      .setScrollFactor(0, 0)
+
+    this.botaofimdojogo = this.add.sprite(735, 400, 'interacao', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        this.audioPorta.play()
+        this.cutsceneFinal1()
       })
       .setScrollFactor(0, 0)
 
@@ -1585,6 +1597,17 @@ export default class personagem extends Phaser.Scene {
       this.botaoFonte.setVisible(false)
     }
 
+    const fimdojogo = Phaser.Geom.Intersects.RectangleToRectangle(
+      this.personagem.getBounds(),
+      this.fimdojogoCollider.getBounds()
+    )
+
+    if (fimdojogo) {
+      this.botaofimdojogo.setVisible(true)
+    } else {
+      this.botaofimdojogo.setVisible(false)
+    }
+
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
 
     const sobreposicaoBalaoLivro = this.physics.world.overlap(this.personagem, this.balaoLivroCollider)
@@ -1727,6 +1750,11 @@ export default class personagem extends Phaser.Scene {
   }
 
   gameOver () {
+    this.game.scene.stop('personagem')
+    this.game.scene.start('gameOver')
+  }
+
+  cutsceneFinal1 () {
     this.game.scene.stop('personagem')
     this.game.scene.start('gameOver')
   }
