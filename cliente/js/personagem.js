@@ -183,7 +183,10 @@ export default class personagem extends Phaser.Scene {
     })
     // EndGame
 
-    this.load.image('monster', '../assets/personagem/botaoinvisivelH.png')
+    this.load.image('monster', '../assets/botaoinvisivelH.png', {
+      frameWidth: 100,
+      frameHeight: 16
+    })
 
     /* Sabrina Torres */
 
@@ -618,11 +621,11 @@ export default class personagem extends Phaser.Scene {
     this.personagem.setOffset(offsetX, offsetY)
     this.personagem.setCollideWorldBounds(true)
 
-    this.botaoinvisivelH = this.physics.add.image(750, 225, 'monster')
-    this.botaoinvisivelH.setCollideWorldBounds(true)
-    this.botaoinvisivelH.body.setImmovable(true)
+    this.abc123 = this.physics.add.image(1246, 4308, 'monster')
+    this.abc123.setCollideWorldBounds(true)
+    this.abc123.body.setImmovable(true)
 
-    this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
+    this.physics.add.collider(this.personagem, this.abc123, this.gameOver, null, this)
 
     /* baloes */
 
@@ -1583,7 +1586,7 @@ export default class personagem extends Phaser.Scene {
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
-    // Para o balaoLivro
+
     const sobreposicaoBalaoLivro = this.physics.world.overlap(this.personagem, this.balaoLivroCollider)
     if (sobreposicaoBalaoLivro && this.colisaoAtiva === 0) {
       this.balaoLivro.setVisible(true)
