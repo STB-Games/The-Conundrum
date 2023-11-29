@@ -4,6 +4,11 @@ export default class personagem extends Phaser.Scene {
 
     this.animationKey = undefined
     this.validacao = 0
+    this.balaoLivroCollider = null
+    this.balaoLivro = null
+    this.balaoMapaCollider = null
+    this.balaoMapa = null
+    this.colisaoAtiva = 0
   }
 
   preload () {
@@ -26,6 +31,18 @@ export default class personagem extends Phaser.Scene {
 
       frameWidth: 800,
       frameHeight: 450
+    })
+
+    this.load.image('balaoMapa', '../assets/cutscenes/balaoMapa.png', {
+
+      frameWidth: 180,
+      frameHeight: 120
+    })
+
+    this.load.image('balaoLivro', '../assets/cutscenes/balaoLivro.png', {
+
+      frameWidth: 180,
+      frameHeight: 120
     })
 
     this.load.image('botaoX', '../assets/botoes/botaoX.png', {
@@ -454,6 +471,14 @@ export default class personagem extends Phaser.Scene {
     this.physics.world.enable(this.fonteEnigmaCollider) // Habilita a física para o retângulo
     this.fonteEnigmaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
+    this.balaoLivroCollider = this.add.rectangle(2619, 424, 30, 1, 1) // O retângulo invisível que corresponde ao balaoLivro
+    this.physics.world.enable(this.balaoLivroCollider) // Habilita a física para o retângulo
+    this.balaoLivroCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
+    this.balaoMapaCollider = this.add.rectangle(2811, 1980, 50, 1) // O retângulo invisível que corresponde ao balaoMapa
+    this.physics.world.enable(this.balaoMapaCollider) // Habilita a física para o retângulo
+    this.balaoMapaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
+
     this.olhoPiscando = this.add.sprite(1079, 3790, 'olhoPiscando')
 
     this.fogo = this.add.sprite(706, 2340, 'fogo')
@@ -599,7 +624,13 @@ export default class personagem extends Phaser.Scene {
 
     this.physics.add.collider(this.personagem, this.botaoinvisivelH, this.onCollideMonster, null, this)
 
-    /* fogo */
+    /* baloes */
+
+    this.balaoLivro = this.add.sprite(2520, 368, 'balaoLivro')
+    this.balaoLivro.setVisible(false)
+
+    this.balaoMapa = this.add.sprite(2693, 1892, 'balaoMapa')
+    this.balaoMapa.setVisible(false)
 
     // alavanca
 
@@ -1552,6 +1583,27 @@ export default class personagem extends Phaser.Scene {
     }
 
     this.physics.world.overlap(this.personagem, this.teleportes, this.usarTeleporte, null, this)
+    // Para o balaoLivro
+    const sobreposicaoBalaoLivro = this.physics.world.overlap(this.personagem, this.balaoLivroCollider)
+    if (sobreposicaoBalaoLivro && this.colisaoAtiva === 0) {
+      this.balaoLivro.setVisible(true)
+      console.log('aaa')
+      this.colisaoAtiva = 1
+    } else if (!sobreposicaoBalaoLivro) {
+      this.balaoLivro.setVisible(false)
+      this.colisaoAtiva = 0
+    }
+
+    // Para o balaoMapa
+    const sobreposicaoBalaoMapa = this.physics.world.overlap(this.personagem, this.balaoMapaCollider)
+    if (sobreposicaoBalaoMapa && this.colisaoAtiva === 0) {
+      this.balaoMapa.setVisible(true)
+      console.log('aaa')
+      this.colisaoAtiva = 1
+    } else if (!sobreposicaoBalaoMapa) {
+      this.balaoMapa.setVisible(false)
+      this.colisaoAtiva = 0
+    }
   }
 
   // Função para criar um teleporte
