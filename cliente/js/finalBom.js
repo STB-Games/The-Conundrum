@@ -52,7 +52,7 @@ export default class finalBom extends Phaser.Scene {
       })
       .setScrollFactor(0, 0)
 
-    this.time.delayedCall(10000, () => {
+    this.time.delayedCall(13000, () => {
       fadeOut(finalBomImage, 500, () => {
         this.scene.stop('finalBom')
         this.scene.start('final-feliz')

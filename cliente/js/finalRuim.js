@@ -22,7 +22,7 @@ export default class finalRuim extends Phaser.Scene {
     const telaLargura = 800
     // const telaAltura = 450
 
-    const texto = 'Certo dia, dois detetives chegam em uma remota cidade do Amazonas para ver o que está acontecendo em uma mansão abandonada, Rodrigo e Sabrina, uma dupla de investigadores especializado em operações paranormais.' // Substitua pelo seu texto real
+    const texto = 'Rodrigo e Sabrina tiveram dificuldades com a missão de teste da Ordem, decidiram então seguir suas investigações por conta própria como sempre fizeram. Não se sabe o que aconteceu com as criaturas da mansão.' // Substitua pelo seu texto real
 
     // const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1) // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
@@ -38,7 +38,7 @@ export default class finalRuim extends Phaser.Scene {
       }
     })
 
-    this.time.delayedCall(10000, () => {
+    this.time.delayedCall(13000, () => {
       fadeOut(finalRuimImage, 500, () => {
         this.scene.stop('finalRuim')
         this.scene.start('final-feliz')

@@ -16,19 +16,19 @@ export default class CenaResposta2 extends Phaser.Scene {
       frameWidth: 48,
       frameHeight: 48
     })
-    this.load.spritesheet('botaoBasilisco', '../assets/botaoc/botaoBasilisco.png', {
+    this.load.spritesheet('botaoCorpo', '../assets/botaoc/botaoCorpo.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.spritesheet('botaoCurupira', '../assets/botaoc/botaoCurupira.png', {
+    this.load.spritesheet('botaoLobisomem', '../assets/botaoc/botaoLobisomem.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.spritesheet('botaoBoitata', '../assets/botaoc/botaoBoitata.png', {
+    this.load.spritesheet('botaoVampiro', '../assets/botaoc/botaoVampiro.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.spritesheet('botaoMedusa', '../assets/botaoc/botaoMedusa.png', {
+    this.load.spritesheet('botaoYeti', '../assets/botaoc/botaoYeti.png', {
       frameWidth: 212,
       frameHeight: 45
     })
@@ -51,40 +51,40 @@ export default class CenaResposta2 extends Phaser.Scene {
       }
     })
 
-    const botaoMedusa = this.add.sprite(200, 200, 'botaoMedusa')
+    const botaoYeti = this.add.sprite(200, 200, 'botaoYeti')
       .setInteractive()
-    botaoMedusa.on('pointerdown', () => {
-      console.log('Botão Medusa clicado!')
+    botaoYeti.on('pointerdown', () => {
+      console.log('Botão Yeti clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
         this.game.scene.start('finalRuim')
       })
     })
 
-    const botaoCurupira = this.add.sprite(600, 200, 'botaoCurupira')
+    const botaoLobisomem = this.add.sprite(600, 200, 'botaoLobisomem')
       .setInteractive()
-    botaoCurupira.on('pointerdown', () => {
-      console.log('Botão Curupira clicado!')
-      fadeOut(CutsceneFinal, 500, () => {
-        this.game.scene.stop('CenaResposta2')
-        this.game.scene.start('finalRuim')
-      })
-    })
-
-    const botaoBoitata = this.add.sprite(200, 350, 'botaoBoitata')
-      .setInteractive()
-    botaoBoitata.on('pointerdown', () => {
-      console.log('Botão Boitata clicado!')
+    botaoLobisomem.on('pointerdown', () => {
+      console.log('Botão Lobisomem clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
         this.game.scene.start('finalBom')
       })
     })
 
-    const botaoBasilisco = this.add.sprite(600, 350, 'botaoBasilisco')
+    const botaoVampiro = this.add.sprite(200, 350, 'botaoVampiro')
       .setInteractive()
-    botaoBasilisco.on('pointerdown', () => {
-      console.log('Botão Basilisco clicado!')
+    botaoVampiro.on('pointerdown', () => {
+      console.log('Botão Vampiro clicado!')
+      fadeOut(CutsceneFinal, 500, () => {
+        this.game.scene.stop('CenaResposta2')
+        this.game.scene.start('finalRuim')
+      })
+    })
+
+    const botaoCorpo = this.add.sprite(600, 350, 'botaoCorpo')
+      .setInteractive()
+    botaoCorpo.on('pointerdown', () => {
+      console.log('Botão Corpo clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
         this.game.scene.start('finalRuim')
@@ -124,8 +124,8 @@ export default class CenaResposta2 extends Phaser.Scene {
     LuaCheia.visible = false
 
     this.anims.create({
-      key: 'botaoMedusa',
-      frames: this.anims.generateFrameNumbers('botaoMedusa', {
+      key: 'botaoYeti',
+      frames: this.anims.generateFrameNumbers('botaoYeti', {
         start: 0,
         end: 1
       }),
@@ -134,8 +134,8 @@ export default class CenaResposta2 extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'botaoBasilisco',
-      frames: this.anims.generateFrameNumbers('botaoBasilisco', {
+      key: 'botaoCorpo',
+      frames: this.anims.generateFrameNumbers('botaoCorpo', {
         start: 0,
         end: 1
       }),
@@ -144,8 +144,8 @@ export default class CenaResposta2 extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'botaoBoitata',
-      frames: this.anims.generateFrameNumbers('botaoBoitata', {
+      key: 'botaoVampiro',
+      frames: this.anims.generateFrameNumbers('botaoVampiro', {
         start: 0,
         end: 1
       }),
@@ -154,8 +154,8 @@ export default class CenaResposta2 extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'botaoCurupira',
-      frames: this.anims.generateFrameNumbers('botaoCurupira', {
+      key: 'botaoLobisomem',
+      frames: this.anims.generateFrameNumbers('botaoLobisomem', {
         start: 0,
         end: 1
       }),
