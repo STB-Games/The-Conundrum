@@ -4,7 +4,7 @@ export default class CenaResposta1 extends Phaser.Scene {
   }
 
   preload () {
-    this.load.image('fundobordaA', 'assets/fundobordaA.png')
+    this.load.image('fundobordaA', './assets/fundobordaA.png')
 
     /* Full Screen */
 
@@ -16,19 +16,19 @@ export default class CenaResposta1 extends Phaser.Scene {
       frameWidth: 48,
       frameHeight: 48
     })
-    this.load.image('botaoBasilisco', '../assets/botaoc/botaoBasilisco.png', {
+    this.load.spritesheet('botaoBasilisco', '../assets/botaoc/botaoBasilisco.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.image('botaoCurupira', '../assets/botaoc/botaoCurupira.png', {
+    this.load.spritesheet('botaoCurupira', '../assets/botaoc/botaoCurupira.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.image('botaoBoitata', '../assets/botaoc/botaoBoitata.png', {
+    this.load.spritesheet('botaoBoitata', '../assets/botaoc/botaoBoitata.png', {
       frameWidth: 212,
       frameHeight: 45
     })
-    this.load.image('botaoMedusa', '../assets/botaoc/botaoMedusa.png', {
+    this.load.spritesheet('botaoMedusa', '../assets/botaoc/botaoMedusa.png', {
       frameWidth: 212,
       frameHeight: 45
     })
@@ -37,32 +37,58 @@ export default class CenaResposta1 extends Phaser.Scene {
   create () {
     const CutsceneFinal = this.add.image(400, 225, 'fundobordaA').setAlpha(0)
 
-    const botaoMedusa = this.add.sprite(150, 250, 'botaoMedusa')
+    const texto = 'A primeira lenda era a ...'
+
+    this.mensagem = this.add.text(220, 55, texto, {
+      fontFamily: 'Felipa',
+      fontSize: 42 + 'px',
+      stroke: '#000000',
+      strokeThickness: 4,
+      resolution: 2,
+      wordWrap: {
+        width: 800 - 200, // largura máxima
+        useAdvancedWrap: true
+      }
+    })
+
+    const botaoMedusa = this.add.sprite(200, 200, 'botaoMedusa')
+      .setInteractive()
     botaoMedusa.on('pointerdown', () => {
       console.log('Botão Medusa clicado!')
-      this.game.scene.stop('CenaResposta1')
-      this.game.scene.start('personagem')
+      fadeOut(CutsceneFinal, 500, () => {
+        this.game.scene.stop('CenaResposta1')
+        this.game.scene.start('CenaResposta2')
+      })
     })
 
-    const botaoCurupira = this.add.sprite(450, 250, 'botaoCurupira')
+    const botaoCurupira = this.add.sprite(600, 200, 'botaoCurupira')
+      .setInteractive()
     botaoCurupira.on('pointerdown', () => {
       console.log('Botão Curupira clicado!')
-      this.game.scene.stop('CenaResposta1')
-      this.game.scene.start('personagem')
+      fadeOut(CutsceneFinal, 500, () => {
+        this.game.scene.stop('CenaResposta1')
+        this.game.scene.start('CenaResposta2')
+      })
     })
 
-    const botaoBoitata = this.add.sprite(150, 350, 'botaoBoitata')
+    const botaoBoitata = this.add.sprite(200, 350, 'botaoBoitata')
+      .setInteractive()
     botaoBoitata.on('pointerdown', () => {
       console.log('Botão Boitata clicado!')
-      this.game.scene.stop('CenaResposta1')
-      this.game.scene.start('personagem')
+      fadeOut(CutsceneFinal, 500, () => {
+        this.game.scene.stop('CenaResposta1')
+        this.game.scene.start('CenaResposta2')
+      })
     })
 
-    const botaoBasilisco = this.add.sprite(450, 350, 'botaoBasilisco')
+    const botaoBasilisco = this.add.sprite(600, 350, 'botaoBasilisco')
+      .setInteractive()
     botaoBasilisco.on('pointerdown', () => {
       console.log('Botão Basilisco clicado!')
-      this.game.scene.stop('CenaResposta1')
-      this.game.scene.start('personagem')
+      fadeOut(CutsceneFinal, 500, () => {
+        this.game.scene.stop('CenaResposta1')
+        this.game.scene.start('CenaResposta2')
+      })
     })
 
     this.anims.create({
@@ -104,5 +130,26 @@ export default class CenaResposta1 extends Phaser.Scene {
       frameRate: 4,
       repeat: 0
     })
+
+    const fadeIn = (target, duration, onComplete) => {
+      this.tweens.add({
+        targets: target,
+        alpha: 1,
+        duration,
+        onComplete
+      })
+    }
+
+    const fadeOut = (target, duration, onComplete) => {
+      this.tweens.add({
+        targets: target,
+        alpha: 0,
+        duration,
+        onComplete
+      })
+    }
+
+    // iniciar a cena com o Fade In para 'cutscene2img'
+    fadeIn(CutsceneFinal, 1000)
   }
 }

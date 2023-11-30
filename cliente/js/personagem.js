@@ -2026,6 +2026,7 @@ export default class personagem extends Phaser.Scene {
   }
 
   cutsceneFinal123 () {
+    this.audioChuva.stop()
     this.game.scene.stop('personagem')
     this.game.scene.start('cutsceneFinal1')
   }
