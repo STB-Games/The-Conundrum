@@ -998,7 +998,6 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.game.socket.emit('artefatos-publicar', this.game.sala, { fontePressionada: true })
-        this.audioLivro.play()
         this.musicaFoda.play()
         this.botaoFonte.destroy()
         this.audioChuva.stop()
