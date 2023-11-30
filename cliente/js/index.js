@@ -3,7 +3,6 @@ import abertura from './abertura.js'
 import sala from './sala.js'
 import personagem from './personagem.js'
 import gameOver from './gameOver.js'
-import menina from './menina.js'
 import cutscene from './cutscene.js'
 import cutscene1 from './cutscene1.js'
 import cutscene2 from './cutscene2.js'
@@ -12,7 +11,6 @@ import cutsceneDELE from './cutsceneDELE.js'
 import cutsceneDELA from './cutsceneDELA.js'
 import loading from './loading.js'
 import characters from './characters.js'
-import livro from './livro.js'
 import finalFeliz from './finalFeliz.js'
 import cutsceneFinal1 from './cutsceneFinal1.js'
 import CenaResposta1 from './CenaResposta1.js'
@@ -63,7 +61,6 @@ class Game extends Phaser.Game {
     this.scene.add('sala', sala)
     this.scene.add('personagem', personagem)
     this.scene.add('gameOver', gameOver)
-    this.scene.add('menina', menina)
     this.scene.add('cutscene', cutscene)
     this.scene.add('cutscene1', cutscene1)
     this.scene.add('cutscene2', cutscene2)
@@ -72,7 +69,6 @@ class Game extends Phaser.Game {
     this.scene.add('cutsceneDELA', cutsceneDELA)
     this.scene.add('characters', characters)
     this.scene.add('loading', loading)
-    this.scene.add('livro', livro)
     this.scene.add('final-feliz', finalFeliz)
     this.scene.add('cutsceneFinal1', cutsceneFinal1)
     this.scene.add('CenaResposta1', CenaResposta1)

@@ -636,6 +636,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState === 0) {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaVerde: true })
           this.alavancaVerde.setFrame(0)
           alavancaState = 1
           this.audioAlavanca.play()
@@ -645,6 +646,7 @@ export default class personagem extends Phaser.Scene {
           this.portaVerdeSobe1.y = 4824
           console.log('Alavanca state atual %d', alavancaState)
         } else {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaVerde1: true })
           this.alavancaVerde.setFrame(1)
           alavancaState = 0
           this.audioAlavanca.play()
@@ -663,6 +665,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState1 === 0) {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaLaranja: true })
           this.alavancaLaranja.setFrame(0)
           alavancaState1 = 1
           this.audioAlavanca.play()
@@ -672,6 +675,7 @@ export default class personagem extends Phaser.Scene {
           this.portaLaranjaSobe1.y = 4490
           console.log('Alavanca state atual %d', alavancaState)
         } else {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaLaranja1: true })
           this.alavancaLaranja.setFrame(1)
           alavancaState1 = 0
           this.audioAlavanca.play()
@@ -690,6 +694,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState2 === 0) {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaAzul: true })
           this.alavancaAzul.setFrame(0)
           alavancaState2 = 1
           this.audioAlavanca.play()
@@ -699,6 +704,7 @@ export default class personagem extends Phaser.Scene {
           this.portaAzulSobe1.y = 4920
           console.log('Alavanca state atual %d', alavancaState)
         } else {
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaAzul1: true })
           this.alavancaAzul.setFrame(1)
           alavancaState2 = 0
           this.audioAlavanca.play()
@@ -1423,6 +1429,78 @@ export default class personagem extends Phaser.Scene {
             }
           })
         })
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaAzul) {
+        this.alavancaAzul.setFrame(0)
+        alavancaState2 = 1
+        this.audioAlavanca.play()
+        this.portaAzulSobe.x = 2300
+        this.portaAzulSobe.y = 6100
+        this.portaAzulSobe1.x = 4592
+        this.portaAzulSobe1.y = 4920
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaAzul1) {
+        this.alavancaAzul.setFrame(1)
+        alavancaState2 = 0
+        this.audioAlavanca.play()
+        this.portaAzulSobe.x = 3632
+        this.portaAzulSobe.y = 5136
+        this.portaAzulSobe1.x = 2300
+        this.portaAzulSobe1.y = 6100
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaVerde) {
+        this.alavancaVerde.setFrame(0)
+        alavancaState = 1
+        this.audioAlavanca.play()
+        this.portaVerdeSobe.x = 2300
+        this.portaVerdeSobe.y = 6100
+        this.portaVerdeSobe1.x = 3247
+        this.portaVerdeSobe1.y = 4824
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaVerde1) {
+        this.alavancaVerde.setFrame(1)
+        alavancaState = 0
+        this.audioAlavanca.play()
+        this.portaVerdeSobe.x = 5106
+        this.portaVerdeSobe.y = 4833
+        this.portaVerdeSobe1.x = 2300
+        this.portaVerdeSobe1.y = 6100
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaLaranja) {
+        this.alavancaLaranja.setFrame(0)
+        alavancaState1 = 1
+        this.audioAlavanca.play()
+        this.portaLaranjaSobe.x = 2300
+        this.portaLaranjaSobe.y = 6100
+        this.portaLaranjaSobe1.x = 5103
+        this.portaLaranjaSobe1.y = 4490
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+    })
+    this.game.socket.on('artefatos-notificar', (artefatos) => {
+      if (artefatos.portaLaranja1) {
+        this.alavancaLaranja.setFrame(1)
+        alavancaState1 = 0
+        this.audioAlavanca.play()
+        this.portaLaranjaSobe.x = 4148
+        this.portaLaranjaSobe.y = 3893
+        this.portaLaranjaSobe1.x = 2300
+        this.portaLaranjaSobe1.y = 6100
+        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
