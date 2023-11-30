@@ -778,6 +778,7 @@ export default class personagem extends Phaser.Scene {
       this.BotãoInt4.setInteractive().on('pointerdown', () => {
         if (alavancaState4 === 0) {
           this.game.socket.emit('artefatos-publicar', this.game.sala, { portaRosa: true })
+          this.audioAlavanca.play()
           this.alavancaRosa.setFrame(0)
           alavancaState4 = 1
           this.portaRosaSobe.destroy()
