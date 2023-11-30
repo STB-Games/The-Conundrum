@@ -17,6 +17,8 @@ import finalFeliz from './finalFeliz.js'
 import cutsceneFinal1 from './cutsceneFinal1.js'
 import CenaResposta1 from './CenaResposta1.js'
 import CenaResposta2 from './CenaResposta2.js'
+import finalBom from './finalBom.js'
+import finalRuim from './finalRuim.js'
 
 class Game extends Phaser.Game {
   constructor () {
@@ -75,6 +77,8 @@ class Game extends Phaser.Game {
     this.scene.add('cutsceneFinal1', cutsceneFinal1)
     this.scene.add('CenaResposta1', CenaResposta1)
     this.scene.add('CenaResposta2', CenaResposta2)
+    this.scene.add('finalBom', finalBom)
+    this.scene.add('finalRuim', finalRuim)
 
     this.scene.start('abertura')
   }

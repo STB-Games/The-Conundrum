@@ -57,7 +57,7 @@ export default class CenaResposta2 extends Phaser.Scene {
       console.log('Botão Medusa clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
-        this.game.scene.start('final-feliz')
+        this.game.scene.start('finalRuim')
       })
     })
 
@@ -67,7 +67,7 @@ export default class CenaResposta2 extends Phaser.Scene {
       console.log('Botão Curupira clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
-        this.game.scene.start('final-feliz')
+        this.game.scene.start('finalRuim')
       })
     })
 
@@ -77,7 +77,7 @@ export default class CenaResposta2 extends Phaser.Scene {
       console.log('Botão Boitata clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
-        this.game.scene.start('final-feliz')
+        this.game.scene.start('finalBom')
       })
     })
 
@@ -87,9 +87,41 @@ export default class CenaResposta2 extends Phaser.Scene {
       console.log('Botão Basilisco clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta2')
-        this.game.scene.start('final-feliz')
+        this.game.scene.start('finalRuim')
       })
     })
+
+    const dicaText = this.add.text(50, 30, 'Dica', {
+      fontFamily: 'Felipa',
+      fontSize: 24 + 'px',
+      color: '#ffffff',
+      padding: {
+        x: 10,
+        y: 5
+      },
+      visible: false
+    })
+
+    dicaText.setInteractive()
+    dicaText.on('pointerdown', () => {
+      LuaCheia.visible = true
+    })
+
+    dicaText.on('pointerup', () => {
+      LuaCheia.visible = false
+    })
+
+    const LuaCheia = this.add.text(30, 85, 'Lua Cheia', {
+      fontFamily: 'Felipa',
+      fontSize: 24 + 'px',
+      color: '#ffffff',
+      padding: {
+        x: 10,
+        y: 5
+      },
+      visible: false
+    })
+    LuaCheia.visible = false
 
     this.anims.create({
       key: 'botaoMedusa',

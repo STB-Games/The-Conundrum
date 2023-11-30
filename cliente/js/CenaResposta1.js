@@ -91,6 +91,38 @@ export default class CenaResposta1 extends Phaser.Scene {
       })
     })
 
+    const dicaText = this.add.text(50, 30, 'Dica', {
+      fontFamily: 'Felipa',
+      fontSize: 24 + 'px',
+      color: '#ffffff',
+      padding: {
+        x: 10,
+        y: 5
+      },
+      visible: false
+    })
+
+    dicaText.setInteractive()
+    dicaText.on('pointerdown', () => {
+      cobraFogoText.visible = true
+    })
+
+    dicaText.on('pointerup', () => {
+      cobraFogoText.visible = false
+    })
+
+    const cobraFogoText = this.add.text(25, 85, 'Cobra de Fogo', {
+      fontFamily: 'Felipa',
+      fontSize: 24 + 'px',
+      color: '#ffffff',
+      padding: {
+        x: 10,
+        y: 5
+      },
+      visible: false
+    })
+    cobraFogoText.visible = false
+
     this.anims.create({
       key: 'botaoMedusa',
       frames: this.anims.generateFrameNumbers('botaoMedusa', {
