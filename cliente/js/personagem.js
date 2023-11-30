@@ -63,36 +63,6 @@ export default class personagem extends Phaser.Scene {
       frameHeight: 48
     })
 
-    this.load.image('livroCobra1', '../assets/livros/livroCobra1.png', {
-
-      frameWidth: 800,
-      frameHeight: 450
-    })
-
-    this.load.image('livroCobra2', '../assets/livros/livroCobra2.png', {
-
-      frameWidth: 800,
-      frameHeight: 450
-    })
-
-    this.load.image('livroCobra3', '../assets/livros/livroCobra3.png', {
-
-      frameWidth: 800,
-      frameHeight: 450
-    })
-
-    this.load.image('livroCobra4', '../assets/livros/livroCobra4.png', {
-
-      frameWidth: 800,
-      frameHeight: 450
-    })
-
-    this.load.image('livroCobra5', '../assets/livros/livroCobra5.png', {
-
-      frameWidth: 800,
-      frameHeight: 450
-    })
-
     this.load.spritesheet('livroCobraT', '../assets/livros/livroCobraT.png', {
 
       frameWidth: 800,
