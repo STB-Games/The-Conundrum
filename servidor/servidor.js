@@ -40,6 +40,14 @@ io.on('connection', (socket) => {
     socket.to(sala).emit('artefatos-notificar', artefatos)
   })
 
+  socket.on('artefatos-publicar', (sala, artefatos1) => {
+    socket.to(sala).emit('artefatos-notificar', artefatos1)
+  })
+
+  socket.on('artefatos-publicar', (sala, artefatos2) => {
+    socket.to(sala).emit('artefatos-notificar', artefatos2)
+  })
+
   socket.on('offer', (sala, description) => {
     socket.to(sala).emit('offer', description)
   })
