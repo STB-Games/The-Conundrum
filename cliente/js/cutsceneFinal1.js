@@ -1,6 +1,6 @@
-export default class custsceneFinal1 extends Phaser.Scene {
+export default class cutsceneFinal1 extends Phaser.Scene {
   constructor () {
-    super('custsceneFinal1')
+    super('cutsceneFinal1')
   }
 
   preload () {
@@ -28,7 +28,7 @@ export default class custsceneFinal1 extends Phaser.Scene {
 
     // animar a transição para a próxima cena
     const goToNextScene = () => {
-      this.scene.start('cutscene3')
+      this.scene.start('CenaResposta1')
     }
 
     // eventos de clique para os botões

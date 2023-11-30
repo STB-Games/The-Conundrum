@@ -1195,7 +1195,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         this.audioPorta.play()
-        this.cutsceneFinal1()
+        this.cutsceneFinal123()
       })
       .setScrollFactor(0, 0)
 
@@ -1825,7 +1825,7 @@ export default class personagem extends Phaser.Scene {
     this.game.scene.start('gameOver')
   }
 
-  cutsceneFinal1 () {
+  cutsceneFinal123 () {
     this.game.scene.stop('personagem')
     this.game.scene.start('cutsceneFinal1')
   }
