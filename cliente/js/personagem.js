@@ -682,7 +682,6 @@ export default class personagem extends Phaser.Scene {
           console.log('Alavanca state atual %d', alavancaState)
         }
       })
-
       .setScrollFactor(0, 0)
 
     this.BotãoInt1 = this.add
@@ -736,7 +735,6 @@ export default class personagem extends Phaser.Scene {
           console.log('Alavanca state atual %d', alavancaState)
         }
       })
-
       .setScrollFactor(0, 0)
 
     this.BotãoInt3 = this.add
@@ -744,7 +742,7 @@ export default class personagem extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => {
         if (alavancaState3 === 0) {
-          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaVermelha: false })
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaVermelha: true })
           this.alavancaVermelho.setFrame(0)
           alavancaState3 = 1
           this.BotãoInt3.destroy()
@@ -767,7 +765,6 @@ export default class personagem extends Phaser.Scene {
           })
         }
       })
-
       .setScrollFactor(0, 0)
 
     this.BotãoInt4 = this.add
@@ -777,7 +774,7 @@ export default class personagem extends Phaser.Scene {
     function funcaobot4 () {
       this.BotãoInt4.setInteractive().on('pointerdown', () => {
         if (alavancaState4 === 0) {
-          this.game.socket.emit('artefatos1-publicar', this.game.sala, { portaRosa: false })
+          this.game.socket.emit('artefatos-publicar', this.game.sala, { portaRosa: true })
           this.alavancaRosa.setFrame(0)
           alavancaState4 = 1
           this.portaRosaSobe.destroy()
@@ -791,7 +788,7 @@ export default class personagem extends Phaser.Scene {
 
     function checkSequence () {
       if (sequenciaAtual.toString() === sequenciaCorreta.toString()) {
-        this.game.socket.emit('artefatos2-publicar', this.game.sala, { alavancaRosa: false })
+        this.game.socket.emit('artefatos-publicar', this.game.sala, { alavancaRosa: true })
         console.log('Você acertou a sequência!')
         sequenciaAtual = []
 
@@ -1406,33 +1403,8 @@ export default class personagem extends Phaser.Scene {
     this.physics.add.collider(this.personagem, this.portaRosaSobe)
     this.physics.add.collider(this.personagem, this.fonteEnigma)
 
-    this.game.socket.on('artefatos2-notificar', (artefatos2) => {
-      if (!artefatos2.alavancaRosa) {
-        this.botaoIntCobra1.destroy()
-        this.botaoIntCobra2.destroy()
-        this.botaoIntCobra3.destroy()
-        this.botaoIntCobra4.destroy()
-        this.botaoIntCobra5.destroy()
-        this.validacao = 1
-        this.BotãoInt4.setInteractive()
-        this.audioCobra.play()
-        const effect17 = this.alavancaRosa.preFX.addShine(2, 0.5, 3, false)
-        funcaobot4.call(this)
-        console.log('poggers')
-      }
-    })
-    this.game.socket.on('artefatos1-notificar', (artefatos1) => {
-      if (!artefatos1.portaRosa) {
-        this.portaRosaSobe.destroy()
-        this.alavancaRosa.setFrame(0)
-        alavancaState4 = 1
-        this.BotãoInt4.destroy()
-        console.log('Alavanca state atual %d', alavancaState)
-        this.game.socket.emit('artefatos1-publicar', this.game.sala, { portaRosa: false })
-      }
-    })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
-      if (!artefatos.portaVermelha) {
+      if (artefatos.portaVermelha) {
         this.alavancaVermelho.setFrame(0)
         alavancaState3 = 1
         this.BotãoInt3.destroy()
@@ -1450,6 +1422,29 @@ export default class personagem extends Phaser.Scene {
             }
           })
         })
+      }
+
+      if (artefatos.portaRosa) {
+        // mesmo código que a função funcaobot4?
+        this.alavancaRosa.setFrame(0)
+        this.portaRosaSobe.destroy()
+        this.BotãoInt4.destroy()
+        console.log('Alavanca state atual %d', alavancaState)
+      }
+
+      if (artefatos.alavancaRosa) {
+        // mesmo código que a função checkSequence?
+        this.botaoIntCobra1.destroy()
+        this.botaoIntCobra2.destroy()
+        this.botaoIntCobra3.destroy()
+        this.botaoIntCobra4.destroy()
+        this.botaoIntCobra5.destroy()
+        this.validacao = 1
+        this.BotãoInt4.setInteractive()
+        funcaobot4.call(this)
+        const effect17 = this.alavancaRosa.preFX.addShine(2, 0.5, 3, false)
+        funcaobot4.call(this)
+        console.log('poggers')
       }
     })
   }
