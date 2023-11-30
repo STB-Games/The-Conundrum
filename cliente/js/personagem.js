@@ -427,7 +427,7 @@ export default class personagem extends Phaser.Scene {
     this.alavancaVerdeCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
     this.alavancaLaranja = this.add.sprite(4924, 4889, 'alavancaLaranja', 1)
-    this.alavancaLaranjaCollider = this.add.rectangle(4894, 4909, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaLaranja
+    this.alavancaLaranjaCollider = this.add.rectangle(4924, 4929, 1, 1, 1) // O retângulo invisível que corresponde ao alavancaLaranja
     this.physics.world.enable(this.alavancaLaranjaCollider) // Habilita a física para o retângulo
     this.alavancaLaranjaCollider.body.setAllowGravity(false) // Não permita que a gravidade afete o retângulo
 
@@ -1358,7 +1358,7 @@ export default class personagem extends Phaser.Scene {
     // Configuração do joystick para 8 direções
 
     this.joystick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-      x: 75,
+      x: 90,
       y: 375,
       radius: 70,
       base: this.add.circle(0, 0, 50, 0x790000, 60),
@@ -1706,8 +1706,8 @@ export default class personagem extends Phaser.Scene {
 
       // normalizar a velocidade nas diagonais para evitar movimento mais rápido (chatgpt)
       if (velocityX !== 0 && velocityY !== 0) {
-        velocityX *= Math.sqrt(1.5)
-        velocityY *= Math.sqrt(1.5)
+        velocityX *= Math.sqrt(0.5)
+        velocityY *= Math.sqrt(0.5)
       }
 
       this.personagem.setVelocity(velocityX, velocityY)
