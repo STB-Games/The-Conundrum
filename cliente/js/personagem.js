@@ -1827,6 +1827,6 @@ export default class personagem extends Phaser.Scene {
 
   cutsceneFinal1 () {
     this.game.scene.stop('personagem')
-    this.game.scene.start('gameOver')
+    this.game.scene.start('cutsceneFinal1')
   }
 }
