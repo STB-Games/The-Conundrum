@@ -926,6 +926,7 @@ export default class personagem extends Phaser.Scene {
     this.botaoLivro = this.add.sprite(735, 400, 'interacao')
       .setInteractive()
       .on('pointerdown', () => {
+        this.audioLivro.play()
         this.botaoLivro.setVisible(false)
         this.livroCobraT.setVisible(true)
         this.setaD.setVisible(true)

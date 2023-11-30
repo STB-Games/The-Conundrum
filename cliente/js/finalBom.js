@@ -56,7 +56,6 @@ export default class finalBom extends Phaser.Scene {
       fadeOut(finalBomImage, 500, () => {
         this.scene.stop('finalBom')
         this.scene.start('final-feliz')
-        this.sound.stopByKey('musicaTema')
       })
     })
 
