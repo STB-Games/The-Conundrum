@@ -372,6 +372,22 @@ export default class personagem extends Phaser.Scene {
 
     // PORTA
 
+    this.bloqueioSobe = this.physics.add.sprite(972, 5780, 'portaRosaSobe')
+    this.bloqueioSobe.body.setAllowGravity(true)
+    this.bloqueioSobe.setImmovable(true)
+    this.bloqueioSobe.disableBody(true, true)
+
+    this.bloqueioSobe1 = this.physics.add.sprite(1888, 4100, 'portaRosaSobe')
+    this.bloqueioSobe1.body.setAllowGravity(true)
+    this.bloqueioSobe1.setImmovable(true)
+    this.bloqueioSobe1.disableBody(true, true)
+
+    this.bloqueioSobe2 = this.physics.add.sprite(1246, 4347, 'portaRosaSobe')
+    this.bloqueioSobe2.body.setAllowGravity(true)
+    this.bloqueioSobe2.setImmovable(true)
+    this.bloqueioSobe2.disableBody(true, true)
+    this.bloqueioSobe2.enableBody(true, 1246, 4347, false, false)
+
     this.portaVerdeSobe = this.physics.add.image(5104, 4833, 'portaVerdeSobe')
     this.portaVerdeSobe.body.setAllowGravity(true)
     this.portaVerdeSobe.setImmovable(true)
@@ -625,12 +641,6 @@ export default class personagem extends Phaser.Scene {
     this.personagem.setSize(hitboxWidth, hitboxHeight, true)
     this.personagem.setOffset(offsetX, offsetY)
     this.personagem.setCollideWorldBounds(true)
-
-    // this.abc123 = this.physics.add.image(1246, 4408, 'monster')
-    // this.abc123.setCollideWorldBounds(true)
-    // this.abc123.body.setImmovable(true)
-
-    // this.physics.add.collider(this.personagem, this.abc123, this.gameOver, null, this)
 
     /* baloes */
 
@@ -987,6 +997,8 @@ export default class personagem extends Phaser.Scene {
         this.botaoFonte.destroy()
         this.audioChuva.stop()
 
+        this.bloqueioSobe.enableBody(true, 972, 5780, false, false)
+
         this.time.delayedCall(8500, () => {
           this.sangue.setVisible(true)
           this.sangue.setFrame(1)
@@ -1128,6 +1140,13 @@ export default class personagem extends Phaser.Scene {
                                                                                   const effect15 = this.conhecimento.preFX.addShine(2, 0.5, 3, false)
                                                                                   const effect16 = this.medo.preFX.addShine(2, 0.5, 3, false)
                                                                                   this.medo.setVisible(true)
+
+                                                                                  this.bloqueioSobe.disableBody(true, true)
+
+                                                                                  this.bloqueioSobe1.enableBody(true, 1888, 4100, false, false)
+
+                                                                                  this.bloqueioSobe2.disableBody(true, true)
+
                                                                                   this.time.delayedCall(1000, () => {
                                                                                     this.audioChuva.play()
                                                                                     this.audioChuva.loop = true
@@ -1375,6 +1394,9 @@ export default class personagem extends Phaser.Scene {
       this.personagemRemoto.setFrame(frame)
     })
 
+    this.physics.add.collider(this.personagem, this.bloqueioSobe)
+    this.physics.add.collider(this.personagem, this.bloqueioSobe1)
+    this.physics.add.collider(this.personagem, this.bloqueioSobe2)
     this.physics.add.collider(this.personagem, this.portaVerdeSobe)
     this.physics.add.collider(this.personagem, this.portaVerdeSobe1)
     this.physics.add.collider(this.personagem, this.portaLaranjaSobe)
