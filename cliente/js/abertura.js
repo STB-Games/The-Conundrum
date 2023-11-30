@@ -13,6 +13,8 @@ export default class abertura extends Phaser.Scene {
       frameHeight: 78
     })
 
+    this.load.audio('musicaTema', '../assets/sons/musicaTema.mp3')
+
     /* Full Screen */
 
     this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
@@ -22,6 +24,9 @@ export default class abertura extends Phaser.Scene {
   }
 
   create () {
+    this.audioTema = this.sound.add('musicaTema')
+    this.audioTema.play()
+
     this.abertura = this.add.sprite(400, 225, 'abertura')
 
     /* Abertura */

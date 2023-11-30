@@ -42,6 +42,7 @@ export default class finalRuim extends Phaser.Scene {
       fadeOut(finalRuimImage, 500, () => {
         this.scene.stop('finalRuim')
         this.scene.start('final-feliz')
+        this.sound.stopByKey('musicaTema')
       })
     })
 

@@ -263,6 +263,7 @@ export default class personagem extends Phaser.Scene {
     this.load.audio('audioCoracao', '../assets/sons/somCoracao.mp3')
     this.load.audio('audioRespirando', '../assets/sons/somRespirando.mp3')
     this.load.audio('musicaFoda', '../assets/sons/HeilagVagga.mp3')
+    this.load.audio('musicaTema', '../assets/sons/musicaTema.mp3')
 
     // Símbolos
 
@@ -308,6 +309,8 @@ export default class personagem extends Phaser.Scene {
     this.audioCoracao = this.sound.add('audioCoracao')
     this.audioRespirando = this.sound.add('audioRespirando')
     this.musicaFoda = this.sound.add('musicaFoda')
+    this.audioTema = this.sound.add('musicaTema')
+    this.sound.stopByKey('musicaTema')
 
     /* Tilemap */
     this.mapa = this.make.tilemap({

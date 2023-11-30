@@ -16,9 +16,13 @@ export default class cutsceneFinal1 extends Phaser.Scene {
       frameWidth: 48,
       frameHeight: 48
     })
+    this.load.audio('musicaTema', '../assets/sons/musicaTema.mp3')
   }
 
   create () {
+    this.audioTema = this.sound.add('musicaTema')
+    this.audioTema.play()
+
     const CutsceneFinal = this.add.image(400, 225, 'quadrinhoSaida').setAlpha(0)
 
     // botões
