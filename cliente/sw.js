@@ -8,7 +8,7 @@ const precacheResources = [
   './',
   './favicon.ico',
   './index.html',
-  './style.css',
+  './main.css',
   './manifest.json',
   './sw.js',
 
