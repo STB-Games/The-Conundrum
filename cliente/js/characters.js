@@ -12,9 +12,31 @@ export default class characters extends Phaser.Scene {
       frameWidth: 225,
       frameHeight: 351
     })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
   }
 
   create () {
+    this.tela_cheia = this.add
+      .sprite(770, 30, 'tela-cheia', 0)
+      .setInteractive()
+      .on('pointerdown', () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0)
+          this.scale.stopFullscreen()
+        } else {
+          this.tela_cheia.setFrame(1)
+          this.scale.startFullscreen()
+        }
+      })
+      .setScrollFactor(0, 0)
+
     const telacharImage = this.add.image(400, 225, 'telachar').setAlpha(0)
 
     this.imagem = this.add
@@ -36,13 +58,7 @@ export default class characters extends Phaser.Scene {
       })
 
     // botões
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
@@ -55,7 +71,7 @@ export default class characters extends Phaser.Scene {
       alpha: 1,
       duration: 1000,
       ease: 'Linear',
-      delay: 3000
+      delay: 2000
     })
 
     // animar a transição para a próxima cena

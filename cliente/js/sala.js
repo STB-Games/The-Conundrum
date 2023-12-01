@@ -10,35 +10,35 @@ export default class sala extends Phaser.Scene {
     })
     this.load.spritesheet('sala1', '../assets/botaosala/Sala01.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala2', '../assets/botaosala/Sala02.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala3', '../assets/botaosala/Sala03.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala4', '../assets/botaosala/Sala04.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala5', '../assets/botaosala/Sala05.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala6', '../assets/botaosala/Sala06.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala7', '../assets/botaosala/Sala07.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
     this.load.spritesheet('sala8', '../assets/botaosala/Sala08.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 32
     })
 
     this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
@@ -72,6 +72,86 @@ export default class sala extends Phaser.Scene {
         }
       })
       .setScrollFactor(0, 0)
+
+    this.anims.create({
+      key: 'sala1',
+      frames: this.anims.generateFrameNumbers('sala1', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala2',
+      frames: this.anims.generateFrameNumbers('sala2', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala3',
+      frames: this.anims.generateFrameNumbers('sala3', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala4',
+      frames: this.anims.generateFrameNumbers('sala4', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala5',
+      frames: this.anims.generateFrameNumbers('sala5', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala6',
+      frames: this.anims.generateFrameNumbers('sala6', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala7',
+      frames: this.anims.generateFrameNumbers('sala7', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'sala8',
+      frames: this.anims.generateFrameNumbers('sala8', {
+        start: 0,
+        end: 1
+      }),
+      frameRate: 4,
+      repeat: 0
+    })
 
     this.imagem = this.add.image(400, 225, 'fundobordaV')
 
@@ -150,8 +230,9 @@ export default class sala extends Phaser.Scene {
         .setInteractive()
         .on('pointerdown', () => {
           this.salas.forEach((item) => {
-            item.botao.destroy()
+            item.botao.setFrame(0)
           })
+          item.botao.setFrame(1)
           this.game.sala = item.numero
           this.game.socket.emit('entrar-na-sala', this.game.sala)
         })
@@ -163,7 +244,7 @@ export default class sala extends Phaser.Scene {
         this.mensagem.destroy()
         this.game.jogadores = jogadores
         this.game.scene.stop('sala')
-        this.game.scene.start('personagem')
+        this.game.scene.start('characters')
       } else if (jogadores.primeiro) {
         this.imagem.destroy()
         this.mensagem.setText('')

@@ -1,19 +1,24 @@
-export default class livro extends Phaser.Scene {
+export default class Cutscene3 extends Phaser.Scene {
   constructor () {
-    super('livro')
+    super('cutscene3')
   }
 
   preload () {
-    this.load.spritesheet('livro', './assets/livro.png', {
-      frameWidth: 800,
-      frameHeight: 450
-    })
+    this.load.image('cutscene3img', 'assets/cutscenes/cutscene3img.png')
 
     /* Full Screen */
 
     this.load.spritesheet('tela-cheia', './assets/FullScreenICO.png', {
       frameWidth: 32,
       frameHeight: 32
+    })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
     })
   }
 
@@ -32,46 +37,34 @@ export default class livro extends Phaser.Scene {
       })
       .setScrollFactor(0, 0)
 
-    const Livro = this.add.image(400, 225, 'livro').setAlpha(0)
+    const FlorestaFundoImage = this.add.image(400, 225, 'cutscene3img').setAlpha(0)
 
     const telaLargura = 800
     // const telaAltura = 450
 
-    const texto = 'Cercado por uma grande floresta densa, vários boatos cercavam este mansão, barulhos de lobo, exposições em chamas, salas inundadas e uma misteriosa força paranormal vindo dos corredores.'
+    const texto = 'No entanto, a veracidade dessas narrativas permanece incerta, transformando a mansão em um enigma silencioso, aguardando exploradores corajosos que ousam desvendar seus segredos entrelaçados com a noite eterna.'
 
     // const tamanhoFonte = Math.min(telaLargura * 0.02, telaAltura * 0.1) // Ajuste os valores. NÃO ESTOU UTILIZANDO, PORÉM É SÓ BOTAR NO LUGAR DO *32* EM FONTSIZE, É UMA VARIÁVEL QUE FICA COMPATÍVEL COM O TAMANHO DA TELA.
 
-    this.mensagem = this.add.text(120, 100, texto, {
+    this.mensagem = this.add.text(440, 35, texto, {
       fontFamily: 'Felipa',
       color: '#FFFFFF',
-      fontSize: 16 + 'px',
+      fontSize: 32 + 'px',
       stroke: '#000000',
       strokeThickness: 4,
-      resolution: 1,
+      resolution: 2,
       wordWrap: {
-        width: telaLargura - 560, // largura máxima
+        width: telaLargura - 475, // largura máxima
         useAdvancedWrap: true
       }
     })
 
     // botões
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '28px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
-    const prevButton = this.add.text(50, 225, '<-', {
-      fontSize: '28px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const prevButton = this.add.image(50, 225, 'setaE')
     prevButton.setOrigin(0.5)
     prevButton.setInteractive()
 
@@ -82,13 +75,13 @@ export default class livro extends Phaser.Scene {
 
     // animar a transição para a cena anterior
     const goToPreviousScene = () => {
-      this.scene.start('cutscene1')
+      this.scene.start('cutscene2')
     }
 
     // eventos de clique para os botões
     nextButton.on('pointerdown', () => {
       // Fade Out para a cena atual
-      fadeOut(Livro, 1000, () => {
+      fadeOut(FlorestaFundoImage, 1000, () => {
         // função para avançar para a próxima cena
         goToNextScene()
       })
@@ -96,7 +89,7 @@ export default class livro extends Phaser.Scene {
 
     prevButton.on('pointerdown', () => {
       // Fade Out para a cena atual
-      fadeOut(Livro, 1000, () => {
+      fadeOut(FlorestaFundoImage, 1000, () => {
         // retroceder para a cena anterior
         goToPreviousScene()
       })
@@ -120,7 +113,7 @@ export default class livro extends Phaser.Scene {
       })
     }
 
-    // iniciar a cena com o Fade In para 'livro'
-    fadeIn(Livro, 1000)
+    // iniciar a cena com o Fade In para 'cutscene3img'
+    fadeIn(FlorestaFundoImage, 1000)
   }
 }

@@ -12,6 +12,14 @@ export default class Cutscene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     })
+    this.load.image('setaD', '../assets/botoes/setaD.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
+    this.load.image('setaE', '../assets/botoes/setaE.png', {
+      frameWidth: 48,
+      frameHeight: 48
+    })
   }
 
   create () {
@@ -33,13 +41,7 @@ export default class Cutscene extends Phaser.Scene {
     const CapaJogoImage = this.add.image(400, 225, 'CapaJogo').setAlpha(0)
 
     // Crie botões para avançar e retroceder
-    const nextButton = this.add.text(750, 225, '->', {
-      fontSize: '32px',
-      fill: '#800000',
-      stroke: '#000000',
-      strokeThickness: 4,
-      resolution: 2
-    })
+    const nextButton = this.add.image(750, 225, 'setaD')
     nextButton.setOrigin(0.5)
     nextButton.setInteractive()
 
