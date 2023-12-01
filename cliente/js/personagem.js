@@ -644,7 +644,6 @@ export default class personagem extends Phaser.Scene {
           this.portaVerdeSobe.y = 6100
           this.portaVerdeSobe1.x = 3247
           this.portaVerdeSobe1.y = 4824
-          console.log('Alavanca state atual %d', alavancaState)
         } else {
           this.game.socket.emit('artefatos-publicar', this.game.sala, { portaVerde1: true })
           this.alavancaVerde.setFrame(1)
@@ -654,7 +653,6 @@ export default class personagem extends Phaser.Scene {
           this.portaVerdeSobe.y = 4833
           this.portaVerdeSobe1.x = 2300
           this.portaVerdeSobe1.y = 6100
-          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -673,7 +671,6 @@ export default class personagem extends Phaser.Scene {
           this.portaLaranjaSobe.y = 6100
           this.portaLaranjaSobe1.x = 5103
           this.portaLaranjaSobe1.y = 4490
-          console.log('Alavanca state atual %d', alavancaState)
         } else {
           this.game.socket.emit('artefatos-publicar', this.game.sala, { portaLaranja1: true })
           this.alavancaLaranja.setFrame(1)
@@ -683,7 +680,6 @@ export default class personagem extends Phaser.Scene {
           this.portaLaranjaSobe.y = 3893
           this.portaLaranjaSobe1.x = 2300
           this.portaLaranjaSobe1.y = 6100
-          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -702,7 +698,6 @@ export default class personagem extends Phaser.Scene {
           this.portaAzulSobe.y = 6100
           this.portaAzulSobe1.x = 4592
           this.portaAzulSobe1.y = 4920
-          console.log('Alavanca state atual %d', alavancaState)
         } else {
           this.game.socket.emit('artefatos-publicar', this.game.sala, { portaAzul1: true })
           this.alavancaAzul.setFrame(1)
@@ -712,7 +707,6 @@ export default class personagem extends Phaser.Scene {
           this.portaAzulSobe.y = 5136
           this.portaAzulSobe1.x = 2300
           this.portaAzulSobe1.y = 6100
-          console.log('Alavanca state atual %d', alavancaState)
         }
       })
 
@@ -762,7 +756,6 @@ export default class personagem extends Phaser.Scene {
           alavancaState4 = 1
           this.portaRosaSobe.destroy()
           this.BotãoInt4.destroy()
-          console.log('Alavanca state atual %d', alavancaState)
         }
       })
     }
@@ -772,7 +765,6 @@ export default class personagem extends Phaser.Scene {
     function checkSequence () {
       if (sequenciaAtual.toString() === sequenciaCorreta.toString()) {
         this.game.socket.emit('artefatos-publicar', this.game.sala, { alavancaRosa: true })
-        console.log('Você acertou a sequência!')
         sequenciaAtual = []
 
         this.botaoIntCobra1.destroy()
@@ -791,7 +783,6 @@ export default class personagem extends Phaser.Scene {
 
         this.audioCobra.play()
       } else if (sequenciaAtual.length === sequenciaCorreta.length) {
-        console.log('Resetando sequencial atual')
         sequenciaAtual = []
 
         this.botaoCobra1.setVisible(true)
@@ -814,7 +805,6 @@ export default class personagem extends Phaser.Scene {
         if (this.botaoCobra1.visible === true) {
           this.botaoCobra1.setVisible(false)
           sequenciaAtual.push(1)
-          console.log(sequenciaAtual)
           this.audioAlavanca.play()
         } else {
           this.botaoCobra1.setVisible(true)
@@ -832,7 +822,6 @@ export default class personagem extends Phaser.Scene {
         if (this.botaoCobra2.visible === true) {
           this.botaoCobra2.setVisible(false)
           sequenciaAtual.push(2)
-          console.log(sequenciaAtual)
           this.audioAlavanca.play()
         } else {
           this.botaoCobra2.setVisible(true)
@@ -850,7 +839,6 @@ export default class personagem extends Phaser.Scene {
         if (this.botaoCobra3.visible === true) {
           this.botaoCobra3.setVisible(false)
           sequenciaAtual.push(3)
-          console.log(sequenciaAtual)
           this.audioAlavanca.play()
         } else {
           this.botaoCobra3.setVisible(true)
@@ -868,7 +856,6 @@ export default class personagem extends Phaser.Scene {
         if (this.botaoCobra4.visible === true) {
           this.botaoCobra4.setVisible(false)
           sequenciaAtual.push(4)
-          console.log(sequenciaAtual)
           this.audioAlavanca.play()
         } else {
           this.botaoCobra4.setVisible(true)
@@ -886,7 +873,6 @@ export default class personagem extends Phaser.Scene {
         if (this.botaoCobra5.visible === true) {
           this.botaoCobra5.setVisible(false)
           sequenciaAtual.push(5)
-          console.log(sequenciaAtual)
           this.audioAlavanca.play()
         } else {
           this.botaoCobra5.setVisible(true)
@@ -1399,7 +1385,6 @@ export default class personagem extends Phaser.Scene {
         this.audioCobra.play()
         const effect17 = this.alavancaRosa.preFX.addShine(2, 0.5, 3, false)
         funcaobot4.call(this)
-        console.log('poggers')
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1407,7 +1392,6 @@ export default class personagem extends Phaser.Scene {
         this.portaRosaSobe.destroy()
         this.alavancaRosa.setFrame(0)
         this.BotãoInt4.destroy()
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1440,7 +1424,6 @@ export default class personagem extends Phaser.Scene {
         this.portaAzulSobe.y = 6100
         this.portaAzulSobe1.x = 4592
         this.portaAzulSobe1.y = 4920
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1452,7 +1435,6 @@ export default class personagem extends Phaser.Scene {
         this.portaAzulSobe.y = 5136
         this.portaAzulSobe1.x = 2300
         this.portaAzulSobe1.y = 6100
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1464,7 +1446,6 @@ export default class personagem extends Phaser.Scene {
         this.portaVerdeSobe.y = 6100
         this.portaVerdeSobe1.x = 3247
         this.portaVerdeSobe1.y = 4824
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1476,7 +1457,6 @@ export default class personagem extends Phaser.Scene {
         this.portaVerdeSobe.y = 4833
         this.portaVerdeSobe1.x = 2300
         this.portaVerdeSobe1.y = 6100
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1488,7 +1468,6 @@ export default class personagem extends Phaser.Scene {
         this.portaLaranjaSobe.y = 6100
         this.portaLaranjaSobe1.x = 5103
         this.portaLaranjaSobe1.y = 4490
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1500,7 +1479,6 @@ export default class personagem extends Phaser.Scene {
         this.portaLaranjaSobe.y = 3893
         this.portaLaranjaSobe1.x = 2300
         this.portaLaranjaSobe1.y = 6100
-        console.log('Alavanca state atual %d', alavancaState)
       }
     })
     this.game.socket.on('artefatos-notificar', (artefatos) => {
@@ -1936,7 +1914,6 @@ export default class personagem extends Phaser.Scene {
     const sobreposicaoBalaoLivro = this.physics.world.overlap(this.personagem, this.balaoLivroCollider)
     if (sobreposicaoBalaoLivro && this.colisaoAtiva === 0) {
       this.balaoLivro.setVisible(true)
-      console.log('aaa')
       this.colisaoAtiva = 1
     } else if (!sobreposicaoBalaoLivro) {
       this.balaoLivro.setVisible(false)
@@ -1947,7 +1924,6 @@ export default class personagem extends Phaser.Scene {
     const sobreposicaoBalaoMapa = this.physics.world.overlap(this.personagem, this.balaoMapaCollider)
     if (sobreposicaoBalaoMapa && this.colisaoAtiva === 0) {
       this.balaoMapa.setVisible(true)
-      console.log('aaa')
       this.colisaoAtiva = 1
     } else if (!sobreposicaoBalaoMapa) {
       this.balaoMapa.setVisible(false)

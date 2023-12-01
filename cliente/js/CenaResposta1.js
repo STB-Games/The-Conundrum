@@ -54,7 +54,6 @@ export default class CenaResposta1 extends Phaser.Scene {
     const botaoMedusa = this.add.sprite(200, 200, 'botaoMedusa')
       .setInteractive()
     botaoMedusa.on('pointerdown', () => {
-      console.log('Botão Medusa clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta1')
         this.game.scene.start('CenaResposta2')
@@ -64,7 +63,6 @@ export default class CenaResposta1 extends Phaser.Scene {
     const botaoCurupira = this.add.sprite(600, 200, 'botaoCurupira')
       .setInteractive()
     botaoCurupira.on('pointerdown', () => {
-      console.log('Botão Curupira clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta1')
         this.game.scene.start('CenaResposta2')
@@ -74,7 +72,6 @@ export default class CenaResposta1 extends Phaser.Scene {
     const botaoBoitata = this.add.sprite(200, 350, 'botaoBoitata')
       .setInteractive()
     botaoBoitata.on('pointerdown', () => {
-      console.log('Botão Boitata clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta1')
         this.game.scene.start('CenaResposta2')
@@ -84,7 +81,6 @@ export default class CenaResposta1 extends Phaser.Scene {
     const botaoBasilisco = this.add.sprite(600, 350, 'botaoBasilisco')
       .setInteractive()
     botaoBasilisco.on('pointerdown', () => {
-      console.log('Botão Basilisco clicado!')
       fadeOut(CutsceneFinal, 500, () => {
         this.game.scene.stop('CenaResposta1')
         this.game.scene.start('CenaResposta2')
